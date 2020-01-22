@@ -1,0 +1,57 @@
+h1 img {
+  width: 50px;
+  float: left;
+  margin-top: -8px;
+  margin-left: 8px;
+  margin-right: 10px;
+}
+
+h1 i {
+  font-weight: 100;
+  font-size: 17px;
+}
+
+#app {
+  font-family: monospace;
+  min-width: 1000px;
+}
+
+.row {
+  margin: 5px;
+  padding: 15px;
+  background-color: #cac9c83d;
+  border-left: 2px dashed black;
+  border-right: 2px dashed black;
+}
+
+.row.kick {
+  /* background-color: #cddc39; */
+  border-bottom: 2px solid black;
+}
+
+.row.deal {
+  background-color: #fcd375;
+  margin-top: 20px;
+  border-top: 2px black solid;
+}
+
+.made-by {
+  font-family: monospace;
+  display: block;
+  align-content: center;
+  text-align: center;
+  text-decoration: underline;
+  font-size: 20px;
+}
+
+#flip-filter {
+  margin: 5px;
+  padding: 10px;
+  background-color: #fcd375;
+  font-family: monospace;
+  font-weight: bold;
+}
+
+#flip-filter input {
+  width: 60px;
+}
