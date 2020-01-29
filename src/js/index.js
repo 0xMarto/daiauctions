@@ -690,14 +690,14 @@ const fetchAuctions = async someID => {
 };
 
 const showFilter = () => {
-    var filterPanel = document.getElementById("flip-filter");
+    var filterPanel = document.getElementById("filter-panel");
     if (filterPanel) {
         filterPanel.style.display = "block";
     }
 };
 
 const showEmptyMessage = () => {
-    var filterPanel = document.getElementById("flip-filter");
+    var filterPanel = document.getElementById("filter-panel");
     if (filterPanel) {
         filterPanel.style.display = "block";
         let msg = "There were NO auctions kicked in the search period";

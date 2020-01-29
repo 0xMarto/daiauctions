@@ -679,13 +679,15 @@ var ETH_FLIP_ADDRESS = "0xd8a04f5412223f513dc55f839574430f5ec15531";
 var OSM_ADDRESS = "0x81FE72B5A8d1A857d176C3E7d5Bd2679A9B85763";
 
 var web3;
-var local_web3 = typeof window.web3 !== "undefined";
-if (local_web3 && window.web3.currentProvider && window.web3.currentProvider.networkVersion === "1") {
+if (typeof window.web3 !== "undefined" &&
+    window.web3.currentProvider && window.web3.currentProvider.networkVersion === "1" &&
+    window.web3.currentProvider.connection && window.web3.currentProvider.connection.url.slice(0,3) === "wss") {
     web3 = new Web3(window.web3.currentProvider);
 } else {
-    var infura = "https://mainnet.infura.io/v3/24537662f67d4531a1e43e486ea45eca";
-    var provider = new Web3.providers.HttpProvider(infura);
+    var infura = "wss://mainnet.infura.io/ws/v3/24537662f67d4531a1e43e486ea45eca";
+    var provider = new Web3.providers.WebsocketProvider(infura);
     web3 = new Web3(provider);
+    // web3 = new Web3(new Web3.providers.WebsocketProvider('wss://mainnet.infura.io/ws'))
 }
 
 var flipContract = new web3.eth.Contract(FLIPPER_ABI, ETH_FLIP_ADDRESS);
@@ -693,7 +695,7 @@ var osmContract = new web3.eth.Contract(OSM_ABI, OSM_ADDRESS); // Get events
 
 var events = [];
 var getFlipEvents = function getFlipEvents(fromBlockNumber) {
-    console.log("Get Flip Events From Block: " + fromBlockNumber);
+    console.log(`Get auction events from block: ${fromBlockNumber}`);
     return flipContract.getPastEvents("allEvents", {
             fromBlock: fromBlockNumber,
             toBlock: "latest"
@@ -746,8 +748,8 @@ var showEvents = async function showEvents(someID) {
     }
 
     // Disable filter when populating
-    if(events.length > 0) {
-        hideFilter();
+    if (events.length > 0) {
+        hideFilterSearch();
     }
 
     var _iteratorNormalCompletion = true;
@@ -931,32 +933,43 @@ var fetchAuctions = async function fetchAuctions(someID) {
 };
 
 function showFilter() {
-    var filterPanel = document.getElementById("flip-filter");
+    var filterPanel = document.getElementById("filter-panel");
 
     if (filterPanel) {
         filterPanel.style.display = "block";
-        var lastUpdateTag = document.getElementById("last-update");
-        var now = new Date().toLocaleString();
-        lastUpdateTag.innerHTML = `- Updated to: ${now}`;
+        var searchTag = document.getElementById("search");
+        searchTag.style.display = "inline";
+        var noResultsTag = document.getElementById("no-results");
+        noResultsTag.style.display = "none";
+        showLastUpdate();
     }
 }
 
-function hideFilter() {
-    var filterPanel = document.getElementById("flip-filter");
-    if (filterPanel) {
-        filterPanel.style.display = "none";
+function showLastUpdate() {
+    var lastUpdateTag = document.getElementById("last-update");
+    var now = new Date().toLocaleString();
+    lastUpdateTag.innerHTML = `- Updated to: ${now}`;
+}
+
+function hideFilterSearch() {
+    var filterPanelSearch = document.getElementById("search");
+    if (filterPanelSearch) {
+        filterPanelSearch.style.display = "none";
     }
 }
 
-var showEmptyMessage = function showEmptyMessage() {
-    var filterPanel = document.getElementById("flip-filter");
+function showEmptyMessage() {
+    var filterPanel = document.getElementById("filter-panel");
 
     if (filterPanel) {
         filterPanel.style.display = "block";
-        var msg = "There were NO auctions kicked in the search period";
-        filterPanel.innerHTML = msg;
+        var searchTag = document.getElementById("search");
+        searchTag.style.display = "none";
+        var noResultsTag = document.getElementById("no-results");
+        noResultsTag.style.display = "inline";
+        showLastUpdate();
     }
-};
+}
 
 function filterAuctionById() {
     var flipId = $("#fliter-id").val();
@@ -986,4 +999,7 @@ async function newBlock(error, result) {
 fetchAuctions(0);
 
 // Subscribe to new blocks
-web3.eth.subscribe('newBlockHeaders', newBlock);
+setTimeout(function () {
+    console.log('Getting new data from chain...');
+    web3.eth.subscribe('newBlockHeaders', newBlock);
+}, 5000);
