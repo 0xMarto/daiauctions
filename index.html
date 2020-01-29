@@ -4,24 +4,29 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="author" content="Marto" />
-    <meta name="version" content="0.4.17" />
+    <meta name="version" content="0.5.17" />
     <title>MCD Collateral Auctions</title>
     <link rel="icon" type="icon" href="https://daistats.com/favicon.ico"/>
     <link rel="stylesheet" href="src/styles.css" media="all"/>
   </head>
   <body>
     <h1>
-      <img width="50" src="https://sfo2.digitaloceanspaces.com/engamb/wp-content/uploads/2019/10/09141745/NEW-dai-logo-e1570610882413.png"></img>
-      MCD Collateral ETH Auctions <i>(from last 3.14 days)</i>
+      <img width="50" src="https://sfo2.digitaloceanspaces.com/engamb/wp-content/uploads/2019/10/09141745/NEW-dai-logo-e1570610882413.png"/>
+      MCD Collateral Auctions
     </h1>
     <div id="flip-filter" style="display: none;">
-      Filter by Flip ID:
+      Filter by ID:
       <input id="fliter-id" type="number" />
       <button onclick="filterAuctionById();">GO</button>
+      <i id="last-update"></i>
     </div>
     <div id="app"> >> Loading mainnet data...</div>
-    <p class="made-by"> Made with love by <a target="_blank" href="https://twitter.com/martinlsanchez" rel="noopener noreferrer" class="made-by-link highlight-effect"> Marto </a> </p>
-  
+    <p class="made-by">
+        🙂 All data from last 3.14 days 🙃
+        <br/><br/>
+        Made with love by <a target="_blank" href="https://twitter.com/martinlsanchez" rel="noopener noreferrer" class="made-by-link highlight-effect"> Marto </a>
+    </p>
+
     <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.34/dist/web3.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="src/index_min.js"></script>
