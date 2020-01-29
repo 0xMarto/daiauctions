@@ -476,9 +476,13 @@ var showEvents = async function showEvents(someID) {
             var values = "";
             var blockDate = void 0;
             await web3.eth.getBlock(event.blockNumber).then(function (block) {
-                var blockTime = block.timestamp;
-                blockDate = new Date(blockTime * 1000);
-                values = "".concat(blockDate.toLocaleString(), " | ");
+                if (block) {
+                    var blockTime = block.timestamp;
+                    blockDate = new Date(blockTime * 1000);
+                    values = "".concat(blockDate.toLocaleString(), " | ");
+                } else {
+                    values = "".concat(new Date().toLocaleString(), " | ");
+                }
             });
             var eventType = "Unknown";
             var flipId = 0; // Event types cases

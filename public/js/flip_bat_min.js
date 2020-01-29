@@ -675,20 +675,22 @@ var OSM_ABI = [{
     type: "function"
 }]; // Contracts
 
-var ETH_FLIP_ADDRESS = "0xd8a04f5412223f513dc55f839574430f5ec15531";
-var OSM_ADDRESS = "0x81FE72B5A8d1A857d176C3E7d5Bd2679A9B85763";
+var BAT_FLIP_ADDRESS = "0xaA745404d55f88C108A28c86abE7b5A1E7817c07";
+var OSM_ADDRESS = "0xB4eb54AF9Cc7882DF0121d26c5b97E802915ABe6";
 
 var web3;
-var local_web3 = typeof window.web3 !== "undefined";
-if (local_web3 && window.web3.currentProvider && window.web3.currentProvider.networkVersion === "1") {
+if (typeof window.web3 !== "undefined" &&
+    window.web3.currentProvider && window.web3.currentProvider.networkVersion === "1" &&
+    window.web3.currentProvider.connection && window.web3.currentProvider.connection.url.slice(0,3) === "wss") {
     web3 = new Web3(window.web3.currentProvider);
 } else {
-    var infura = "https://mainnet.infura.io/v3/24537662f67d4531a1e43e486ea45eca";
-    var provider = new Web3.providers.HttpProvider(infura);
+    var infura = "wss://mainnet.infura.io/ws/v3/24537662f67d4531a1e43e486ea45eca";
+    var provider = new Web3.providers.WebsocketProvider(infura);
     web3 = new Web3(provider);
+    // web3 = new Web3(new Web3.providers.WebsocketProvider('wss://mainnet.infura.io/ws'))
 }
 
-var flipContract = new web3.eth.Contract(FLIPPER_ABI, ETH_FLIP_ADDRESS);
+var flipContract = new web3.eth.Contract(FLIPPER_ABI, BAT_FLIP_ADDRESS);
 var osmContract = new web3.eth.Contract(OSM_ABI, OSM_ADDRESS); // Get events
 
 var events = [];
@@ -775,7 +777,7 @@ var showEvents = async function showEvents(someID) {
                 flipId = parseInt(event.returnValues.id, 10);
                 values += "ID: <b>".concat(flipId, "</b> | ");
                 var lot = event.returnValues.lot / 10 ** 18;
-                values += "lot: ".concat(lot.toFixed(3), " eth | "); //values += `bid: ${event.returnValues.bid} | `;
+                values += "lot: ".concat(lot.toFixed(3), " bat | "); //values += `bid: ${event.returnValues.bid} | `;
 
                 var tab = event.returnValues.tab / 10 ** 27 / 10 ** 18;
                 values += "tab: ".concat(tab.toFixed(3), " dai | "); //values += `usr: ${event.returnValues.usr} | `;
@@ -814,7 +816,7 @@ var showEvents = async function showEvents(someID) {
 
                 var _lot = parseInt(event.raw.topics[3], 16) / 10 ** 18;
 
-                values += "lot: ".concat(_lot.toFixed(3), " eth | "); // Get BID
+                values += "lot: ".concat(_lot.toFixed(3), " bat | "); // Get BID
 
                 var raw = event.raw.data.slice(289, -248);
                 var bid = parseInt(raw, 16) / 10 ** 27 / 10 ** 18;
@@ -837,7 +839,7 @@ var showEvents = async function showEvents(someID) {
 
                 var _lot2 = parseInt(event.raw.topics[3], 16) / 10 ** 18;
 
-                values += "lot: ".concat(_lot2.toFixed(3), " eth | "); // Get BID
+                values += "lot: ".concat(_lot2.toFixed(3), " bat | "); // Get BID
 
                 var _raw = event.raw.data.slice(289, -248);
 
