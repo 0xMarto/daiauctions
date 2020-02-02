@@ -731,4 +731,7 @@ const printStats = auctions => {
 };
 
 // Run main function
-fetchAuctions(0);
+(async () =>  {
+    await fetchAuctions(0);
+
+})();

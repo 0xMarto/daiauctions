@@ -492,10 +492,10 @@ var showEvents = async function showEvents(someID) {
                 flipId = parseInt(event.returnValues.id, 10);
                 values += "ID: <b>".concat(flipId, "</b> | ");
                 var lot = event.returnValues.lot / 10 ** 27 / 10 ** 18;
-                values += "lot: ".concat(lot.toFixed(4), " dai | "); //values += `bid: ${event.returnValues.bid} | `;
+                values += "lot: ".concat(lot.toFixed(2), " mkr | "); //values += `bid: ${event.returnValues.bid} | `;
 
                 var tab = event.returnValues.bid / 10 ** 18;
-                values += "bid: ".concat(tab.toFixed(4), " mkr | "); //values += `usr: ${event.returnValues.usr} | `;
+                values += "bid: ".concat(tab.toFixed(3), " mkr | "); //values += `usr: ${event.returnValues.usr} | `;
                 //values += `gal: ${event.returnValues.gal} | `;
                 // Clear and Get current price value
 
@@ -530,11 +530,11 @@ var showEvents = async function showEvents(someID) {
                 values += "ID: <b>".concat(flipId, "</b> | "); // Get LOT
 
                 var _lot = parseInt(event.raw.topics[3], 16) / 10 ** 27 / 10 ** 18;
-                values += "lot: ".concat(_lot.toFixed(4), " dai | "); // Get BID
+                values += "lot: ".concat(_lot.toFixed(2), " mkr | "); // Get BID
 
                 var raw = event.raw.data.slice(289, -248);
                 var bid = parseInt(raw, 16) / 10 ** 18;
-                values += "bid: ".concat(bid.toFixed(4), " mkr | "); // Update Urn data
+                values += "bid: ".concat(bid.toFixed(3), " mkr | "); // Update Urn data
 
                 auctions[flipId]["tends"] += 1;
                 auctions[flipId]["bid"] = bid.toFixed(4);
