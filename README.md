@@ -5,7 +5,7 @@
 </p>
 <h1 align="center">Dai Auctions</h1>
 
-A simple and light weight. The place to see all [MakerDao](https://makerdao.com/) Auctions. 
+The place to see all [MakerDao](https://makerdao.com/) Auctions. 
 
 Welcome to the open blockchains.
 
@@ -15,10 +15,20 @@ Welcome to the open blockchains.
 >
 > [Flap auctions detailed documentation](https://docs.makerdao.com/smart-contract-modules/system-stabilizer-module/flap-detailed-documentation)
 
+
+
+##### Simple, optimized and light weight
+
+> **100** Score of [Google PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/?hl=es&url=https%3A%2F%2Fdaiauctions.com%2F&tab=desktop)
+
+<br/>
+
 ## 🚀 Live Site
-[DaiAuctions.com](https://daiauctions.com/)
+>**[DaiAuctions.com](https://daiauctions.com/)**
 
 <img src="https://daiauctions.com/img/sample_flip_eth.png">
+
+<br/>
 
 ## ✨ Features
 
@@ -26,6 +36,7 @@ Welcome to the open blockchains.
 - Realtime tracking of MCD Flip (BAT-A) auctions
 - Realtime tracking of MCD Flap (MKR) auctions
 
+<br/>
  
 ## 🖥 Environment Support
 
@@ -35,6 +46,7 @@ Welcome to the open blockchains.
 | --- | --- | --- | --- | --- | --- |
 | IE11, Edge | last 2 versions | last 2 versions | last 2 versions | last 2 versions | last 2 versions |
 
+<br/>
 
 ## 🤝 Contributing [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
