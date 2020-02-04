@@ -884,8 +884,9 @@ var showEvents = async function showEvents(someID) {
 
             await web3.eth.getTransaction(event.transactionHash).then(function (tx) {
                 var from = tx.from;
-                var txLink = "<a target=\"_blank\" href='https://etherscan.io/tx/\n          ".concat(event.transactionHash, "\n          '>Tx Info</a>");
-                values += "from: ".concat(from, " | ").concat(txLink, " >>");
+                var txHref = `https://etherscan.io/tx/${event.transactionHash}`;
+                var txLink = `<a target="_blank" href="${txHref}">Tx Info</a>`;
+                values += `from: ${from} | ${txLink}`;
                 auctions[flipId]["guy"] = from;
             }); // Render new line in document
 

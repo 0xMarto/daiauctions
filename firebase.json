@@ -17,11 +17,11 @@
       },
       {
         "source": "/flip/eth",
-        "destination": "/index.html"
+        "destination": "/flip_eth.html"
       },
       {
         "source": "**",
-        "destination": "/index.html"
+        "destination": "/flip_eth.html"
       }
     ],
     "headers": [

@@ -777,13 +777,12 @@ var showEvents = async function showEvents(someID) {
                 flipId = parseInt(event.returnValues.id, 10);
                 values += "ID: <b>".concat(flipId, "</b> | ");
                 var lot = event.returnValues.lot / 10 ** 18;
-                values += "lot: ".concat(lot.toFixed(3), " eth | "); //values += `bid: ${event.returnValues.bid} | `;
+                values += "lot: ".concat(lot.toFixed(3), " eth | ");
 
                 var tab = event.returnValues.tab / 10 ** 27 / 10 ** 18;
-                values += "tab: ".concat(tab.toFixed(3), " dai | "); //values += `usr: ${event.returnValues.usr} | `;
-                //values += `gal: ${event.returnValues.gal} | `;
-                // Clear and Get current price value
+                values += "tab: ".concat(tab.toFixed(3), " dai | ");
 
+                // Clear and Get current price value
                 osmPrice = 0;
                 await getOsmPrice(event.blockNumber);
                 auctions[flipId] = {
@@ -877,15 +876,14 @@ var showEvents = async function showEvents(someID) {
             } else {
                 console.log("Uknown event");
                 console.log(event);
-            } // Only for debug
-            //console.log(event);
+            }
+
             // Get Sender
-
-
             await web3.eth.getTransaction(event.transactionHash).then(function (tx) {
                 var from = tx.from;
-                var txLink = "<a target=\"_blank\" href='https://etherscan.io/tx/\n          ".concat(event.transactionHash, "\n          '>Tx Info</a>");
-                values += "from: ".concat(from, " | ").concat(txLink, " >>");
+                var txHref = `https://etherscan.io/tx/${event.transactionHash}`;
+                var txLink = `<a target="_blank" href="${txHref}">Tx Info</a>`;
+                values += `from: ${from} | ${txLink}`;
                 auctions[flipId]["guy"] = from;
             }); // Render new line in document
 
