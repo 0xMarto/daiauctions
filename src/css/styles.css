@@ -73,8 +73,12 @@ h1 {
     font-size: 20px;
 }
 
-.made-by a {
+.made-by .author {
     padding-right: 10px;
+}
+
+.made-by i {
+    font-size: 14px;
 }
 
 #filter-panel {

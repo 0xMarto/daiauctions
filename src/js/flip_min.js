@@ -679,13 +679,15 @@ var ETH_FLIP_ADDRESS = "0xd8a04f5412223f513dc55f839574430f5ec15531";
 var OSM_ADDRESS = "0x81FE72B5A8d1A857d176C3E7d5Bd2679A9B85763";
 
 var web3;
-var local_web3 = typeof window.web3 !== "undefined";
-if (local_web3 && window.web3.currentProvider && window.web3.currentProvider.networkVersion === "1") {
+if (typeof window.web3 !== "undefined" &&
+    window.web3.currentProvider && window.web3.currentProvider.networkVersion === "1" &&
+    window.web3.currentProvider.connection && window.web3.currentProvider.connection.url.slice(0,3) === "wss") {
     web3 = new Web3(window.web3.currentProvider);
 } else {
-    var infura = "https://mainnet.infura.io/v3/24537662f67d4531a1e43e486ea45eca";
-    var provider = new Web3.providers.HttpProvider(infura);
+    var infura = "wss://mainnet.infura.io/ws/v3/24537662f67d4531a1e43e486ea45eca";
+    var provider = new Web3.providers.WebsocketProvider(infura);
     web3 = new Web3(provider);
+    // web3 = new Web3(new Web3.providers.WebsocketProvider('wss://mainnet.infura.io/ws'))
 }
 
 var flipContract = new web3.eth.Contract(FLIPPER_ABI, ETH_FLIP_ADDRESS);
@@ -759,9 +761,13 @@ var showEvents = async function showEvents(someID) {
             var values = "";
             var blockDate = void 0;
             await web3.eth.getBlock(event.blockNumber).then(function (block) {
-                var blockTime = block.timestamp;
-                blockDate = new Date(blockTime * 1000);
-                values = "".concat(blockDate.toLocaleString(), " | ");
+                if (block) {
+                    var blockTime = block.timestamp;
+                    blockDate = new Date(blockTime * 1000);
+                    values = "".concat(blockDate.toLocaleString(), " | ");
+                } else {
+                    values = "".concat(new Date().toLocaleString(), " | ");
+                }
             });
             var eventType = "Unknown";
             var flipId = 0; // Event types cases

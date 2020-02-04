@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="author" content="Marto"/>
+    <meta name="version" content="0.5.48"/>
+    <title>Dai Auctions</title>
+    <meta name="description" content="The place to see all MakerDao Auctions. Welcome to the open blockchains.">
+    <meta name="keywords" content="makerdao dai eth bat auction flip flap">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@martinlsanchez">
+    <meta name="twitter:title" content="Dai Auctions | Flips | BAT">
+    <meta name="twitter:description" content="The place to see all MakerDao Auctions. Welcome to the open blockchains.">
+    <meta name="twitter:creator" content="@martinlsanchez">
+    <meta name="twitter:image" content="https://daiauctions.com/img/dai-share.png">
+
+    <meta property="og:title" content="Dai Auctions | Flips | BAT"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://daiauctions.com/flip-bat"/>
+    <meta property="og:image" content="https://daiauctions.com/img/dai-share.png"/>
+    <meta property="og:description" content="The place to see all MakerDao Auctions. Welcome to the open blockchains."/>
+    <meta property="og:site_name" content="Dai Auctions | Flips | BAT"/>
+
+    <link rel="icon" type="icon" href="../img/favicon.ico"/>
+    <link rel="stylesheet" href="../css/styles.css" media="all"/>
+</head>
+<body>
+<h1>
+    <img width="50" src="../img/dai-logo.png"/>
+    MCD Collateral Auctions
+</h1>
+<div id="filter-panel">
+    <span id="search">
+        <label for="fliter-id">Filter by ID:</label>
+        <input id="fliter-id" type="number" onchange="filterAuctionById();"/>
+        <a href="#" onclick="filterAuctionById();">GO!</a>
+    </span>
+    <span id="no-results">There were NO auctions found in the last days</span>
+    <i id="last-update"></i>
+    <div class="links-panel">
+        <a href="/" title="ETH Auctions with DAI">FLIPs [ETH]</a> |
+        <a href="#" class="active" title="BAT Auctions with DAI">FLIPs [BAT]</a> |
+        <a href="/flap" title="DAI Auctions with MKR">FLAPs [DAI]</a>
+    </div>
+</div>
+<div id="app">
+    <div class="row"> >> Fetching data from mainnet...</div>
+</div>
+<div id="info">
+    <p>
+        All data from last 3.14 days -
+        More info about <a target="_blank" href="https://makerdao.com">MakerDao</a>
+        Auctions in this amazing
+        <a href="https://docs.makerdao.com/smart-contract-modules/collateral-module/flipper-detailed-documentation"
+           target="_blank">Flipper Docs</a>
+    </p>
+</div>
+<p class="made-by">
+    Made with ❤ by <a target="_blank" href="https://twitter.com/martinlsanchez" class="author">Marto</a>
+    <br/><br/>
+    2020
+    <br/><br/>
+    <i>
+        With some magic/advice/support of
+         <a target="_blank" href="https://twitter.com/natanbaredes">natonamco</a>,
+         <a target="_blank" href="https://twitter.com/gonzalezramiro">ramoide</a> and
+         <a target="_blank" href="https://twitter.com/nanexcool">@nanexcool</a>
+    </i>
+</p>
+<script src="../js/web3.min.js"></script>
+<script async src="../js/jquery.min.js"></script>
+<script src="../js/flip_bat_min.js"></script>
+</body>
+</html>

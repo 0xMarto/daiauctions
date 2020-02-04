@@ -1,12 +1,24 @@
 {
   "hosting": {
-    "public": "public",
+    "public": "src",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
     ],
     "rewrites": [
+      {
+        "source": "/flip/bat",
+        "destination": "/flip_bat.html"
+      },
+      {
+        "source": "/flap",
+        "destination": "/flap.html"
+      },
+      {
+        "source": "/flip/eth",
+        "destination": "/index.html"
+      },
       {
         "source": "**",
         "destination": "/index.html"
