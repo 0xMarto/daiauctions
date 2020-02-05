@@ -691,7 +691,7 @@ function filterAuctionById() {
 fetchAuctions(0);
 
 // Only in DEV version
-console.log('Loaded not optimized file');
+//console.log('Loaded not optimized file');
 
 // ## Subscribe to new blocks
 setTimeout(function () {

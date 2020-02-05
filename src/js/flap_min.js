@@ -14,4 +14,4 @@ function showLastUpdate(){var lastUpdateTag=document.getElementById("last-update
 function hideFilterSearch(){var filterPanelSearch=document.getElementById("search");if(filterPanelSearch){filterPanelSearch.style.display="none"}}
 function showEmptyMessage(){var filterPanel=document.getElementById("filter-panel");if(filterPanel){filterPanel.style.display="block";var searchTag=document.getElementById("search");searchTag.style.display="none";var noResultsTag=document.getElementById("no-results");noResultsTag.style.display="inline";showLastUpdate()}}
 function filterAuctionById(){var flipId=$("#fliter-id").val();$(".row").hide();if(flipId){$(".flip-"+flipId).show()}else{$(".row").show()}}
-fetchAuctions(0);console.log('Loaded not optimized file');setTimeout(function(){console.log('Getting new data from chain...');web3.eth.subscribe('newBlockHeaders',newBlock)},5000)
+fetchAuctions(0);setTimeout(function(){console.log('Getting new data from chain...');web3.eth.subscribe('newBlockHeaders',newBlock)},5000)
