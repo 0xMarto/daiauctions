@@ -50,6 +50,14 @@ Welcome to the open blockchains.
 
 ## 🤝 Contributing [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
+As Simple as it can be, **:-)**
+
+No libs or anything needed, it's all code in HTML, CSS and JS so... 
+1. Just `fork/clone` this repo
+2. Edit any file (e.g. `flap_min.js`)
+3. Test it, opening the related `html` (e.g `flap.html`) locally in any browser
+4. Make a `PR`
+
 <br/>
 
 ###### Made with love by <a target="_blank" href="https://twitter.com/martinlsanchez" class="author">Marto</a> (marto.eth)
