@@ -475,19 +475,19 @@ var showEvents = async function showEvents(someID) {
     // Iterate over events
     for (let i = 0; i < events.length; i++) {
         let event = events[i];
-        var values = "";
-        var blockDate = void 0;
+        let values = "";
+        let blockDate = void 0;
         await web3.eth.getBlock(event.blockNumber).then(function (block) {
             if (block) {
-                var blockTime = block.timestamp;
+                let blockTime = block.timestamp;
                 blockDate = new Date(blockTime * 1000);
                 values = blockDate.toLocaleString() + " | ";
             } else {
                 values = new Date().toLocaleString() + " | ";
             }
         });
-        var eventType = "Unknown";
-        var flipId = 0;
+        let eventType = "Unknown";
+        let flipId = 0;
 
         // Event types cases
         if (event.event === "Kick") {
@@ -495,10 +495,10 @@ var showEvents = async function showEvents(someID) {
             flipId = parseInt(event.returnValues.id, 10);
             values += "ID: <b>" + flipId + "</b> | ";
 
-            var lot = event.returnValues.lot / 10 ** 27 / 10 ** 18;
+            let lot = event.returnValues.lot / 10 ** 27 / 10 ** 18;
             values += "lot: " + lot.toFixed(2) + " dai | ";
 
-            var tab = event.returnValues.bid / 10 ** 18;
+            let tab = event.returnValues.bid / 10 ** 18;
             values += "bid: " + tab.toFixed(3) + " mkr | ";
 
             // Clear and Get current price value
@@ -516,6 +516,7 @@ var showEvents = async function showEvents(someID) {
                 tends: 0,
                 dents: 0,
                 bid: tab.toFixed(5),
+                bidPrice: null,
                 lot: null,
                 tab: 0,
                 guy: null,
@@ -532,20 +533,28 @@ var showEvents = async function showEvents(someID) {
                 return "continue";
             }
 
-            values += "ID: <b>" + flipId + "</b> | "; // Get LOT
+            values += "ID: <b>" + flipId + "</b> | ";
 
-            var lot = parseInt(event.raw.topics[3], 16) / 10 ** 27 / 10 ** 18;
+            let lot = parseInt(event.raw.topics[3], 16) / 10 ** 27 / 10 ** 18;
             values += "lot: " + lot.toFixed(2) + " dai | ";
 
-            var raw = event.raw.data.slice(289, -248);
-            var bid = parseInt(raw, 16) / 10 ** 18;
+            let raw = event.raw.data.slice(289, -248);
+            let bid = parseInt(raw, 16) / 10 ** 18;
             values += "bid: " + bid.toFixed(3) + " mkr | ";
+
+            medianizerPrice = 0;
+            await getMedianizerPrice(event.blockNumber);
 
             // Register TEND over Auction dictionary
             auctions[flipId]["tends"] += 1;
             auctions[flipId]["bid"] = bid.toFixed(4);
+            auctions[flipId]["bidPrice"] = medianizerPrice.toString();
             auctions[flipId]["lot"] = lot.toFixed(4);
             auctions[flipId]["paidPrice"] = (lot / bid).toFixed(2);
+
+            if (medianizerPrice > 0) {
+                values += "Price: $" + auctions[flipId]["bidPrice"] + " | ";
+            }
         } else if (event.raw.topics[0] === DEAL) {
             eventType = "DEAL";
             flipId = parseInt(event.raw.topics[2], 16);
@@ -565,10 +574,10 @@ var showEvents = async function showEvents(someID) {
             auctions[flipId]["state"] = "CLOSE";
 
             if (!medianizerPrice) {
-                values += "Rate: $" + auctions[flipId]["paidPrice"] + " dai/mkr | ";
+                values += "Took Rate: $" + auctions[flipId]["paidPrice"] + " dai/mkr | ";
             } else {
-                values += "Rate: $" + auctions[flipId]["paidPrice"] + " dai/mkr - ";
-                values += "Price: $" + auctions[flipId]["dealPrice"] + " | ";
+                values += "Took Rate: $" + auctions[flipId]["paidPrice"] + " dai/mkr | ";
+                values += "MKR Price: $" + auctions[flipId]["dealPrice"] + " | ";
             }
         } else if (event.raw.topics[0] === TICK) {
             eventType = "TICK";
@@ -585,21 +594,21 @@ var showEvents = async function showEvents(someID) {
 
         // Get event tx info
         await web3.eth.getTransaction(event.transactionHash).then(function (tx) {
-            var from = tx.from;
-            var txHref = `https://etherscan.io/tx/${event.transactionHash}`;
-            var txLink = `<a target="_blank" href="${txHref}">Tx Info</a>`;
+            let from = tx.from.slice(0,6) + "..." + tx.from.slice(-4);
+            let txHref = `https://etherscan.io/tx/${event.transactionHash}`;
+            let txLink = `<a target="_blank" href="${txHref}">Tx Info</a>`;
             values += `from: ${from} | ${txLink}`;
             auctions[flipId]["guy"] = from;
         });
 
         // Get old page and Render new line in app
-        var oldPage = document.getElementById("app").innerHTML;
-        var newLine = "";
+        let oldPage = document.getElementById("app").innerHTML;
+        let newLine = "";
         if (someID === 0 || someID === flipId) {
             newLine = "<div class=\"row flip-" + flipId + " " + eventType.toLowerCase() + "\">" +
                 eventType + " >> " + values + "</div>";
         }
-        var newPage = newLine + oldPage;
+        let newPage = newLine + oldPage;
         document.getElementById("app").innerHTML = newPage;
     }
 
@@ -616,7 +625,7 @@ var showEvents = async function showEvents(someID) {
 var lastBlockfetch = 0;
 var fetchAuctions = async function fetchAuctions(someID) {
     lastBlockfetch = await web3.eth.getBlockNumber();
-    var fromBlock = lastBlockfetch - 18095; // 18095 -> 3.14 days blocks count
+    let fromBlock = lastBlockfetch - 18095; // 18095 -> 3.14 days blocks count
     await getFlipEvents(fromBlock);
     await showEvents(someID);
 };
