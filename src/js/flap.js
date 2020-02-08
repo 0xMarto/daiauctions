@@ -432,7 +432,7 @@ var getFlipEvents = function getFlipEvents(fromBlockNumber) {
 var medianizerPrice = 0;
 var getMedianizerPrice = function getOsmPrice(blockNumber) {
     return osmContract.getPastEvents("LogValue", {
-            fromBlock: blockNumber - 1500,
+            fromBlock: blockNumber - 2000,
             toBlock: blockNumber
         },
         function (err, result) {
@@ -499,7 +499,8 @@ var showEvents = async function showEvents(someID) {
             values += "lot: " + lot.toFixed(2) + " dai | ";
 
             let tab = event.returnValues.bid / 10 ** 18;
-            values += "bid: " + tab.toFixed(3) + " mkr | ";
+            values += "bid: " + tab.toFixed(4) + " mkr | ";
+            values += "Price: $---,-- | ";
 
             // Clear and Get current price value
             medianizerPrice = 0;
@@ -574,10 +575,17 @@ var showEvents = async function showEvents(someID) {
             auctions[flipId]["state"] = "CLOSE";
 
             if (!medianizerPrice) {
-                values += "Took Rate: $" + auctions[flipId]["paidPrice"] + " dai/mkr | ";
+                values += "Took Rate: $" + auctions[flipId]["paidPrice"] + " dai/mkr -------- | ";
+                values += "Price: $---,-- | ";
             } else {
-                values += "Took Rate: $" + auctions[flipId]["paidPrice"] + " dai/mkr | ";
-                values += "MKR Price: $" + auctions[flipId]["dealPrice"] + " | ";
+                values += "Took Rate: $" + auctions[flipId]["paidPrice"] + " dai/mkr ";
+                let diff = ((auctions[flipId]["paidPrice"] / auctions[flipId]["dealPrice"]) - 1) * 100;
+                if (diff > 0) {
+                    values += "(+" + diff.toFixed(2) + "%) | ";
+                } else {
+                    values += "(" + diff.toFixed(2) + "%) | ";
+                }
+                values += "Price: $" + auctions[flipId]["dealPrice"] + " | ";
             }
         } else if (event.raw.topics[0] === TICK) {
             eventType = "TICK";
@@ -596,7 +604,7 @@ var showEvents = async function showEvents(someID) {
         await web3.eth.getTransaction(event.transactionHash).then(function (tx) {
             let from = tx.from.slice(0,6) + "..." + tx.from.slice(-4);
             let txHref = `https://etherscan.io/tx/${event.transactionHash}`;
-            let txLink = `<a target="_blank" href="${txHref}">Tx Info</a>`;
+            let txLink = `<a target="_blank" href="${txHref}">Tx Info >></a>`;
             values += `from: ${from} | ${txLink}`;
             auctions[flipId]["guy"] = from;
         });
