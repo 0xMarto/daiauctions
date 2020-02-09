@@ -1,7 +1,7 @@
 "use strict";
 
 // OSM contract ABI
-var FLAPPER_ABI = [{
+const FLAPPER_ABI = [{
     "inputs": [{
         "internalType": "address",
         "name": "vat_",
@@ -200,7 +200,7 @@ var FLAPPER_ABI = [{
     "stateMutability": "nonpayable",
     "type": "function"
 }];
-var MEDIANIZER_ABI = [{
+const MEDIANIZER_ABI = [{
     "constant": false,
     "inputs": [{"name": "owner_", "type": "address"}],
     "name": "setOwner",
@@ -390,8 +390,8 @@ var MEDIANIZER_ABI = [{
     "type": "event"
 }];
 
-var FLAP_ADDRESS = "0xdfE0fb1bE2a52CDBf8FB962D5701d7fd0902db9f";
-var MEDIANIZER_ADDRESS = "0x99041F808D598B782D5a3e498681C2452A31da08";
+const FLAP_ADDRESS = "0xdfE0fb1bE2a52CDBf8FB962D5701d7fd0902db9f";
+const MEDIANIZER_ADDRESS = "0x99041F808D598B782D5a3e498681C2452A31da08";
 
 var web3;
 if (typeof window.web3 !== "undefined" &&
@@ -407,8 +407,8 @@ if (typeof window.web3 !== "undefined" &&
 }
 
 // Get instance of contracts
-var flapContract = new web3.eth.Contract(FLAPPER_ABI, FLAP_ADDRESS);
-var osmContract = new web3.eth.Contract(MEDIANIZER_ABI, MEDIANIZER_ADDRESS);
+const flapContract = new web3.eth.Contract(FLAPPER_ABI, FLAP_ADDRESS);
+const osmContract = new web3.eth.Contract(MEDIANIZER_ABI, MEDIANIZER_ADDRESS);
 
 // Get new events and populate last events global variable
 var events = [];
@@ -487,28 +487,27 @@ var showEvents = async function showEvents(someID) {
             }
         });
         let eventType = "Unknown";
-        let flipId = 0;
+        let flapId = 0;
 
         // Event types cases
         if (event.event === "Kick") {
             eventType = "KICK";
-            flipId = parseInt(event.returnValues.id, 10);
-            values += "ID: <b>" + flipId + "</b> | ";
+            flapId = parseInt(event.returnValues.id, 10);
+            values += "ID: <b>" + flapId + "</b> | ";
 
             let lot = event.returnValues.lot / 10 ** 27 / 10 ** 18;
             values += "lot: " + lot.toFixed(2) + " dai | ";
 
             let tab = event.returnValues.bid / 10 ** 18;
             values += "bid: " + tab.toFixed(4) + " mkr | ";
-            values += "Price: $---,-- | ";
 
             // Clear and Get current price value
             medianizerPrice = 0;
             await getMedianizerPrice(event.blockNumber);
 
             // Register KICK over Auction dictionary
-            auctions[flipId] = {
-                id: flipId,
+            auctions[flapId] = {
+                id: flapId,
                 kickDate: blockDate.toUTCString().slice(5),
                 kickDay: blockDate.getUTCDate(),
                 kickMonth: blockDate.getUTCMonth() + 1,
@@ -525,16 +524,22 @@ var showEvents = async function showEvents(someID) {
                 paidPrice: null,
                 state: "OPEN"
             };
+
+            if (medianizerPrice > 0) {
+                values += "Price: $" + auctions[flapId]["kickPrice"] + " | ";
+            } else {
+                values += "Price: $---,-- | ";
+            }
         } else if (event.raw.topics[0] === TEND) {
             eventType = "TEND";
-            flipId = parseInt(event.raw.topics[2], 16);
+            flapId = parseInt(event.raw.topics[2], 16);
 
             // Avoid showing TEND without a KICK
-            if (!auctions[flipId]) {
-                return "continue";
+            if (!auctions[flapId]) {
+                continue;
             }
 
-            values += "ID: <b>" + flipId + "</b> | ";
+            values += "ID: <b>" + flapId + "</b> | ";
 
             let lot = parseInt(event.raw.topics[3], 16) / 10 ** 27 / 10 ** 18;
             values += "lot: " + lot.toFixed(2) + " dai | ";
@@ -547,77 +552,75 @@ var showEvents = async function showEvents(someID) {
             await getMedianizerPrice(event.blockNumber);
 
             // Register TEND over Auction dictionary
-            auctions[flipId]["tends"] += 1;
-            auctions[flipId]["bid"] = bid.toFixed(4);
-            auctions[flipId]["bidPrice"] = medianizerPrice.toString();
-            auctions[flipId]["lot"] = lot.toFixed(4);
-            auctions[flipId]["paidPrice"] = (lot / bid).toFixed(2);
+            auctions[flapId]["tends"] += 1;
+            auctions[flapId]["bid"] = bid.toFixed(4);
+            auctions[flapId]["bidPrice"] = medianizerPrice.toString();
+            auctions[flapId]["lot"] = lot.toFixed(4);
+            auctions[flapId]["paidPrice"] = (lot / bid).toFixed(2);
 
             if (medianizerPrice > 0) {
-                values += "Price: $" + auctions[flipId]["bidPrice"] + " | ";
+                values += "Price: $" + auctions[flapId]["bidPrice"] + " | ";
+            } else {
+                values += "Price: $---,-- | ";
             }
         } else if (event.raw.topics[0] === DEAL) {
             eventType = "DEAL";
-            flipId = parseInt(event.raw.topics[2], 16);
+            flapId = parseInt(event.raw.topics[2], 16);
 
             // Avoid showing DEAL without a KICK
-            if (!auctions[flipId]) {
+            if (!auctions[flapId]) {
                 return "continue";
             }
 
-            values += "ID: <b>" + flipId + "</b> | ";
+            values += "ID: <b>" + flapId + "</b> | ";
 
             medianizerPrice = 0;
             await getMedianizerPrice(event.blockNumber);
 
             // Register DEAL over Auction dictionary
-            auctions[flipId]["dealPrice"] = medianizerPrice.toString();
-            auctions[flipId]["state"] = "CLOSE";
+            auctions[flapId]["dealPrice"] = medianizerPrice.toString();
+            auctions[flapId]["state"] = "CLOSE";
 
             if (!medianizerPrice) {
-                values += "Took Rate: $" + auctions[flipId]["paidPrice"] + " dai/mkr -------- | ";
+                values += "Took Rate: $" + auctions[flapId]["paidPrice"] + " dai/mkr (+-.--%) | ";
                 values += "Price: $---,-- | ";
             } else {
-                values += "Took Rate: $" + auctions[flipId]["paidPrice"] + " dai/mkr ";
-                let diff = ((auctions[flipId]["paidPrice"] / auctions[flipId]["dealPrice"]) - 1) * 100;
+                values += "Took Rate: $" + auctions[flapId]["paidPrice"] + " dai/mkr ";
+                let diff = ((auctions[flapId]["paidPrice"] / auctions[flapId]["dealPrice"]) - 1) * 100;
                 if (diff > 0) {
                     values += "(+" + diff.toFixed(2) + "%) | ";
                 } else {
                     values += "(" + diff.toFixed(2) + "%) | ";
                 }
-                values += "Price: $" + auctions[flipId]["dealPrice"] + " | ";
+                values += "Price: $" + auctions[flapId]["dealPrice"] + " | ";
             }
         } else if (event.raw.topics[0] === TICK) {
             eventType = "TICK";
-            flipId = parseInt(event.raw.topics[2], 16);
-            values += "ID: <b>" + flipId + "</b> | ";
+            flapId = parseInt(event.raw.topics[2], 16);
+            values += "ID: <b>" + flapId + "</b> | ";
             values += "Time extended! | ";
         } else {
             console.log("Uknown event");
             console.log(event);
         }
 
-        // Only for debug
-        //console.log(event);
-
         // Get event tx info
         await web3.eth.getTransaction(event.transactionHash).then(function (tx) {
             let from = tx.from.slice(0,6) + "..." + tx.from.slice(-4);
             let txHref = `https://etherscan.io/tx/${event.transactionHash}`;
-            let txLink = `<a target="_blank" href="${txHref}">Tx Info >></a>`;
-            values += `from: ${from} | ${txLink}`;
-            auctions[flipId]["guy"] = from;
+            let txLink = `<a target="_blank" href="${txHref}">Tx:..${event.transactionHash.slice(-3)} Info</a>`;
+            values += `from: ${from} | ${txLink} >>`;
+            auctions[flapId]["guy"] = from;
         });
 
         // Get old page and Render new line in app
         let oldPage = document.getElementById("app").innerHTML;
         let newLine = "";
-        if (someID === 0 || someID === flipId) {
-            newLine = "<div class=\"row flip-" + flipId + " " + eventType.toLowerCase() + "\">" +
+        if (someID === 0 || someID === flapId) {
+            newLine = "<div class=\"row flip-" + flapId + " " + eventType.toLowerCase() + "\">" +
                 eventType + " >> " + values + "</div>";
         }
-        let newPage = newLine + oldPage;
-        document.getElementById("app").innerHTML = newPage;
+        document.getElementById("app").innerHTML = newLine + oldPage;
     }
 
     // Verify if there is any registered auction to show
@@ -695,11 +698,12 @@ function showEmptyMessage() {
 
 function filterAuctionById() {
     var flipId = $("#fliter-id").val();
-    $(".row").hide();
+    var allRows = $(".row");
+    allRows.hide();
     if (flipId) {
         $(".flip-" + flipId).show()
     } else {
-        $(".row").show();
+        allRows.show();
     }
 }
 
@@ -707,7 +711,7 @@ function filterAuctionById() {
 // ## Start Main function
 fetchAuctions(0);
 
-// Only in DEV version
+// Only in DEV version (comment this line before minimize it)
 //console.log('Loaded not optimized file');
 
 // ## Subscribe to new blocks
