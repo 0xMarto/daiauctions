@@ -569,7 +569,7 @@ var showEvents = async function showEvents(someID) {
 
             // Avoid showing DEAL without a KICK
             if (!auctions[flapId]) {
-                return "continue";
+                continue;
             }
 
             values += "ID: <b>" + flapId + "</b> | ";
