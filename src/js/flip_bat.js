@@ -1050,8 +1050,8 @@ var showEvents = async function showEvents(someID) {
     // Iterate over events
     for (let i = 0; i < events.length; i++) {
         let event = events[i];
-        var values = "";
-        var blockDate = void 0;
+        let values = "";
+        let blockDate = void 0;
         await web3.eth.getBlock(event.blockNumber).then(function (block) {
             if (block) {
                 let blockTime = block.timestamp;
@@ -1061,9 +1061,10 @@ var showEvents = async function showEvents(someID) {
                 values = new Date().toLocaleString() + " | ";
             }
         });
-        var eventType = "Unknown";
-        var flipId = 0; // Event types cases
+        let eventType = "Unknown";
+        let flipId = 0;
 
+        // Event types cases
         if (event.event === "Kick") {
             eventType = "KICK";
             flipId = parseInt(event.returnValues.id, 10);
@@ -1098,9 +1099,9 @@ var showEvents = async function showEvents(someID) {
             };
 
             if (osmPrice > 0) {
-                values += "Price: $" + auctions[flipId]["kickPrice"] + " | ";
+                values += "Maker OSM Price: $" + auctions[flipId]["kickPrice"] + " | ";
             } else {
-                values += "Price: $---,-- | ";
+                values += "Maker OSM Price: $---,-- | ";
             }
         } else if (event.raw.topics[0] === TEND) {
             eventType = "TEND";
@@ -1131,9 +1132,16 @@ var showEvents = async function showEvents(someID) {
             auctions[flipId]["paidPrice"] = (bid / lot).toFixed(4);
 
             if (osmPrice > 0) {
+                // Calculate diff percentage
+                let diff = ((auctions[flipId]["paidPrice"] / auctions[flipId]["bidPrice"]) - 1) * 100;
+                if (diff > 0) {
+                    values += "+" + diff.toFixed(1) + " % | ";
+                } else {
+                    values += "" + diff.toFixed(1) + " % | ";
+                }
                 values += "Price: $" + auctions[flipId]["bidPrice"] + " | ";
             } else {
-                values += "Price: $---,-- | ";
+                values += "--,-- % | Price: $---,-- | ";
             }
         } else if (event.raw.topics[0] === DENT) {
             eventType = "DENT";
@@ -1164,9 +1172,16 @@ var showEvents = async function showEvents(someID) {
             auctions[flipId]["paidPrice"] = (bid / lot).toFixed(4);
 
             if (osmPrice > 0) {
+                // Calculate diff percentage
+                let diff = ((auctions[flipId]["paidPrice"] / auctions[flipId]["bidPrice"]) - 1) * 100;
+                if (diff > 0) {
+                    values += "+" + diff.toFixed(2) + " % | ";
+                } else {
+                    values += "" + diff.toFixed(2) + " % | ";
+                }
                 values += "Price: $" + auctions[flipId]["bidPrice"] + " | ";
             } else {
-                values += "Price: $---,-- | ";
+                values += "--,-- % | Price: $---,-- | ";
             }
         } else if (event.raw.topics[0] === DEAL) {
             eventType = "DEAL";
@@ -1188,14 +1203,14 @@ var showEvents = async function showEvents(someID) {
 
             if (!osmPrice) {
                 values += "Paid Rate: $" + auctions[flipId]["paidPrice"] + " dai/bat (+-.--%) | ";
-                values += "Price: $---,-- | ";
+                values += "--,-- % | Price: $---,-- | ";
             } else {
                 values += "Paid Rate: $" + auctions[flipId]["paidPrice"] + " dai/bat ";
                 let diff = ((auctions[flipId]["paidPrice"] / auctions[flipId]["dealPrice"]) - 1) * 100;
                 if (diff > 0) {
-                    values += "(+" + diff.toFixed(2) + "%) | ";
+                    values += "(+" + diff.toFixed(2) + "%) ~ <b>Lost</b> | ";
                 } else {
-                    values += "(" + diff.toFixed(2) + "%) | ";
+                    values += "(" + diff.toFixed(2) + "%) ~ <b>Won!</b> | ";
                 }
                 values += "Price: $" + auctions[flipId]["dealPrice"] + " | ";
             }
@@ -1220,8 +1235,8 @@ var showEvents = async function showEvents(someID) {
         });
 
         // Get old page and Render new line in app
-        var oldPage = document.getElementById("app").innerHTML;
-        var newLine = "";
+        let oldPage = document.getElementById("app").innerHTML;
+        let newLine = "";
         if (someID === 0 || someID === flipId) {
             newLine = "<div class=\"row flip-" + flipId + " " + eventType.toLowerCase() + "\">" +
                 eventType + " >> " + values + "</div>";
@@ -1242,7 +1257,7 @@ var showEvents = async function showEvents(someID) {
 var lastBlockfetch = 0;
 var fetchAuctions = async function fetchAuctions(someID) {
     lastBlockfetch = await web3.eth.getBlockNumber();
-    var fromBlock = lastBlockfetch - 18095; // 18095 -> 3.14 days blocks count
+    let fromBlock = lastBlockfetch - 18095; // 18095 -> 3.14 days blocks count
     await getFlipEvents(fromBlock);
     await showEvents(someID);
 };
@@ -1250,7 +1265,7 @@ var fetchAuctions = async function fetchAuctions(someID) {
 // New block event handler
 async function newBlock(error, result) {
     if (result) {
-        var newBlockNumber = result.number;
+        let newBlockNumber = result.number;
         if (!eventsLoaded) return;
 
         // Clear events and fetch new ones
@@ -1264,47 +1279,47 @@ async function newBlock(error, result) {
 
 // Utility/helpers functions
 function showFilter() {
-    var filterPanel = document.getElementById("filter-panel");
+    let filterPanel = document.getElementById("filter-panel");
 
     if (filterPanel) {
         filterPanel.style.display = "block";
-        var searchTag = document.getElementById("search");
+        let searchTag = document.getElementById("search");
         searchTag.style.display = "inline";
-        var noResultsTag = document.getElementById("no-results");
+        let noResultsTag = document.getElementById("no-results");
         noResultsTag.style.display = "none";
         showLastUpdate();
     }
 }
 
 function showLastUpdate() {
-    var lastUpdateTag = document.getElementById("last-update");
-    var now = new Date().toLocaleString();
+    let lastUpdateTag = document.getElementById("last-update");
+    let now = new Date().toLocaleString();
     lastUpdateTag.innerHTML = `- Updated to: ${now}`;
 }
 
 function hideFilterSearch() {
-    var filterPanelSearch = document.getElementById("search");
+    let filterPanelSearch = document.getElementById("search");
     if (filterPanelSearch) {
         filterPanelSearch.style.display = "none";
     }
 }
 
 function showEmptyMessage() {
-    var filterPanel = document.getElementById("filter-panel");
+    let filterPanel = document.getElementById("filter-panel");
 
     if (filterPanel) {
         filterPanel.style.display = "block";
-        var searchTag = document.getElementById("search");
+        let searchTag = document.getElementById("search");
         searchTag.style.display = "none";
-        var noResultsTag = document.getElementById("no-results");
+        let noResultsTag = document.getElementById("no-results");
         noResultsTag.style.display = "inline";
         showLastUpdate();
     }
 }
 
 function filterAuctionById() {
-    var flipId = $("#fliter-id").val();
-    var allRows = $(".row");
+    let flipId = $("#fliter-id").val();
+    let allRows = $(".row");
     allRows.hide();
     if (flipId) {
         $(".flip-" + flipId).show()

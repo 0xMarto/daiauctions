@@ -526,9 +526,9 @@ var showEvents = async function showEvents(someID) {
             };
 
             if (medianizerPrice > 0) {
-                values += "Price: $" + auctions[flapId]["kickPrice"] + " | ";
+                values += "Maker MED Price: $" + auctions[flapId]["kickPrice"] + " | ";
             } else {
-                values += "Price: $---,-- | ";
+                values += "Maker MED Price: $---,-- | ";
             }
         } else if (event.raw.topics[0] === TEND) {
             eventType = "TEND";
@@ -559,9 +559,16 @@ var showEvents = async function showEvents(someID) {
             auctions[flapId]["paidPrice"] = (lot / bid).toFixed(2);
 
             if (medianizerPrice > 0) {
+                // Calculate diff percentage
+                let diff = ((auctions[flapId]["paidPrice"] / auctions[flapId]["bidPrice"]) - 1) * 100;
+                if (diff > 0) {
+                    values += "+" + diff.toFixed(2) + " % | ";
+                } else {
+                    values += "" + diff.toFixed(2) + " % | ";
+                }
                 values += "Price: $" + auctions[flapId]["bidPrice"] + " | ";
             } else {
-                values += "Price: $---,-- | ";
+                values += "--,-- % | Price: $---,-- | ";
             }
         } else if (event.raw.topics[0] === DEAL) {
             eventType = "DEAL";
@@ -583,14 +590,14 @@ var showEvents = async function showEvents(someID) {
 
             if (!medianizerPrice) {
                 values += "Took Rate: $" + auctions[flapId]["paidPrice"] + " dai/mkr (+-.--%) | ";
-                values += "Price: $---,-- | ";
+                values += "--,-- % | Price: $---,-- | ";
             } else {
                 values += "Took Rate: $" + auctions[flapId]["paidPrice"] + " dai/mkr ";
                 let diff = ((auctions[flapId]["paidPrice"] / auctions[flapId]["dealPrice"]) - 1) * 100;
                 if (diff > 0) {
-                    values += "(+" + diff.toFixed(2) + "%) | ";
+                    values += "(+" + diff.toFixed(2) + "%) ~ <b style='margin:11px;'>Won!</b> | ";
                 } else {
-                    values += "(" + diff.toFixed(2) + "%) | ";
+                    values += "(" + diff.toFixed(2) + "%) ~ <b style='margin:11px;'>Lost</b> | ";
                 }
                 values += "Price: $" + auctions[flapId]["dealPrice"] + " | ";
             }
@@ -644,7 +651,7 @@ var fetchAuctions = async function fetchAuctions(someID) {
 // New block event handler
 async function newBlock(error, result) {
     if (result) {
-        var newBlockNumber = result.number;
+        let newBlockNumber = result.number;
         if (!eventsLoaded) return;
 
         // Clear events and fetch new ones
@@ -658,50 +665,50 @@ async function newBlock(error, result) {
 
 // Utility/helpers functions
 function showFilter() {
-    var filterPanel = document.getElementById("filter-panel");
+    let filterPanel = document.getElementById("filter-panel");
 
     if (filterPanel) {
         filterPanel.style.display = "block";
-        var searchTag = document.getElementById("search");
+        let searchTag = document.getElementById("search");
         searchTag.style.display = "inline";
-        var noResultsTag = document.getElementById("no-results");
+        let noResultsTag = document.getElementById("no-results");
         noResultsTag.style.display = "none";
         showLastUpdate();
     }
 }
 
 function showLastUpdate() {
-    var lastUpdateTag = document.getElementById("last-update");
-    var now = new Date().toLocaleString();
+    let lastUpdateTag = document.getElementById("last-update");
+    let now = new Date().toLocaleString();
     lastUpdateTag.innerHTML = `- Updated to: ${now}`;
 }
 
 function hideFilterSearch() {
-    var filterPanelSearch = document.getElementById("search");
+    let filterPanelSearch = document.getElementById("search");
     if (filterPanelSearch) {
         filterPanelSearch.style.display = "none";
     }
 }
 
 function showEmptyMessage() {
-    var filterPanel = document.getElementById("filter-panel");
+    let filterPanel = document.getElementById("filter-panel");
 
     if (filterPanel) {
         filterPanel.style.display = "block";
-        var searchTag = document.getElementById("search");
+        let searchTag = document.getElementById("search");
         searchTag.style.display = "none";
-        var noResultsTag = document.getElementById("no-results");
+        let noResultsTag = document.getElementById("no-results");
         noResultsTag.style.display = "inline";
         showLastUpdate();
     }
 }
 
 function filterAuctionById() {
-    var flipId = $("#fliter-id").val();
-    var allRows = $(".row");
+    let flapId = $("#fliter-id").val();
+    let allRows = $(".row");
     allRows.hide();
-    if (flipId) {
-        $(".flip-" + flipId).show()
+    if (flapId) {
+        $(".flip-" + flapId).show()
     } else {
         allRows.show();
     }
