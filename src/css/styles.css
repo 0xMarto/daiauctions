@@ -1,5 +1,5 @@
 body {
-    min-width: 1080px;
+    min-width: 1279px;
 }
 
 h1 img {
@@ -18,8 +18,21 @@ h1 {
     font-weight: bold;
 }
 
-#app, #info {
+#globals, #app, #info {
     font-family: monospace;
+}
+
+#globals .box {
+    margin: 10px 5px 15px;
+    padding: 15px;
+    background-color: #cac9c83d;
+    width: 120px;
+    text-align: center;
+    display: inline-block;
+}
+
+#globals .box b {
+    font-size: 18px;
 }
 
 #info p {
@@ -62,6 +75,12 @@ h1 {
     background-color: #fcd375;
     margin-top: 20px;
     border-top: 2px black solid;
+}
+
+.row.file {
+    border: 2px dashed black;
+    margin: 20px 5px;
+    background-color: #dedede;
 }
 
 .made-by {

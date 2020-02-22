@@ -455,6 +455,7 @@ var getMedianizerPrice = function getOsmPrice(blockNumber) {
 var TEND = "0x4b43ed1200000000000000000000000000000000000000000000000000000000";
 var DEAL = "0xc959c42b00000000000000000000000000000000000000000000000000000000";
 var TICK = "0xfc7b6aee00000000000000000000000000000000000000000000000000000000";
+var FILE = "0x29ae811400000000000000000000000000000000000000000000000000000000";
 
 // Variable to summarize by ID all auctions currently registered
 var auctions = {};
@@ -606,6 +607,26 @@ var showEvents = async function showEvents(someID) {
             flapId = parseInt(event.raw.topics[2], 16);
             values += "ID: <b>" + flapId + "</b> | ";
             values += "Time extended! | ";
+        } else if (event.raw.topics[0] === FILE) {
+            eventType = "FILE";
+            const BEG = "0x6265670000000000000000000000000000000000000000000000000000000000";
+            const TAU = "0x7461750000000000000000000000000000000000000000000000000000000000";
+            const TTL = "0x74746c0000000000000000000000000000000000000000000000000000000000";
+
+            if (event.raw.topics[2] === BEG) {
+                values += "WHAT: <b> BEG </b> (minimum bid increase) | ";
+            } else if (event.raw.topics[0] === TAU) {
+                values += "WHAT: <b> TAU </b> (maximum auction duration) | ";
+            } else if (event.raw.topics[0] === TTL) {
+                values += "WHAT: <b> TTL </b> (bid lifetime / max bid duration) | ";
+            } else {
+                values += "WHAT: <b>UKNOWN</b> | ";
+            }
+
+            let file_to = parseInt(event.raw.topics[3]) / 10 ** 18;
+            file_to = (file_to - 1) * 100;
+            values += "VALUE: <b>" + file_to.toFixed(2) + " %</b> | ";
+            values += "New Flapper Update! | ";
         } else {
             console.log("Uknown event");
             console.log(event);
@@ -617,7 +638,9 @@ var showEvents = async function showEvents(someID) {
             let txHref = `https://etherscan.io/tx/${event.transactionHash}`;
             let txLink = `<a target="_blank" href="${txHref}">Tx:..${event.transactionHash.slice(-3)} Info</a>`;
             values += `from: ${from} | ${txLink} >>`;
-            auctions[flapId]["guy"] = from;
+            if(auctions[flapId]) {
+                auctions[flapId]["guy"] = from;
+            }
         });
 
         // Get old page and Render new line in app

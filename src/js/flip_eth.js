@@ -1231,7 +1231,9 @@ var showEvents = async function showEvents(someID) {
             let txHref = `https://etherscan.io/tx/${event.transactionHash}`;
             let txLink = `<a target="_blank" href="${txHref}">Tx:..${event.transactionHash.slice(-3)} Info</a>`;
             values += `from: ${from} | ${txLink} >>`;
-            auctions[flipId]["guy"] = from;
+            if (auctions[flipId]) {
+                auctions[flipId]["guy"] = from;
+            }
         });
 
         // Get old page and Render new line in app
