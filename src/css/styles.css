@@ -26,13 +26,13 @@ h1 {
     margin: 10px 5px 15px;
     padding: 15px;
     background-color: #cac9c83d;
-    width: 120px;
+    min-width: 100px;
     text-align: center;
     display: inline-block;
 }
 
 #globals .box b {
-    font-size: 18px;
+    font-size: 20px;
 }
 
 #info p {
