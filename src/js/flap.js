@@ -660,7 +660,7 @@ var getFlipEvents = function getFlipEvents(fromBlockNumber) {
 
 // Get the price in the given block number and populate last price global variable
 var medianizerPrice = 0;
-var getMedianizerPrice = function getOsmPrice(blockNumber) {
+var updateMedianizerPrice = function getOsmPrice(blockNumber) {
     return osmContract.getPastEvents("LogValue", {
             fromBlock: blockNumber - 2000,
             toBlock: blockNumber
@@ -674,10 +674,10 @@ var getMedianizerPrice = function getOsmPrice(blockNumber) {
                 var priceInWei = web3.utils.toBN(logEvent.returnValues[0]);
                 var price = web3.utils.fromWei(priceInWei);
                 medianizerPrice = parseFloat(price).toFixed(2);
-                return price;
             } else {
                 console.log(err);
             }
+            return medianizerPrice;
         });
 };
 
@@ -734,7 +734,7 @@ var showEvents = async function showEvents(someID) {
 
             // Clear and Get current price value
             medianizerPrice = 0;
-            await getMedianizerPrice(event.blockNumber);
+            await updateMedianizerPrice(event.blockNumber);
 
             // Register KICK over Auction dictionary
             auctions[flapId] = {
@@ -780,7 +780,7 @@ var showEvents = async function showEvents(someID) {
             values += "bid: " + bid.toFixed(3) + " mkr | ";
 
             medianizerPrice = 0;
-            await getMedianizerPrice(event.blockNumber);
+            await updateMedianizerPrice(event.blockNumber);
 
             // Register TEND over Auction dictionary
             auctions[flapId]["tends"] += 1;
@@ -813,7 +813,7 @@ var showEvents = async function showEvents(someID) {
             values += "ID: <b>" + flapId + "</b> | ";
 
             medianizerPrice = 0;
-            await getMedianizerPrice(event.blockNumber);
+            await updateMedianizerPrice(event.blockNumber);
 
             // Register DEAL over Auction dictionary
             auctions[flapId]["dealPrice"] = medianizerPrice.toString();
@@ -1004,6 +1004,10 @@ async function updateGlobals() {
         let tau = value / 60 / 60;
         globalsPanel.find('#tau').text(tau.toFixed(1));
     });
+
+    let lastBlock = await web3.eth.getBlockNumber();
+    await updateMedianizerPrice(lastBlock);
+    globalsPanel.find('#mkr').text("$" + medianizerPrice);
 }
 
 
