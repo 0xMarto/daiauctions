@@ -686,6 +686,8 @@ var TEND = "0x4b43ed1200000000000000000000000000000000000000000000000000000000";
 var DEAL = "0xc959c42b00000000000000000000000000000000000000000000000000000000";
 var TICK = "0xfc7b6aee00000000000000000000000000000000000000000000000000000000";
 var FILE = "0x29ae811400000000000000000000000000000000000000000000000000000000";
+var DENY = "0x9c52a7f100000000000000000000000000000000000000000000000000000000";
+var RELY = "0x65fae35e00000000000000000000000000000000000000000000000000000000";
 
 // Variable to summarize by ID all auctions currently registered
 var auctions = {};
@@ -717,7 +719,7 @@ var showEvents = async function showEvents(someID) {
                 values = new Date().toLocaleString() + " | ";
             }
         });
-        let eventType = "Unknown";
+        let eventType = "UNKNOWN";
         let flapId = 0;
 
         // Event types cases
@@ -842,21 +844,36 @@ var showEvents = async function showEvents(someID) {
             const BEG = "0x6265670000000000000000000000000000000000000000000000000000000000";
             const TAU = "0x7461750000000000000000000000000000000000000000000000000000000000";
             const TTL = "0x74746c0000000000000000000000000000000000000000000000000000000000";
-
             if (event.raw.topics[2] === BEG) {
                 values += "WHAT: <b> BEG </b> (minimum bid increase) | ";
-            } else if (event.raw.topics[0] === TAU) {
+                let file_value = parseInt(event.raw.topics[3]) / 10 ** 18;
+                file_value = (file_value - 1) * 100;
+                values += "VALUE: <b>" + file_value.toFixed(2) + " %</b> | ";
+            } else if (event.raw.topics[2] === TAU) {
                 values += "WHAT: <b> TAU </b> (maximum auction duration) | ";
-            } else if (event.raw.topics[0] === TTL) {
+                let file_value = parseInt(event.raw.topics[3]);
+                file_value = file_value / 60 / 60;
+                values += "VALUE: <b>" + file_value.toFixed(1) + " hours</b> | ";
+            } else if (event.raw.topics[2] === TTL) {
                 values += "WHAT: <b> TTL </b> (bid lifetime / max bid duration) | ";
+                let file_value = parseInt(event.raw.topics[3]);
+                file_value = file_value / 60;
+                values += "VALUE: <b>" + file_value.toFixed(1) + " minutes</b> | ";
             } else {
                 values += "WHAT: <b>UKNOWN</b> | ";
+                console.log(event.raw.topics);
             }
-
-            let file_to = parseInt(event.raw.topics[3]) / 10 ** 18;
-            file_to = (file_to - 1) * 100;
-            values += "VALUE: <b>" + file_to.toFixed(2) + " %</b> | ";
             values += "New Flapper Update! | ";
+        } else if (event.raw.topics[0] === RELY) {
+            eventType = "RELY";
+            values += "WHAT: <b>Allow to call auth'ed methods --</b> | ";
+            let usr = event.raw.topics[2];
+            values += "TO: <b>0x" + usr.slice(-40) + "</b> | ";
+        } else if (event.raw.topics[0] === DENY) {
+            eventType = "DENY";
+            values += "WHAT: <b>Disallow to call auth'ed methods</b> | ";
+            let usr = event.raw.topics[2];
+            values += "TO: <b>0x" + usr.slice(-40) + "</b> | ";
         } else {
             console.log("Uknown event");
             console.log(event);
@@ -894,9 +911,10 @@ var showEvents = async function showEvents(someID) {
 
 // Fetch old events to populate list at initial load
 var lastBlockfetch = 0;
+var blocksBack = 18095; // 18095 -> 3.14 days blocks count
 var fetchAuctions = async function fetchAuctions(someID) {
     lastBlockfetch = await web3.eth.getBlockNumber();
-    let fromBlock = lastBlockfetch - 18095; // 18095 -> 3.14 days blocks count
+    let fromBlock = lastBlockfetch - blocksBack;
     await getFlipEvents(fromBlock);
     await showEvents(someID);
 };
@@ -904,14 +922,15 @@ var fetchAuctions = async function fetchAuctions(someID) {
 // New block event handler
 async function newBlock(error, result) {
     if (result) {
+        // Avoid running the some events are currently being processed
+        if (!eventsLoaded) return;
+
         // Update async globals
         updateGlobals();
 
-        let newBlockNumber = result.number;
-        if (!eventsLoaded) return;
-
         // Clear events and fetch new ones
         eventsLoaded = false;
+        let newBlockNumber = result.number;
         await getFlipEvents(newBlockNumber);
         await showEvents(0);
     } else {
@@ -1008,6 +1027,15 @@ async function updateGlobals() {
     let lastBlock = await web3.eth.getBlockNumber();
     await updateMedianizerPrice(lastBlock);
     globalsPanel.find('#mkr').text("$" + medianizerPrice);
+}
+
+async function loadAllHistory() {
+    hideFilterSearch();
+    events = [];
+    auctions = {};
+    eventsLoaded = false;
+    blocksBack = await web3.eth.getBlockNumber();
+    fetchAuctions(0);
 }
 
 

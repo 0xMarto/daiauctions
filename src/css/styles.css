@@ -89,6 +89,12 @@ h1 {
     background-color: #dedede;
 }
 
+.row.deny, .row.rely {
+    border: 2px dashed black;
+    margin: 10px 5px;
+    background-color: #bae0dc;
+}
+
 .made-by {
     font-family: monospace;
     display: block;
