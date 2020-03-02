@@ -1099,9 +1099,9 @@ var showEvents = async function showEvents(someID) {
             };
 
             if (osmPrice > 0) {
-                values += "Maker喂价: $" + auctions[flipId]["kickPrice"] + " | ";
+                values += "Maker OSM喂价: $" + auctions[flipId]["kickPrice"] + " | ";
             } else {
-                values += "Maker喂价: $---,-- | ";
+                values += "Maker OSM喂价: $---,-- | ";
             }
         } else if (event.raw.topics[0] === TEND) {
             eventType = "TEND";
@@ -1202,10 +1202,10 @@ var showEvents = async function showEvents(someID) {
             auctions[flipId]["state"] = "CLOSE";
 
             if (!osmPrice) {
-                values += "支付比率: $" + auctions[flipId]["paidPrice"] + " dai/eth (+-.--%) | ";
+                values += "最终支付: $" + auctions[flipId]["paidPrice"] + " dai/eth (+-.--%) | ";
                 values += "--,-- % | Price: $---,-- | ";
             } else {
-                values += "支付比率: $" + auctions[flipId]["paidPrice"] + " dai/eth ";
+                values += "最终支付: $" + auctions[flipId]["paidPrice"] + " dai/eth ";
                 let diff = ((auctions[flipId]["paidPrice"] / auctions[flipId]["dealPrice"]) - 1) * 100;
                 if (diff > 0) {
                     values += "(+" + diff.toFixed(2) + "%) ~ <b>失败</b> | ";

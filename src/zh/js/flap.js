@@ -643,14 +643,14 @@ const vatContract = new web3.eth.Contract(VAT_ABI, VAT_ADDRESS);
 // Get new events and populate last events global variable
 var events = [];
 var getFlipEvents = function getFlipEvents(fromBlockNumber) {
-    console.log(`Get auction events from block: ${fromBlockNumber}`);
+    console.log(`获取拍卖事件的区块: ${fromBlockNumber}`);
     return flapContract.getPastEvents("allEvents", {
             fromBlock: fromBlockNumber,
             toBlock: "latest"
         },
         function (err, result) {
             if (!err) {
-                console.log("Received Events:", result.length);
+                console.log("已接收到的事件:", result.length);
                 events = result;
             } else {
                 console.log(err);
@@ -724,13 +724,13 @@ var showEvents = async function showEvents(someID) {
         if (event.event === "Kick") {
             eventType = "KICK";
             flapId = parseInt(event.returnValues.id, 10);
-            values += "ID: <b>" + flapId + "</b> | ";
+            values += "序号: <b>" + flapId + "</b> | ";
 
             let lot = event.returnValues.lot / 10 ** 27 / 10 ** 18;
-            values += "lot: " + lot.toFixed(2) + " dai | ";
+            values += "数量: " + lot.toFixed(2) + " dai | ";
 
             let tab = event.returnValues.bid / 10 ** 18;
-            values += "bid: " + tab.toFixed(4) + " mkr | ";
+            values += "初始竞价: " + tab.toFixed(4) + " mkr | ";
 
             // Clear and Get current price value
             medianizerPrice = 0;
@@ -757,9 +757,9 @@ var showEvents = async function showEvents(someID) {
             };
 
             if (medianizerPrice > 0) {
-                values += "Maker MED Price: $" + auctions[flapId]["kickPrice"] + " | ";
+                values += "Maker MED喂价: $" + auctions[flapId]["kickPrice"] + " | ";
             } else {
-                values += "Maker MED Price: $---,-- | ";
+                values += "Maker MED喂价: $---,-- | ";
             }
         } else if (event.raw.topics[0] === TEND) {
             eventType = "TEND";
@@ -770,14 +770,14 @@ var showEvents = async function showEvents(someID) {
                 continue;
             }
 
-            values += "ID: <b>" + flapId + "</b> | ";
+            values += "序号: <b>" + flapId + "</b> | ";
 
             let lot = parseInt(event.raw.topics[3], 16) / 10 ** 27 / 10 ** 18;
-            values += "lot: " + lot.toFixed(2) + " dai | ";
+            values += "数量: " + lot.toFixed(2) + " dai | ";
 
             let raw = event.raw.data.slice(289, -248);
             let bid = parseInt(raw, 16) / 10 ** 18;
-            values += "bid: " + bid.toFixed(3) + " mkr | ";
+            values += "竞标价: " + bid.toFixed(3) + " mkr | ";
 
             medianizerPrice = 0;
             await getMedianizerPrice(event.blockNumber);
@@ -797,9 +797,9 @@ var showEvents = async function showEvents(someID) {
                 } else {
                     values += "" + diff.toFixed(2) + " % | ";
                 }
-                values += "Price: $" + auctions[flapId]["bidPrice"] + " | ";
+                values += "价格: $" + auctions[flapId]["bidPrice"] + " | ";
             } else {
-                values += "--,-- % | Price: $---,-- | ";
+                values += "--,-- % | 价格: $---,-- | ";
             }
         } else if (event.raw.topics[0] === DEAL) {
             eventType = "DEAL";
@@ -810,7 +810,7 @@ var showEvents = async function showEvents(someID) {
                 continue;
             }
 
-            values += "ID: <b>" + flapId + "</b> | ";
+            values += "序号: <b>" + flapId + "</b> | ";
 
             medianizerPrice = 0;
             await getMedianizerPrice(event.blockNumber);
@@ -820,23 +820,23 @@ var showEvents = async function showEvents(someID) {
             auctions[flapId]["state"] = "CLOSE";
 
             if (!medianizerPrice) {
-                values += "Took Rate: $" + auctions[flapId]["paidPrice"] + " dai/mkr (+-.--%) | ";
-                values += "--,-- % | Price: $---,-- | ";
+                values += "最终支付: $" + auctions[flapId]["paidPrice"] + " dai/mkr (+-.--%) | ";
+                values += "--,-- % | 价格: $---,-- | ";
             } else {
-                values += "Took Rate: $" + auctions[flapId]["paidPrice"] + " dai/mkr ";
+                values += "最终支付: $" + auctions[flapId]["paidPrice"] + " dai/mkr ";
                 let diff = ((auctions[flapId]["paidPrice"] / auctions[flapId]["dealPrice"]) - 1) * 100;
                 if (diff > 0) {
-                    values += "(+" + diff.toFixed(2) + "%) ~ <b style='margin:11px;'>Won!</b> | ";
+                    values += "(+" + diff.toFixed(2) + "%) ~ <b style='margin:11px;'>胜利!</b> | ";
                 } else {
-                    values += "(" + diff.toFixed(2) + "%) ~ <b style='margin:11px;'>Lost</b> | ";
+                    values += "(" + diff.toFixed(2) + "%) ~ <b style='margin:11px;'>失败</b> | ";
                 }
-                values += "Price: $" + auctions[flapId]["dealPrice"] + " | ";
+                values += "价格: $" + auctions[flapId]["dealPrice"] + " | ";
             }
         } else if (event.raw.topics[0] === TICK) {
             eventType = "TICK";
             flapId = parseInt(event.raw.topics[2], 16);
             values += "ID: <b>" + flapId + "</b> | ";
-            values += "Time extended! | ";
+            values += "时间已延长! | ";
         } else if (event.raw.topics[0] === FILE) {
             eventType = "FILE";
             const BEG = "0x6265670000000000000000000000000000000000000000000000000000000000";
@@ -844,30 +844,30 @@ var showEvents = async function showEvents(someID) {
             const TTL = "0x74746c0000000000000000000000000000000000000000000000000000000000";
 
             if (event.raw.topics[2] === BEG) {
-                values += "WHAT: <b> BEG </b> (minimum bid increase) | ";
+                values += "说明: <b> BEG </b> (最小竞价增加率) | ";
             } else if (event.raw.topics[0] === TAU) {
-                values += "WHAT: <b> TAU </b> (maximum auction duration) | ";
+                values += "说明: <b> TAU </b> (最大拍卖时间) | ";
             } else if (event.raw.topics[0] === TTL) {
-                values += "WHAT: <b> TTL </b> (bid lifetime / max bid duration) | ";
+                values += "说明: <b> TTL </b> (竞拍生命周期/ 最大竞拍时间) | ";
             } else {
-                values += "WHAT: <b>UKNOWN</b> | ";
+                values += "说明: <b>位置</b> | ";
             }
 
             let file_to = parseInt(event.raw.topics[3]) / 10 ** 18;
             file_to = (file_to - 1) * 100;
-            values += "VALUE: <b>" + file_to.toFixed(2) + " %</b> | ";
-            values += "New Flapper Update! | ";
+            values += "值: <b>" + file_to.toFixed(2) + " %</b> | ";
+            values += "新的Flapper更新! | ";
         } else {
-            console.log("Uknown event");
+            console.log("未知事件");
             console.log(event);
         }
 
         // Get event tx info
         await web3.eth.getTransaction(event.transactionHash).then(function (tx) {
             let from = tx.from.slice(0, 6) + "..." + tx.from.slice(-4);
-            let txHref = `https://etherscan.io/tx/${event.transactionHash}`;
-            let txLink = `<a target="_blank" href="${txHref}">Tx:..${event.transactionHash.slice(-3)} Info</a>`;
-            values += `from: ${from} | ${txLink} >>`;
+            let txHref = `https://cn.etherscan.com/tx/${event.transactionHash}`;
+            let txLink = `<a target="_blank" href="${txHref}">交易号信息:..${event.transactionHash.slice(-3)}</a>`;
+            values += `地址: ${from} | ${txLink} >>`;
             if (auctions[flapId]) {
                 auctions[flapId]["guy"] = from;
             }
@@ -936,7 +936,7 @@ function showFilter() {
 function showLastUpdate() {
     let lastUpdateTag = document.getElementById("last-update");
     let now = new Date().toLocaleString();
-    lastUpdateTag.innerHTML = `- Updated to: ${now}`;
+    lastUpdateTag.innerHTML = `- 更新时间: ${now}`;
 }
 
 function hideFilterSearch() {

@@ -32,7 +32,7 @@
 <body>
 <h1>
     <a href="/"><img alt="dai logo" width="50" src="/img/dai-logo.png"/></a>
-    MCD盈余拍卖
+    MCD盈余拍卖<a href="/flap.html"><small>English</small></a>
 </h1>
 <div id="globals">
     <div class="box" title="Surplus Available to start flap auction">
@@ -41,19 +41,19 @@
     </div>
     <div class="box" title="Fixed LOT size">
         <b id="bump">--,---</b><br/>
-        <span>BUMP [dai]</span>
+        <span>BUMP(最小竞拍数量) [dai]</span>
     </div>
     <div class="box" title="Minimum bid increase">
         <b id="beg">-.--</b><br/>
-        <span>BEG [%]</span>
+        <span>BEG(最小竞价增加率) [%]</span>
     </div>
     <div class="box" title="Maximum bid duration">
         <b id="ttl">--</b><br/>
-        <span>TTL [min]</span>
+        <span>TTL(竞拍生命周期/ 最大竞拍时间) [min]</span>
     </div>
     <div class="box" title="Maximum auction duration">
         <b id="tau">--</b><br/>
-        <span>TAU [hour]</span>
+        <span>TAU(最大拍卖时间) [hour]</span>
     </div>
 </div>
 <div id="filter-panel">
@@ -65,9 +65,9 @@
     <span id="no-results">在近几天内未找到拍卖</span>
     <i id="last-update"></i>
     <div class="links-panel">
-        <a href="/" title="ETH Auctions with DAI">抵押品拍卖[ETH]</a> |
-        <a href="/flip/bat" title="BAT Auctions with DAI">抵押品拍卖[BAT]</a> |
-        <a href="/flap" class="active" title="DAI Auctions with MKR">盈余拍卖[DAI]</a>
+        <a href="flip_eth.html" title="ETH Auctions with DAI">抵押品拍卖[ETH]</a> |
+        <a href="flip_bat.html" title="BAT Auctions with DAI">抵押品拍卖[BAT]</a> |
+        <a href="#" class="active" title="DAI Auctions with MKR">盈余拍卖[DAI]</a>
     </div>
 </div>
 <div id="app">
@@ -101,8 +101,8 @@
         <a target="_blank" href="https://twitter.com/nanexcool">@nanexcool</a>
     </i>
 </p>
-<script src="/js/web3.min.js"></script>
-<script src="/js/jquery.min.js"></script>
-<script src="/js/flap.js"></script>
+<script src="js/web3.min.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/flap.js"></script>
 </body>
 </html>
