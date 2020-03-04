@@ -1,0 +1,147 @@
+body {
+    min-width: 1279px;
+}
+
+h1 img {
+    width: 50px;
+    float: left;
+    margin-top: -8px;
+    margin-left: 8px;
+    margin-right: 10px;
+}
+
+h1 {
+    display: block;
+    font-size: 30px;
+    margin-top: 18px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+#globals, #app, #info {
+    font-family: monospace;
+}
+
+#globals .box {
+    margin: 10px 5px 15px;
+    padding: 15px;
+    background-color: #cac9c83d;
+    min-width: 90px;
+    text-align: center;
+    display: inline-block;
+}
+
+#globals .box b {
+    font-size: 20px;
+}
+
+#globals .box b a {
+    text-decoration: none;
+    color: black;
+}
+
+#info p {
+    margin: 24px 0 15px 0;
+    font-size: 14px;
+    text-align: center;
+}
+
+#filter-panel #search {
+    display: none;
+}
+
+#filter-panel #search a {
+    text-decoration: none;
+    color: black;
+}
+
+#filter-panel #search a:hover {
+    color: white;
+}
+
+#filter-panel #no-results {
+    font-size: 16px;
+    display: none;
+}
+
+.row {
+    margin: 5px;
+    padding: 15px;
+    background-color: #cac9c83d;
+    border-left: 2px dashed black;
+    border-right: 2px dashed black;
+}
+
+.row.kick {
+    border-bottom: 2px solid black;
+	margin-bottom: 20px;
+}
+
+.row.deal {
+    background-color: #fcd375;
+    margin-top: 20px;
+    border-top: 2px black solid;
+}
+
+.row.file {
+    border: 2px dashed black;
+    margin: 20px 5px;
+    background-color: #dedede;
+}
+
+.row.deny, .row.rely {
+    border: 2px dashed black;
+    margin: 10px 5px;
+    background-color: #bae0dc;
+}
+
+.made-by {
+    font-family: monospace;
+    display: block;
+    align-content: center;
+    text-align: center;
+    margin-bottom: 60px;
+    font-size: 20px;
+}
+
+.made-by .author {
+    padding-right: 10px;
+}
+
+.made-by i {
+    font-size: 14px;
+}
+
+#filter-panel {
+    margin: 5px;
+    padding: 10px;
+    background-color: #fcd375;
+    font-family: monospace;
+    font-weight: bold;
+    height: 22px;
+}
+
+#filter-panel input {
+    width: 60px;
+}
+
+#filter-panel .links-panel {
+    float: right;
+    font-size: 17px;
+}
+
+#filter-panel .links-panel a {
+    text-decoration: none;
+    color: black;
+    font-weight: normal;
+}
+
+#filter-panel .links-panel a:hover {
+    color: white;
+}
+
+#filter-panel .links-panel a.active {
+    font-weight: bold;
+}
+
+
