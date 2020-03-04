@@ -660,7 +660,7 @@ var getFlipEvents = function getFlipEvents(fromBlockNumber) {
 
 // Get the price in the given block number and populate last price global variable
 var medianizerPrice = 0;
-var getMedianizerPrice = function getOsmPrice(blockNumber) {
+var updateMedianizerPrice = function getOsmPrice(blockNumber) {
     return osmContract.getPastEvents("LogValue", {
             fromBlock: blockNumber - 2000,
             toBlock: blockNumber
@@ -674,10 +674,10 @@ var getMedianizerPrice = function getOsmPrice(blockNumber) {
                 var priceInWei = web3.utils.toBN(logEvent.returnValues[0]);
                 var price = web3.utils.fromWei(priceInWei);
                 medianizerPrice = parseFloat(price).toFixed(2);
-                return price;
             } else {
                 console.log(err);
             }
+			return medianizerPrice;
         });
 };
 
@@ -686,6 +686,8 @@ var TEND = "0x4b43ed1200000000000000000000000000000000000000000000000000000000";
 var DEAL = "0xc959c42b00000000000000000000000000000000000000000000000000000000";
 var TICK = "0xfc7b6aee00000000000000000000000000000000000000000000000000000000";
 var FILE = "0x29ae811400000000000000000000000000000000000000000000000000000000";
+var DENY = "0x9c52a7f100000000000000000000000000000000000000000000000000000000";
+var RELY = "0x65fae35e00000000000000000000000000000000000000000000000000000000";
 
 // Variable to summarize by ID all auctions currently registered
 var auctions = {};
@@ -707,7 +709,7 @@ var showEvents = async function showEvents(someID) {
     for (let i = 0; i < events.length; i++) {
         let event = events[i];
         let values = "";
-        let blockDate = void 0;
+        let blockDate = new Date();
         await web3.eth.getBlock(event.blockNumber).then(function (block) {
             if (block) {
                 let blockTime = block.timestamp;
@@ -717,7 +719,7 @@ var showEvents = async function showEvents(someID) {
                 values = new Date().toLocaleString() + " | ";
             }
         });
-        let eventType = "Unknown";
+        let eventType = "UNKNOWN";
         let flapId = 0;
 
         // Event types cases
@@ -734,7 +736,7 @@ var showEvents = async function showEvents(someID) {
 
             // Clear and Get current price value
             medianizerPrice = 0;
-            await getMedianizerPrice(event.blockNumber);
+            await updateMedianizerPrice(event.blockNumber);
 
             // Register KICK over Auction dictionary
             auctions[flapId] = {
@@ -780,7 +782,7 @@ var showEvents = async function showEvents(someID) {
             values += "竞标价: " + bid.toFixed(3) + " mkr | ";
 
             medianizerPrice = 0;
-            await getMedianizerPrice(event.blockNumber);
+            await updateMedianizerPrice(event.blockNumber);
 
             // Register TEND over Auction dictionary
             auctions[flapId]["tends"] += 1;
@@ -813,7 +815,7 @@ var showEvents = async function showEvents(someID) {
             values += "序号: <b>" + flapId + "</b> | ";
 
             medianizerPrice = 0;
-            await getMedianizerPrice(event.blockNumber);
+            await updateMedianizerPrice(event.blockNumber);
 
             // Register DEAL over Auction dictionary
             auctions[flapId]["dealPrice"] = medianizerPrice.toString();
@@ -842,21 +844,36 @@ var showEvents = async function showEvents(someID) {
             const BEG = "0x6265670000000000000000000000000000000000000000000000000000000000";
             const TAU = "0x7461750000000000000000000000000000000000000000000000000000000000";
             const TTL = "0x74746c0000000000000000000000000000000000000000000000000000000000";
-
             if (event.raw.topics[2] === BEG) {
                 values += "说明: <b> BEG </b> (最小竞价增加率) | ";
-            } else if (event.raw.topics[0] === TAU) {
+                let file_value = parseInt(event.raw.topics[3]) / 10 ** 18;
+                file_value = (file_value - 1) * 100;
+                values += "值: <b>" + file_value.toFixed(2) + " %</b> | ";
+            } else if (event.raw.topics[2] === TAU) {
                 values += "说明: <b> TAU </b> (最大拍卖时间) | ";
-            } else if (event.raw.topics[0] === TTL) {
+                let file_value = parseInt(event.raw.topics[3]);
+                file_value = file_value / 60 / 60;
+                values += "值: <b>" + file_value.toFixed(1) + " 小时</b> | ";
+            } else if (event.raw.topics[2] === TTL) {
                 values += "说明: <b> TTL </b> (竞拍生命周期/ 最大竞拍时间) | ";
+                let file_value = parseInt(event.raw.topics[3]);
+                file_value = file_value / 60;
+                values += "值: <b>" + file_value.toFixed(1) + " 分钟</b> | ";
             } else {
-                values += "说明: <b>位置</b> | ";
+                values += "说明: <b>未知</b> | ";
+                console.log(event.raw.topics);
             }
-
-            let file_to = parseInt(event.raw.topics[3]) / 10 ** 18;
-            file_to = (file_to - 1) * 100;
-            values += "值: <b>" + file_to.toFixed(2) + " %</b> | ";
             values += "新的Flapper更新! | ";
+        } else if (event.raw.topics[0] === RELY) {
+            eventType = "RELY";
+            values += "说明: <b>允许调用已认证的方法 --</b> | ";
+            let usr = event.raw.topics[2];
+            values += "到: <b>0x" + usr.slice(-40) + "</b> | ";
+        } else if (event.raw.topics[0] === DENY) {
+            eventType = "DENY";
+            values += "说明: <b>不允许调用已认证的方法</b> | ";
+            let usr = event.raw.topics[2];
+            values += "到: <b>0x" + usr.slice(-40) + "</b> | ";
         } else {
             console.log("未知事件");
             console.log(event);
@@ -894,9 +911,10 @@ var showEvents = async function showEvents(someID) {
 
 // Fetch old events to populate list at initial load
 var lastBlockfetch = 0;
+var blocksBack = 18095; // 18095 -> 3.14 days blocks count
 var fetchAuctions = async function fetchAuctions(someID) {
     lastBlockfetch = await web3.eth.getBlockNumber();
-    let fromBlock = lastBlockfetch - 18095; // 18095 -> 3.14 days blocks count
+    let fromBlock = lastBlockfetch - blocksBack;
     await getFlipEvents(fromBlock);
     await showEvents(someID);
 };
@@ -904,14 +922,15 @@ var fetchAuctions = async function fetchAuctions(someID) {
 // New block event handler
 async function newBlock(error, result) {
     if (result) {
+        // Avoid running the some events are currently being processed
+        if (!eventsLoaded) return;
+
         // Update async globals
         updateGlobals();
 
-        let newBlockNumber = result.number;
-        if (!eventsLoaded) return;
-
         // Clear events and fetch new ones
         eventsLoaded = false;
+        let newBlockNumber = result.number;
         await getFlipEvents(newBlockNumber);
         await showEvents(0);
     } else {
@@ -1004,8 +1023,21 @@ async function updateGlobals() {
         let tau = value / 60 / 60;
         globalsPanel.find('#tau').text(tau.toFixed(1));
     });
+
+    let lastBlock = await web3.eth.getBlockNumber();
+    await updateMedianizerPrice(lastBlock);
+    globalsPanel.find('#mkr').text("$" + medianizerPrice);
+
 }
 
+async function loadAllHistory() {
+    hideFilterSearch();
+    events = [];
+    auctions = {};
+    eventsLoaded = false;
+    blocksBack = await web3.eth.getBlockNumber();
+    fetchAuctions(0);
+}
 
 // ## Start Main function
 updateGlobals();
@@ -1016,6 +1048,6 @@ fetchAuctions(0);
 
 // ## Subscribe to new blocks
 setTimeout(function () {
-    console.log('Getting new data from chain...');
+    console.log('正在从链上获取新数据...');
     web3.eth.subscribe('newBlockHeaders', newBlock);
 }, 5000);

@@ -1051,7 +1051,7 @@ var showEvents = async function showEvents(someID) {
     for (let i = 0; i < events.length; i++) {
         let event = events[i];
         let values = "";
-        let blockDate = void 0;
+        let blockDate = new Date();
         await web3.eth.getBlock(event.blockNumber).then(function (block) {
             if (block) {
                 let blockTime = block.timestamp;

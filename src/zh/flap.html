@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="author" content="Marto"/>
-    <meta name="version" content="1.2.17"/>
+    <meta name="version" content="1.3.3"/>
     <title>Dai拍卖 | Flap</title>
     <meta name="description" content="The place to see all MakerDao Auctions. Welcome to the open blockchains.">
     <meta name="keywords" content="makerdao dai eth bat auction flip flap">
@@ -35,7 +35,11 @@
     MCD盈余拍卖<a href="/flap.html"><small>English</small></a>
 </h1>
 <div id="globals">
-    <div class="box" title="Surplus Available to start flap auction">
+    <div class="box" title="Price of official Maker MKR feeds">
+        <b id="mkr">$---,--</b><br/>
+        <span>MKR价格 [dai]</span>
+    </div>
+    <div class="box" title="Surplus Available to start a flap auction">
         <b id="available">--,---.--</b><br/>
         <span>可用盈余[dai]</span>
     </div>
@@ -54,6 +58,12 @@
     <div class="box" title="Maximum auction duration">
         <b id="tau">--</b><br/>
         <span>TAU(最大拍卖时间) [hour]</span>
+    </div>
+    <div class="box" title="Detailed Flap auction glossary link">
+        <b id="glossary">
+            <a target="_blank" href="https://docs.makerdao.com/smart-contract-modules/system-stabilizer-module/flap-detailed-documentation#flapper-glossary">Flapper</a>
+        </b><br/>
+        <span>[词汇表]</span>
     </div>
 </div>
 <div id="filter-panel">
@@ -75,9 +85,11 @@
 </div>
 <div id="info">
     <p>
-        所有数据来源最近的3.14天内 -
-        更多精彩信息关于 <a target="_blank" href="https://makerdao.com">MakerDao</a>
-        拍卖请看
+        所有数据来源最近的3.14天内 |
+        如果你比较好奇可以尝试 <a href="#" onclick="loadAllHistory()">加载所有历史记录</a>
+    </p>
+    <p>
+        更多关于<a target="_blank" href="https://makerdao.com">MakerDao</a> 拍卖的精彩信息请查看
         <a href="https://docs.makerdao.com/smart-contract-modules/system-stabilizer-module/flap-detailed-documentation"
            target="_blank">Flapper文档</a>
     </p>
