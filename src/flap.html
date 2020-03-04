@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="author" content="Marto"/>
-    <meta name="version" content="1.2.17"/>
+    <meta name="version" content="1.3.3"/>
     <title>Dai Auctions | Flap</title>
     <meta name="description" content="The place to see all MakerDao Auctions. Welcome to the open blockchains.">
     <meta name="keywords" content="makerdao dai eth bat auction flip flap">
@@ -35,7 +35,11 @@
     MCD Surplus Auctions <a href="zh/flap.html"><small>中文</small></a>
 </h1>
 <div id="globals">
-    <div class="box" title="Surplus Available to start flap auction">
+    <div class="box" title="Price of official Maker MKR feeds">
+        <b id="mkr">$---,--</b><br/>
+        <span>MKR Price [dai]</span>
+    </div>
+    <div class="box" title="Surplus Available to start a flap auction">
         <b id="available">--,---.--</b><br/>
         <span>Surplus Available [dai]</span>
     </div>
@@ -54,6 +58,12 @@
     <div class="box" title="Maximum auction duration">
         <b id="tau">--</b><br/>
         <span>TAU [hour]</span>
+    </div>
+    <div class="box" title="Detailed Flap auction glossary link">
+        <b id="glossary">
+            <a target="_blank" href="https://docs.makerdao.com/smart-contract-modules/system-stabilizer-module/flap-detailed-documentation#flapper-glossary">Flapper</a>
+        </b><br/>
+        <span>[glossary]</span>
     </div>
 </div>
 <div id="filter-panel">
@@ -75,9 +85,11 @@
 </div>
 <div id="info">
     <p>
-        All data from last 3.14 days -
-        More info about <a target="_blank" href="https://makerdao.com">MakerDao</a>
-        Auctions in this amazing
+        All data from last 3.14 days |
+        Maybe try to <a href="#" onclick="loadAllHistory()">load all history</a> if you are curious 😁
+    </p>
+    <p>
+        More about <a target="_blank" href="https://makerdao.com">MakerDao</a> Auctions in this amazing
         <a href="https://docs.makerdao.com/smart-contract-modules/system-stabilizer-module/flap-detailed-documentation"
            target="_blank">Flapper Docs</a>
     </p>

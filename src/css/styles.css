@@ -26,13 +26,18 @@ h1 {
     margin: 10px 5px 15px;
     padding: 15px;
     background-color: #cac9c83d;
-    min-width: 100px;
+    min-width: 90px;
     text-align: center;
     display: inline-block;
 }
 
 #globals .box b {
     font-size: 20px;
+}
+
+#globals .box b a {
+    text-decoration: none;
+    color: black;
 }
 
 #info p {
@@ -69,6 +74,7 @@ h1 {
 
 .row.kick {
     border-bottom: 2px solid black;
+    margin-bottom: 20px;
 }
 
 .row.deal {
@@ -81,6 +87,12 @@ h1 {
     border: 2px dashed black;
     margin: 20px 5px;
     background-color: #dedede;
+}
+
+.row.deny, .row.rely {
+    border: 2px dashed black;
+    margin: 10px 5px;
+    background-color: #bae0dc;
 }
 
 .made-by {
