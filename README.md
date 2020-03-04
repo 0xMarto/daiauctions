@@ -58,6 +58,8 @@ No libs or anything needed, it's all code in HTML, CSS and JS so...
 3. Test it, opening the related `html` (e.g `flap.html`) locally in any browser
 4. Make a `PR`
 
+Recomendations: use this [Minifier](https://www.minifier.org/) for `css` and `js` files.
+
 <br/>
 
 ###### Made with love by <a target="_blank" href="https://twitter.com/martinlsanchez" class="author">Marto</a> (marto.eth)

@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="author" content="Marto"/>
-    <meta name="version" content="1.3.3"/>
+    <meta name="version" content="1.3.4"/>
     <title>Dai 拍卖 | Flip | BAT</title>
     <meta name="description" content="The place to see all MakerDao Auctions. Welcome to the open blockchains.">
     <meta name="keywords" content="makerdao dai eth bat auction flip flap">
@@ -32,8 +32,12 @@
 <body>
 <h1>
     <a href="/"><img alt="dai logo" width="50" src="/img/dai-logo.png"/></a>
-    MCD抵押品拍卖（BAT）<a href="/flip_bat.html"><small>English</small></a>
+    MCD抵押品拍卖
+    <small>(BAT)</small>
 </h1>
+<div id="languages">
+    <a href="/flip/bat">ENGLISH</a>
+</div>
 <div id="filter-panel">
     <span id="search">
         <label for="fliter-id">根据序号过滤:</label>
@@ -43,9 +47,9 @@
     <span id="no-results">在近几天内未找到拍卖</span>
     <i id="last-update"></i>
     <div class="links-panel">
-        <a href="flip_eth.html" title="以Dai拍卖ETH">抵押品拍卖[ETH]</a> |
+        <a href="/zh/flip/eth" title="以Dai拍卖ETH">抵押品拍卖[ETH]</a> |
         <a href="#" class="active" title="以Dai拍卖BAT">抵押品拍卖[BAT]</a> |
-        <a href="flap.html" title="以MKR来拍卖Dai">盈余拍卖[DAI]</a>
+        <a href="/zh/flap" title="以MKR来拍卖Dai">盈余拍卖[DAI]</a>
     </div>
 </div>
 <div id="app">
@@ -73,14 +77,15 @@
     </i>
     <br/><br/>
     <i>
-        With some magic/advice/support of
+        With an awesome language contribution of <a target="_blank" href="https://github.com/496080199">xiaopao</a><br/>
+        and some magic/advice/support of
         <a target="_blank" href="https://twitter.com/natanbaredes">natonamco</a>,
         <a target="_blank" href="https://twitter.com/gonzalezramiro">ramoide</a> and
         <a target="_blank" href="https://twitter.com/nanexcool">@nanexcool</a>
     </i>
 </p>
-<script src="js/web3.min.js"></script>
-<script async src="js/jquery.min.js"></script>
-<script src="js/flip_bat_min.js"></script>
+<script src="/js/web3.min.js"></script>
+<script async src="/js/jquery.min.js"></script>
+<script src="/zh/js/flip_bat_min.js"></script>
 </body>
 </html>

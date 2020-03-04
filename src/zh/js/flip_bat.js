@@ -1,3 +1,4 @@
+// DaiAuctions.com - Version: 1.3.3
 "use strict";
 
 const FLIPPER_ABI = [{

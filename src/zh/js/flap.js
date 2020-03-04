@@ -1,3 +1,4 @@
+// DaiAuctions.com - Version: 1.3.3
 "use strict";
 
 // Contracts ABI
@@ -837,7 +838,7 @@ var showEvents = async function showEvents(someID) {
         } else if (event.raw.topics[0] === TICK) {
             eventType = "TICK";
             flapId = parseInt(event.raw.topics[2], 16);
-            values += "ID: <b>" + flapId + "</b> | ";
+            values += "序号: <b>" + flapId + "</b> | ";
             values += "时间已延长! | ";
         } else if (event.raw.topics[0] === FILE) {
             eventType = "FILE";

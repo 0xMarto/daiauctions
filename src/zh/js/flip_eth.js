@@ -1,3 +1,4 @@
+// DaiAuctions.com - Version: 1.3.3
 "use strict";
 
 const FLIPPER_ABI = [{
@@ -1192,7 +1193,7 @@ var showEvents = async function showEvents(someID) {
                 continue;
             }
 
-            values += "ID: <b>" + flipId + "</b> | ";
+            values += "序号: <b>" + flipId + "</b> | ";
 
             osmPrice = 0;
             await getOsmPrice(event.blockNumber);

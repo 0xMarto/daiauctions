@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="author" content="Marto"/>
-    <meta name="version" content="1.3.3"/>
+    <meta name="version" content="1.3.4"/>
     <title>Dai拍卖 | Flap</title>
     <meta name="description" content="The place to see all MakerDao Auctions. Welcome to the open blockchains.">
     <meta name="keywords" content="makerdao dai eth bat auction flip flap">
@@ -32,34 +32,37 @@
 <body>
 <h1>
     <a href="/"><img alt="dai logo" width="50" src="/img/dai-logo.png"/></a>
-    MCD盈余拍卖<a href="/flap.html"><small>English</small></a>
+    MCD盈余拍卖
 </h1>
+<div id="languages">
+    <a href="/flap">ENGLISH</a>
+</div>
 <div id="globals">
-    <div class="box" title="Price of official Maker MKR feeds">
+    <div class="box" title="Maker MKR官方提要的价格">
         <b id="mkr">$---,--</b><br/>
         <span>MKR价格 [dai]</span>
     </div>
-    <div class="box" title="Surplus Available to start a flap auction">
+    <div class="box" title="盈余可用于开始皮瓣拍卖">
         <b id="available">--,---.--</b><br/>
-        <span>可用盈余[dai]</span>
+        <span>可用盈余开始拍卖[dai]</span>
     </div>
-    <div class="box" title="Fixed LOT size">
+    <div class="box" title="最小竞拍数量">
         <b id="bump">--,---</b><br/>
-        <span>BUMP(最小竞拍数量) [dai]</span>
+        <span>BUMP [dai]</span>
     </div>
-    <div class="box" title="Minimum bid increase">
+    <div class="box" title="最小竞价增加率">
         <b id="beg">-.--</b><br/>
-        <span>BEG(最小竞价增加率) [%]</span>
+        <span>BEG [%]</span>
     </div>
-    <div class="box" title="Maximum bid duration">
+    <div class="box" title="竞拍生命周期/ 最大竞拍时间">
         <b id="ttl">--</b><br/>
-        <span>TTL(竞拍生命周期/ 最大竞拍时间) [min]</span>
+        <span>TTL [分钟]</span>
     </div>
-    <div class="box" title="Maximum auction duration">
+    <div class="box" title="最大拍卖时间">
         <b id="tau">--</b><br/>
-        <span>TAU(最大拍卖时间) [hour]</span>
+        <span>TAU [小时]</span>
     </div>
-    <div class="box" title="Detailed Flap auction glossary link">
+    <div class="box" title="详细的Flap拍卖词汇表连接">
         <b id="glossary">
             <a target="_blank" href="https://docs.makerdao.com/smart-contract-modules/system-stabilizer-module/flap-detailed-documentation#flapper-glossary">Flapper</a>
         </b><br/>
@@ -75,9 +78,9 @@
     <span id="no-results">在近几天内未找到拍卖</span>
     <i id="last-update"></i>
     <div class="links-panel">
-        <a href="flip_eth.html" title="ETH Auctions with DAI">抵押品拍卖[ETH]</a> |
-        <a href="flip_bat.html" title="BAT Auctions with DAI">抵押品拍卖[BAT]</a> |
-        <a href="#" class="active" title="DAI Auctions with MKR">盈余拍卖[DAI]</a>
+        <a href="/zh/flip/eth" title="以Dai拍卖ETH">抵押品拍卖[ETH]</a> |
+        <a href="/zh/flip/bat" title="以Dai拍卖BAT">抵押品拍卖[BAT]</a> |
+        <a href="#" class="active" title="以MKR来拍卖Dai">盈余拍卖[DAI]</a>
     </div>
 </div>
 <div id="app">
@@ -107,14 +110,15 @@
     </i>
     <br/><br/>
     <i>
-        With some magic/advice/support of
+        With a language contribution of <a target="_blank" href="https://github.com/496080199">xiaopao</a><br/>
+        and some magic/advice/support of
         <a target="_blank" href="https://twitter.com/natanbaredes">natonamco</a>,
         <a target="_blank" href="https://twitter.com/gonzalezramiro">ramoide</a> and
         <a target="_blank" href="https://twitter.com/nanexcool">@nanexcool</a>
     </i>
 </p>
-<script src="js/web3.min.js"></script>
-<script src="js/jquery.min.js"></script>
-<script src="js/flap_min.js"></script>
+<script src="/js/web3.min.js"></script>
+<script src="/js/jquery.min.js"></script>
+<script src="/zh/js/flap_min.js"></script>
 </body>
 </html>

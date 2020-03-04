@@ -20,6 +20,18 @@
         "destination": "/flip_eth.html"
       },
       {
+        "source": "/zh/flip/bat",
+        "destination": "/zh/flip_bat.html"
+      },
+      {
+        "source": "/zh/flap",
+        "destination": "/zh/flap.html"
+      },
+      {
+        "source": "/zh/flip/eth",
+        "destination": "/zh/flip_eth.html"
+      },
+      {
         "source": "**",
         "destination": "/flip_eth.html"
       }

@@ -18,8 +18,27 @@ h1 {
     font-weight: bold;
 }
 
-#globals, #app, #info {
+#globals, #app, #info, #languages {
     font-family: monospace;
+}
+
+#languages {
+    float: right;
+    font-family: monospace;
+    font-size: 18px;
+    margin-right: 5px;
+    margin-top: -56px;
+    background-color: #fcd375;
+    padding: 10px 15px;
+}
+
+#languages a {
+    text-decoration: none;
+    color: black;
+}
+
+#languages a:hover {
+    color: white;
 }
 
 #globals .box {
