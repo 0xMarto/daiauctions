@@ -622,16 +622,24 @@ const VOW_ADDRESS = "0xA950524441892A31ebddF91d3cEEFa04Bf454466";
 const VAT_ADDRESS = "0x35D1b3F3D7966A1DFe207aa4514C12a259A0492B";
 
 var web3;
-if (typeof window.web3 !== "undefined" &&
-    window.web3.currentProvider && window.web3.currentProvider.networkVersion === "1" &&
-    window.web3.currentProvider.connection &&
-    window.web3.currentProvider.connection.url.slice(0, 3) === "wss") {
-    web3 = new Web3(window.web3.currentProvider);
-} else {
+var usingRemoteProvider = true;
+if (typeof window.ethereum !== 'undefined' && window.ethereum.networkVersion &&
+    window.ethereum.networkVersion === "1" && window.ethereum.isMetaMask) {
+    try {
+        web3 = new Web3(window.ethereum);
+        let subscription = web3.eth.subscribe('newBlockHeaders');
+        subscription.unsubscribe();
+        console.log("Using local web3 provider");
+        usingRemoteProvider = false;
+    } catch (e) {
+        usingRemoteProvider = true;
+    }
+}
+if (usingRemoteProvider) {
     var infura = "wss://mainnet.infura.io/ws/v3/24537662f67d4531a1e43e486ea45eca";
     var provider = new Web3.providers.WebsocketProvider(infura);
     web3 = new Web3(provider);
-    // web3 = new Web3(new Web3.providers.WebsocketProvider('wss://mainnet.infura.io/ws'))
+    console.log("Using remote web3 provider");
 }
 
 // Get instance of contracts
@@ -1030,6 +1038,13 @@ async function updateGlobals() {
 }
 
 async function loadAllHistory() {
+    if (usingRemoteProvider) {
+        let msg = 'Sorry, this feature is disabled using the remote ETH provider.\n\n' +
+            'Try to install MetaMask and select Mainnet network';
+        alert(msg);
+        return;
+    }
+
     hideFilterSearch();
     events = [];
     auctions = {};

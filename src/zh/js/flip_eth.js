@@ -949,16 +949,24 @@ const CAT_ADDRESS = "0x78F2c2AF65126834c51822F56Be0d7469D7A523E";
 
 
 var web3;
-if (typeof window.web3 !== "undefined" &&
-    window.web3.currentProvider && window.web3.currentProvider.networkVersion === "1" &&
-    window.web3.currentProvider.connection &&
-    window.web3.currentProvider.connection.url.slice(0, 3) === "wss") {
-    web3 = new Web3(window.web3.currentProvider);
-} else {
-    var infura = "wss://mainnet.infura.io/ws/v3/24537662f67d4531a1e43e486ea45eca";
+var usingRemoteProvider = true;
+if (typeof window.ethereum !== 'undefined' && window.ethereum.networkVersion &&
+    window.ethereum.networkVersion === "1" && window.ethereum.isMetaMask) {
+    try {
+        web3 = new Web3(window.ethereum);
+        let subscription = web3.eth.subscribe('newBlockHeaders');
+        subscription.unsubscribe();
+        console.log("使用本地Web3提供程序");
+        usingRemoteProvider = false;
+    } catch (e) {
+        usingRemoteProvider = true;
+    }
+}
+if (usingRemoteProvider) {
+    var infura = "wss://mainnet.infura.io/ws/v3/cabe301d837048959747eaa4415846b7";
     var provider = new Web3.providers.WebsocketProvider(infura);
     web3 = new Web3(provider);
-    // web3 = new Web3(new Web3.providers.WebsocketProvider('wss://mainnet.infura.io/ws'))
+    console.log("使用远程Web3提供程序");
 }
 
 // Get instance of contracts

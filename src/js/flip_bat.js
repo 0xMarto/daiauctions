@@ -946,18 +946,25 @@ const OSM_ADDRESS = "0xB4eb54AF9Cc7882DF0121d26c5b97E802915ABe6";
 const CDP_MANAGER_ADDRESS = "0x5ef30b9986345249bc32d8928B7ee64DE9435E39";
 const CAT_ADDRESS = "0x78F2c2AF65126834c51822F56Be0d7469D7A523E";
 
-
 var web3;
-if (typeof window.web3 !== "undefined" &&
-    window.web3.currentProvider && window.web3.currentProvider.networkVersion === "1" &&
-    window.web3.currentProvider.connection &&
-    window.web3.currentProvider.connection.url.slice(0, 3) === "wss") {
-    web3 = new Web3(window.web3.currentProvider);
-} else {
-    var infura = "wss://mainnet.infura.io/ws/v3/24537662f67d4531a1e43e486ea45eca";
+var usingRemoteProvider = true;
+if (typeof window.ethereum !== 'undefined' && window.ethereum.networkVersion &&
+    window.ethereum.networkVersion === "1" && window.ethereum.isMetaMask) {
+    try {
+        web3 = new Web3(window.ethereum);
+        let subscription = web3.eth.subscribe('newBlockHeaders');
+        subscription.unsubscribe();
+        console.log("Using local web3 provider");
+        usingRemoteProvider = false;
+    } catch (e) {
+        usingRemoteProvider = true;
+    }
+}
+if (usingRemoteProvider) {
+    var infura = "wss://mainnet.infura.io/ws/v3/f77d1e38219b45d4b4965a1c247c1aff";
     var provider = new Web3.providers.WebsocketProvider(infura);
     web3 = new Web3(provider);
-    // web3 = new Web3(new Web3.providers.WebsocketProvider('wss://mainnet.infura.io/ws'))
+    console.log("Using remote web3 provider");
 }
 
 // Get instance of contracts
