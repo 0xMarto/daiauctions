@@ -1126,7 +1126,7 @@ var showEvents = async function showEvents(someID) {
             let lot = parseInt(event.raw.topics[3], 16) / 10 ** 18;
             values += "数量: " + lot.toFixed(3) + " eth | ";
 
-            let raw = event.raw.data.slice(289, -248);
+            let raw = event.raw.data.slice(288, -248);
             let bid = parseInt(raw, 16) / 10 ** 27 / 10 ** 18;
             values += "竞标价: " + bid.toFixed(3) + " dai | ";
 
@@ -1166,7 +1166,7 @@ var showEvents = async function showEvents(someID) {
             let lot = parseInt(event.raw.topics[3], 16) / 10 ** 18;
             values += "数量: " + lot.toFixed(3) + " eth | ";
 
-            let raw = event.raw.data.slice(289, -248);
+            let raw = event.raw.data.slice(288, -248);
             let bid = parseInt(raw, 16) / 10 ** 27 / 10 ** 18;
             values += "竞标价: " + bid.toFixed(3) + " dai | ";
 

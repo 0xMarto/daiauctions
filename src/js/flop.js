@@ -1,206 +1,7 @@
-// DaiAuctions.com - Version: 1.3.3
 "use strict";
 
 // Contracts ABI
-const FLAPPER_ABI = [{
-    "inputs": [{
-        "internalType": "address",
-        "name": "vat_",
-        "type": "address"
-    }, {"internalType": "address", "name": "gem_", "type": "address"}],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "constructor"
-}, {
-    "anonymous": false,
-    "inputs": [{"indexed": false, "internalType": "uint256", "name": "id", "type": "uint256"}, {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "lot",
-        "type": "uint256"
-    }, {"indexed": false, "internalType": "uint256", "name": "bid", "type": "uint256"}],
-    "name": "Kick",
-    "type": "event"
-}, {
-    "anonymous": true,
-    "inputs": [{"indexed": true, "internalType": "bytes4", "name": "sig", "type": "bytes4"}, {
-        "indexed": true,
-        "internalType": "address",
-        "name": "usr",
-        "type": "address"
-    }, {"indexed": true, "internalType": "bytes32", "name": "arg1", "type": "bytes32"}, {
-        "indexed": true,
-        "internalType": "bytes32",
-        "name": "arg2",
-        "type": "bytes32"
-    }, {"indexed": false, "internalType": "bytes", "name": "data", "type": "bytes"}],
-    "name": "LogNote",
-    "type": "event"
-}, {
-    "constant": true,
-    "inputs": [],
-    "name": "beg",
-    "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "constant": true,
-    "inputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
-    "name": "bids",
-    "outputs": [{"internalType": "uint256", "name": "bid", "type": "uint256"}, {
-        "internalType": "uint256",
-        "name": "lot",
-        "type": "uint256"
-    }, {"internalType": "address", "name": "guy", "type": "address"}, {
-        "internalType": "uint48",
-        "name": "tic",
-        "type": "uint48"
-    }, {"internalType": "uint48", "name": "end", "type": "uint48"}],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "constant": false,
-    "inputs": [{"internalType": "uint256", "name": "rad", "type": "uint256"}],
-    "name": "cage",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-}, {
-    "constant": false,
-    "inputs": [{"internalType": "uint256", "name": "id", "type": "uint256"}],
-    "name": "deal",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-}, {
-    "constant": false,
-    "inputs": [{"internalType": "address", "name": "usr", "type": "address"}],
-    "name": "deny",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-}, {
-    "constant": false,
-    "inputs": [{"internalType": "bytes32", "name": "what", "type": "bytes32"}, {
-        "internalType": "uint256",
-        "name": "data",
-        "type": "uint256"
-    }],
-    "name": "file",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-}, {
-    "constant": true,
-    "inputs": [],
-    "name": "gem",
-    "outputs": [{"internalType": "contract GemLike", "name": "", "type": "address"}],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "constant": false,
-    "inputs": [{"internalType": "uint256", "name": "lot", "type": "uint256"}, {
-        "internalType": "uint256",
-        "name": "bid",
-        "type": "uint256"
-    }],
-    "name": "kick",
-    "outputs": [{"internalType": "uint256", "name": "id", "type": "uint256"}],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-}, {
-    "constant": true,
-    "inputs": [],
-    "name": "kicks",
-    "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "constant": true,
-    "inputs": [],
-    "name": "live",
-    "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "constant": false,
-    "inputs": [{"internalType": "address", "name": "usr", "type": "address"}],
-    "name": "rely",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-}, {
-    "constant": true,
-    "inputs": [],
-    "name": "tau",
-    "outputs": [{"internalType": "uint48", "name": "", "type": "uint48"}],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "constant": false,
-    "inputs": [{"internalType": "uint256", "name": "id", "type": "uint256"}, {
-        "internalType": "uint256",
-        "name": "lot",
-        "type": "uint256"
-    }, {"internalType": "uint256", "name": "bid", "type": "uint256"}],
-    "name": "tend",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-}, {
-    "constant": false,
-    "inputs": [{"internalType": "uint256", "name": "id", "type": "uint256"}],
-    "name": "tick",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-}, {
-    "constant": true,
-    "inputs": [],
-    "name": "ttl",
-    "outputs": [{"internalType": "uint48", "name": "", "type": "uint48"}],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "constant": true,
-    "inputs": [],
-    "name": "vat",
-    "outputs": [{"internalType": "contract VatLike", "name": "", "type": "address"}],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "constant": true,
-    "inputs": [{"internalType": "address", "name": "", "type": "address"}],
-    "name": "wards",
-    "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
-    "payable": false,
-    "stateMutability": "view",
-    "type": "function"
-}, {
-    "constant": false,
-    "inputs": [{"internalType": "uint256", "name": "id", "type": "uint256"}],
-    "name": "yank",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-}];
+const FLOPPER_ABI = [{"inputs":[{"internalType":"address","name":"vat_","type":"address"},{"internalType":"address","name":"gem_","type":"address"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"id","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"lot","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"bid","type":"uint256"},{"indexed":true,"internalType":"address","name":"gal","type":"address"}],"name":"Kick","type":"event"},{"anonymous":true,"inputs":[{"indexed":true,"internalType":"bytes4","name":"sig","type":"bytes4"},{"indexed":true,"internalType":"address","name":"usr","type":"address"},{"indexed":true,"internalType":"bytes32","name":"arg1","type":"bytes32"},{"indexed":true,"internalType":"bytes32","name":"arg2","type":"bytes32"},{"indexed":false,"internalType":"bytes","name":"data","type":"bytes"}],"name":"LogNote","type":"event"},{"constant":true,"inputs":[],"name":"beg","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"bids","outputs":[{"internalType":"uint256","name":"bid","type":"uint256"},{"internalType":"uint256","name":"lot","type":"uint256"},{"internalType":"address","name":"guy","type":"address"},{"internalType":"uint48","name":"tic","type":"uint48"},{"internalType":"uint48","name":"end","type":"uint48"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"cage","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"uint256","name":"id","type":"uint256"}],"name":"deal","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"uint256","name":"id","type":"uint256"},{"internalType":"uint256","name":"lot","type":"uint256"},{"internalType":"uint256","name":"bid","type":"uint256"}],"name":"dent","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"usr","type":"address"}],"name":"deny","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"bytes32","name":"what","type":"bytes32"},{"internalType":"uint256","name":"data","type":"uint256"}],"name":"file","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"gem","outputs":[{"internalType":"contract GemLike","name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"gal","type":"address"},{"internalType":"uint256","name":"lot","type":"uint256"},{"internalType":"uint256","name":"bid","type":"uint256"}],"name":"kick","outputs":[{"internalType":"uint256","name":"id","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"kicks","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"live","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"pad","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"usr","type":"address"}],"name":"rely","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"tau","outputs":[{"internalType":"uint48","name":"","type":"uint48"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"uint256","name":"id","type":"uint256"}],"name":"tick","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"ttl","outputs":[{"internalType":"uint48","name":"","type":"uint48"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"vat","outputs":[{"internalType":"contract VatLike","name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"vow","outputs":[{"internalType":"address","name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"wards","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"uint256","name":"id","type":"uint256"}],"name":"yank","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}];
 const MEDIANIZER_ABI = [{
     "constant": false,
     "inputs": [{"name": "owner_", "type": "address"}],
@@ -617,7 +418,7 @@ const VOW_ABI = [{
 }];
 const VAT_ABI = [{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":true,"inputs":[{"indexed":true,"internalType":"bytes4","name":"sig","type":"bytes4"},{"indexed":true,"internalType":"bytes32","name":"arg1","type":"bytes32"},{"indexed":true,"internalType":"bytes32","name":"arg2","type":"bytes32"},{"indexed":true,"internalType":"bytes32","name":"arg3","type":"bytes32"},{"indexed":false,"internalType":"bytes","name":"data","type":"bytes"}],"name":"LogNote","type":"event"},{"constant":true,"inputs":[],"name":"Line","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"cage","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"internalType":"address","name":"","type":"address"},{"internalType":"address","name":"","type":"address"}],"name":"can","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"dai","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"debt","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"usr","type":"address"}],"name":"deny","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"bytes32","name":"ilk","type":"bytes32"},{"internalType":"bytes32","name":"what","type":"bytes32"},{"internalType":"uint256","name":"data","type":"uint256"}],"name":"file","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"bytes32","name":"what","type":"bytes32"},{"internalType":"uint256","name":"data","type":"uint256"}],"name":"file","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"bytes32","name":"ilk","type":"bytes32"},{"internalType":"address","name":"src","type":"address"},{"internalType":"address","name":"dst","type":"address"},{"internalType":"uint256","name":"wad","type":"uint256"}],"name":"flux","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"bytes32","name":"i","type":"bytes32"},{"internalType":"address","name":"u","type":"address"},{"internalType":"int256","name":"rate","type":"int256"}],"name":"fold","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"bytes32","name":"ilk","type":"bytes32"},{"internalType":"address","name":"src","type":"address"},{"internalType":"address","name":"dst","type":"address"},{"internalType":"int256","name":"dink","type":"int256"},{"internalType":"int256","name":"dart","type":"int256"}],"name":"fork","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"bytes32","name":"i","type":"bytes32"},{"internalType":"address","name":"u","type":"address"},{"internalType":"address","name":"v","type":"address"},{"internalType":"address","name":"w","type":"address"},{"internalType":"int256","name":"dink","type":"int256"},{"internalType":"int256","name":"dart","type":"int256"}],"name":"frob","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"internalType":"bytes32","name":"","type":"bytes32"},{"internalType":"address","name":"","type":"address"}],"name":"gem","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"bytes32","name":"i","type":"bytes32"},{"internalType":"address","name":"u","type":"address"},{"internalType":"address","name":"v","type":"address"},{"internalType":"address","name":"w","type":"address"},{"internalType":"int256","name":"dink","type":"int256"},{"internalType":"int256","name":"dart","type":"int256"}],"name":"grab","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"uint256","name":"rad","type":"uint256"}],"name":"heal","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"usr","type":"address"}],"name":"hope","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"name":"ilks","outputs":[{"internalType":"uint256","name":"Art","type":"uint256"},{"internalType":"uint256","name":"rate","type":"uint256"},{"internalType":"uint256","name":"spot","type":"uint256"},{"internalType":"uint256","name":"line","type":"uint256"},{"internalType":"uint256","name":"dust","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"bytes32","name":"ilk","type":"bytes32"}],"name":"init","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"live","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"src","type":"address"},{"internalType":"address","name":"dst","type":"address"},{"internalType":"uint256","name":"rad","type":"uint256"}],"name":"move","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"usr","type":"address"}],"name":"nope","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"usr","type":"address"}],"name":"rely","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"sin","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"bytes32","name":"ilk","type":"bytes32"},{"internalType":"address","name":"usr","type":"address"},{"internalType":"int256","name":"wad","type":"int256"}],"name":"slip","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"u","type":"address"},{"internalType":"address","name":"v","type":"address"},{"internalType":"uint256","name":"rad","type":"uint256"}],"name":"suck","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"internalType":"bytes32","name":"","type":"bytes32"},{"internalType":"address","name":"","type":"address"}],"name":"urns","outputs":[{"internalType":"uint256","name":"ink","type":"uint256"},{"internalType":"uint256","name":"art","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"vice","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"wards","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"}];
 
-const FLAP_ADDRESS = "0xdfE0fb1bE2a52CDBf8FB962D5701d7fd0902db9f";
+const FLOP_ADDRESS = "0x4D95A049d5B0b7d32058cd3F2163015747522e99";
 const MEDIANIZER_ADDRESS = "0x99041F808D598B782D5a3e498681C2452A31da08";
 const VOW_ADDRESS = "0xA950524441892A31ebddF91d3cEEFa04Bf454466";
 const VAT_ADDRESS = "0x35D1b3F3D7966A1DFe207aa4514C12a259A0492B";
@@ -630,21 +431,21 @@ if (typeof window.ethereum !== 'undefined' && window.ethereum.networkVersion &&
         web3 = new Web3(window.ethereum);
         let subscription = web3.eth.subscribe('newBlockHeaders');
         subscription.unsubscribe();
-        console.log("使用本地Web3提供程序");
+        console.log("Using local web3 provider");
         usingRemoteProvider = false;
     } catch (e) {
         usingRemoteProvider = true;
     }
 }
 if (usingRemoteProvider) {
-    var infura = "wss://mainnet.infura.io/ws/v3/24537662f67d4531a1e43e486ea45eca";
+    var infura = "wss://mainnet.infura.io/ws/v3/f77d1e38219b45d4b4965a1c247c1aff";
     var provider = new Web3.providers.WebsocketProvider(infura);
     web3 = new Web3(provider);
-    console.log("使用远程Web3提供程序");
+    console.log("Using remote web3 provider");
 }
 
 // Get instance of contracts
-const flapContract = new web3.eth.Contract(FLAPPER_ABI, FLAP_ADDRESS);
+const flopContract = new web3.eth.Contract(FLOPPER_ABI, FLOP_ADDRESS);
 const osmContract = new web3.eth.Contract(MEDIANIZER_ABI, MEDIANIZER_ADDRESS);
 const vowContract = new web3.eth.Contract(VOW_ABI, VOW_ADDRESS);
 const vatContract = new web3.eth.Contract(VAT_ABI, VAT_ADDRESS);
@@ -652,14 +453,14 @@ const vatContract = new web3.eth.Contract(VAT_ABI, VAT_ADDRESS);
 // Get new events and populate last events global variable
 var events = [];
 var getFlipEvents = function getFlipEvents(fromBlockNumber) {
-    console.log(`获取拍卖事件的区块: ${fromBlockNumber}`);
-    return flapContract.getPastEvents("allEvents", {
+    console.log(`Get auction events from block: ${fromBlockNumber}`);
+    return flopContract.getPastEvents("allEvents", {
             fromBlock: fromBlockNumber,
             toBlock: "latest"
         },
         function (err, result) {
             if (!err) {
-                console.log("已接收到的事件:", result.length);
+                console.log("Received Events:", result.length);
                 events = result;
             } else {
                 console.log(err);
@@ -670,6 +471,9 @@ var getFlipEvents = function getFlipEvents(fromBlockNumber) {
 // Get the price in the given block number and populate last price global variable
 var medianizerPrice = 0;
 var updateMedianizerPrice = function getOsmPrice(blockNumber) {
+    // Only for debug
+    // medianizerPrice = 200.5;
+
     return osmContract.getPastEvents("LogValue", {
             fromBlock: blockNumber - 2000,
             toBlock: blockNumber
@@ -686,17 +490,18 @@ var updateMedianizerPrice = function getOsmPrice(blockNumber) {
             } else {
                 console.log(err);
             }
-			return medianizerPrice;
+            return medianizerPrice;
         });
 };
 
 // Events types signatures to be processed
-var TEND = "0x4b43ed1200000000000000000000000000000000000000000000000000000000";
-var DEAL = "0xc959c42b00000000000000000000000000000000000000000000000000000000";
-var TICK = "0xfc7b6aee00000000000000000000000000000000000000000000000000000000";
-var FILE = "0x29ae811400000000000000000000000000000000000000000000000000000000";
-var DENY = "0x9c52a7f100000000000000000000000000000000000000000000000000000000";
-var RELY = "0x65fae35e00000000000000000000000000000000000000000000000000000000";
+const TEND = "0x4b43ed1200000000000000000000000000000000000000000000000000000000";
+const DENT = "0x5ff3a38200000000000000000000000000000000000000000000000000000000";
+const DEAL = "0xc959c42b00000000000000000000000000000000000000000000000000000000";
+const TICK = "0xfc7b6aee00000000000000000000000000000000000000000000000000000000";
+const FILE = "0x29ae811400000000000000000000000000000000000000000000000000000000";
+const DENY = "0x9c52a7f100000000000000000000000000000000000000000000000000000000";
+const RELY = "0x65fae35e00000000000000000000000000000000000000000000000000000000";
 
 // Variable to summarize by ID all auctions currently registered
 var auctions = {};
@@ -735,13 +540,13 @@ var showEvents = async function showEvents(someID) {
         if (event.event === "Kick") {
             eventType = "KICK";
             flapId = parseInt(event.returnValues.id, 10);
-            values += "序号: <b>" + flapId + "</b> | ";
+            values += "ID: <b>" + flapId + "</b> | ";
 
-            let lot = event.returnValues.lot / 10 ** 27 / 10 ** 18;
-            values += "数量: " + lot.toFixed(2) + " dai | ";
+            let lot = event.returnValues.lot / 10 ** 18;
+            values += "lot: " + lot.toFixed(4) + " mkr | ";
 
-            let tab = event.returnValues.bid / 10 ** 18;
-            values += "初始竞价: " + tab.toFixed(4) + " mkr | ";
+            let tab = event.returnValues.bid / 10 ** 27 / 10 ** 18;
+            values += "bid: " + tab.toFixed(2) + " dai | ";
 
             // Clear and Get current price value
             medianizerPrice = 0;
@@ -768,12 +573,13 @@ var showEvents = async function showEvents(someID) {
             };
 
             if (medianizerPrice > 0) {
-                values += "Maker MED喂价: $" + auctions[flapId]["kickPrice"] + " | ";
+                values += "Maker MED Price: $" + auctions[flapId]["kickPrice"] + " | ";
             } else {
-                values += "Maker MED喂价: $---,-- | ";
+                values += "Maker MED Price: $---,-- | ";
             }
-        } else if (event.raw.topics[0] === TEND) {
-            eventType = "TEND";
+
+        } else if (event.raw.topics[0] === DENT) {
+            eventType = "DENT";
             flapId = parseInt(event.raw.topics[2], 16);
 
             // Avoid showing TEND without a KICK
@@ -781,14 +587,14 @@ var showEvents = async function showEvents(someID) {
                 continue;
             }
 
-            values += "序号: <b>" + flapId + "</b> | ";
+            values += "ID: <b>" + flapId + "</b> | ";
 
-            let lot = parseInt(event.raw.topics[3], 16) / 10 ** 27 / 10 ** 18;
-            values += "数量: " + lot.toFixed(2) + " dai | ";
+            let lot = parseInt(event.raw.topics[3], 16) / 10 ** 18;
+            values += "lot: " + lot.toFixed(4) + " mkr | ";
 
             let raw = event.raw.data.slice(288, -248);
-            let bid = parseInt(raw, 16) / 10 ** 18;
-            values += "竞标价: " + bid.toFixed(3) + " mkr | ";
+            let bid = parseInt(raw, 16) / 10 ** 27 / 10 ** 18;
+            values += "bid: " + bid.toFixed(2) + " dai | ";
 
             medianizerPrice = 0;
             await updateMedianizerPrice(event.blockNumber);
@@ -798,7 +604,7 @@ var showEvents = async function showEvents(someID) {
             auctions[flapId]["bid"] = bid.toFixed(4);
             auctions[flapId]["bidPrice"] = medianizerPrice.toString();
             auctions[flapId]["lot"] = lot.toFixed(4);
-            auctions[flapId]["paidPrice"] = (lot / bid).toFixed(2);
+            auctions[flapId]["paidPrice"] = (bid / lot).toFixed(2);
 
             if (medianizerPrice > 0) {
                 // Calculate diff percentage
@@ -808,9 +614,9 @@ var showEvents = async function showEvents(someID) {
                 } else {
                     values += "" + diff.toFixed(2) + " % | ";
                 }
-                values += "价格: $" + auctions[flapId]["bidPrice"] + " | ";
+                values += "Price: $" + auctions[flapId]["bidPrice"] + " | ";
             } else {
-                values += "--,-- % | 价格: $---,-- | ";
+                values += "--,-- % | Price: $---,-- | ";
             }
         } else if (event.raw.topics[0] === DEAL) {
             eventType = "DEAL";
@@ -821,7 +627,7 @@ var showEvents = async function showEvents(someID) {
                 continue;
             }
 
-            values += "序号: <b>" + flapId + "</b> | ";
+            values += "ID: <b>" + flapId + "</b> | ";
 
             medianizerPrice = 0;
             await updateMedianizerPrice(event.blockNumber);
@@ -831,69 +637,76 @@ var showEvents = async function showEvents(someID) {
             auctions[flapId]["state"] = "CLOSE";
 
             if (!medianizerPrice) {
-                values += "最终支付: $" + auctions[flapId]["paidPrice"] + " dai/mkr (+-.--%) | ";
-                values += "--,-- % | 价格: $---,-- | ";
+                values += "Paid Rate: $" + auctions[flapId]["paidPrice"] + " dai/mkr (+-.--%) | ";
+                values += "--,-- % | Price: $---,-- | ";
             } else {
-                values += "最终支付: $" + auctions[flapId]["paidPrice"] + " dai/mkr ";
+                values += "Paid Rate: $" + auctions[flapId]["paidPrice"] + " dai/mkr ";
                 let diff = ((auctions[flapId]["paidPrice"] / auctions[flapId]["dealPrice"]) - 1) * 100;
                 if (diff > 0) {
-                    values += "(+" + diff.toFixed(2) + "%) ~ <b style='margin:11px;'>胜利!</b> | ";
+                    values += "(+" + diff.toFixed(2) + "%) ~ <b style='margin:11px;'>Lost</b> | ";
                 } else {
-                    values += "(" + diff.toFixed(2) + "%) ~ <b style='margin:11px;'>失败</b> | ";
+                    values += "(" + diff.toFixed(2) + "%) ~ <b style='margin:11px;'>Won!</b> | ";
                 }
-                values += "价格: $" + auctions[flapId]["dealPrice"] + " | ";
+                values += "Price: $" + auctions[flapId]["dealPrice"] + " | ";
             }
         } else if (event.raw.topics[0] === TICK) {
             eventType = "TICK";
             flapId = parseInt(event.raw.topics[2], 16);
-            values += "序号: <b>" + flapId + "</b> | ";
-            values += "时间已延长! | ";
+            values += "ID: <b>" + flapId + "</b> | ";
+            values += "Time extended! | ";
         } else if (event.raw.topics[0] === FILE) {
+            auctions[0] = {id: 0, type: "FILE"};
             eventType = "FILE";
             const BEG = "0x6265670000000000000000000000000000000000000000000000000000000000";
             const TAU = "0x7461750000000000000000000000000000000000000000000000000000000000";
             const TTL = "0x74746c0000000000000000000000000000000000000000000000000000000000";
+            const PAD = "0x7061640000000000000000000000000000000000000000000000000000000000";
             if (event.raw.topics[2] === BEG) {
-                values += "说明: <b> BEG </b> (最小竞价增加率) | ";
+                values += "WHAT: <b> BEG </b> (minimum bid increase) | ";
                 let file_value = parseInt(event.raw.topics[3]) / 10 ** 18;
                 file_value = (file_value - 1) * 100;
-                values += "值: <b>" + file_value.toFixed(2) + " %</b> | ";
+                values += "VALUE: <b>" + file_value.toFixed(2) + " %</b> | ";
             } else if (event.raw.topics[2] === TAU) {
-                values += "说明: <b> TAU </b> (最大拍卖时间) | ";
+                values += "WHAT: <b> TAU </b> (maximum auction duration) | ";
                 let file_value = parseInt(event.raw.topics[3]);
                 file_value = file_value / 60 / 60;
-                values += "值: <b>" + file_value.toFixed(1) + " 小时</b> | ";
+                values += "VALUE: <b>" + file_value.toFixed(1) + " hours</b> | ";
             } else if (event.raw.topics[2] === TTL) {
-                values += "说明: <b> TTL </b> (竞拍生命周期/ 最大竞拍时间) | ";
+                values += "WHAT: <b> TTL </b> (bid lifetime / max bid duration) | ";
                 let file_value = parseInt(event.raw.topics[3]);
                 file_value = file_value / 60;
-                values += "值: <b>" + file_value.toFixed(1) + " 分钟</b> | ";
+                values += "VALUE: <b>" + file_value.toFixed(1) + " minutes</b> | ";
+            } else if (event.raw.topics[2] === PAD) {
+                values += "WHAT: <b> PAD </b> (Increase for lot size during tick) | ";
+                let file_value = parseInt(event.raw.topics[3]);
+                file_value = file_value / 10 ** 18;
+                values += "VALUE: <b>" + file_value.toFixed(4) + " mkr</b> | ";
             } else {
-                values += "说明: <b>未知</b> | ";
+                values += "WHAT: <b>UKNOWN</b> | ";
                 console.log(event.raw.topics);
             }
-            values += "新的Flapper更新! | ";
+            values += "New Flapper Update! | ";
         } else if (event.raw.topics[0] === RELY) {
             eventType = "RELY";
-            values += "说明: <b>允许调用已认证的方法 --</b> | ";
+            values += "WHAT: <b>Allow to call auth'ed methods --</b> | ";
             let usr = event.raw.topics[2];
-            values += "到: <b>0x" + usr.slice(-40) + "</b> | ";
+            values += "TO: <b>0x" + usr.slice(-40) + "</b> | ";
         } else if (event.raw.topics[0] === DENY) {
             eventType = "DENY";
-            values += "说明: <b>不允许调用已认证的方法</b> | ";
+            values += "WHAT: <b>Disallow to call auth'ed methods</b> | ";
             let usr = event.raw.topics[2];
-            values += "到: <b>0x" + usr.slice(-40) + "</b> | ";
+            values += "TO: <b>0x" + usr.slice(-40) + "</b> | ";
         } else {
-            console.log("未知事件");
+            console.log("Uknown event");
             console.log(event);
         }
 
         // Get event tx info
         await web3.eth.getTransaction(event.transactionHash).then(function (tx) {
             let from = tx.from.slice(0, 6) + "..." + tx.from.slice(-4);
-            let txHref = `https://cn.etherscan.com/tx/${event.transactionHash}`;
-            let txLink = `<a target="_blank" href="${txHref}">交易号信息:..${event.transactionHash.slice(-3)}</a>`;
-            values += `地址: ${from} | ${txLink} >>`;
+            let txHref = `https://etherscan.io/tx/${event.transactionHash}`;
+            let txLink = `<a target="_blank" href="${txHref}">Tx:..${event.transactionHash.slice(-3)} Info</a>`;
+            values += `from: ${from} | ${txLink} >>`;
             if (auctions[flapId]) {
                 auctions[flapId]["guy"] = from;
             }
@@ -964,7 +777,7 @@ function showFilter() {
 function showLastUpdate() {
     let lastUpdateTag = document.getElementById("last-update");
     let now = new Date().toLocaleString();
-    lastUpdateTag.innerHTML = `- 更新时间: ${now}`;
+    lastUpdateTag.innerHTML = `- Updated to: ${now}`;
 }
 
 function hideFilterSearch() {
@@ -972,6 +785,11 @@ function hideFilterSearch() {
     if (filterPanelSearch) {
         filterPanelSearch.style.display = "none";
     }
+}
+
+function hideEmptyMessage() {
+    let noResultsTag = document.getElementById("no-results");
+    noResultsTag.style.display = "none";
 }
 
 function showEmptyMessage() {
@@ -1001,34 +819,40 @@ function filterAuctionById() {
 async function updateGlobals() {
     let globalsPanel = $('#globals');
 
-    vatContract.methods.dai(VOW_ADDRESS).call().then(function (value) {
-        let surplus = value  / 10 ** 45;
-        vatContract.methods.sin(VOW_ADDRESS).call().then(function (value) {
-            let vow_debt = value  / 10 ** 45;
-            vowContract.methods.hump().call().then(function (value) {
-                let hump = value  / 10 ** 45;
-                let available = Math.round((surplus - vow_debt - hump) * 100 ) / 100;
+    vatContract.methods.sin(VOW_ADDRESS).call().then(function (value) {
+        let vow_debt = value  / 10 ** 45;
+        vowContract.methods.Sin().call().then(function (value) {
+            let total_sin = value  / 10 ** 45;
+            vowContract.methods.Ash().call().then(function (value) {
+                let total_ash = value  / 10 ** 45;
+                let available = Math.round((vow_debt - total_sin - total_ash) * 100 ) / 100;
+
                 globalsPanel.find('#available').text(available.toLocaleString('en'));
             });
         });
     });
 
-    vowContract.methods.bump().call().then(function (value) {
-        let bump = Math.round((value  / 10 ** 45) * 10) / 10;
-        globalsPanel.find('#bump').text(bump.toLocaleString('en'));
+    vowContract.methods.sump().call().then(function (value) {
+        let sump = Math.round((value  / 10 ** 45) * 10) / 10;
+        globalsPanel.find('#sump').text(sump.toLocaleString('en'));
     });
 
-    flapContract.methods.beg().call().then(function (value) {
+    vowContract.methods.dump().call().then(function (value) {
+        let dump = Math.round((value  / 10 ** 18) * 10) / 10;
+        globalsPanel.find('#dump').text(dump.toLocaleString('en'));
+    });
+
+    flopContract.methods.beg().call().then(function (value) {
         let beg = ((value / 10 ** 18) - 1) * 100;
         globalsPanel.find('#beg').text(beg.toFixed(2));
     });
 
-    flapContract.methods.ttl().call().then(function (value) {
+    flopContract.methods.ttl().call().then(function (value) {
         let ttl = value / 60;
         globalsPanel.find('#ttl').text(ttl.toFixed(1));
     });
 
-    flapContract.methods.tau().call().then(function (value) {
+    flopContract.methods.tau().call().then(function (value) {
         let tau = value / 60 / 60;
         globalsPanel.find('#tau').text(tau.toFixed(1));
     });
@@ -1036,24 +860,25 @@ async function updateGlobals() {
     let lastBlock = await web3.eth.getBlockNumber();
     await updateMedianizerPrice(lastBlock);
     globalsPanel.find('#mkr').text("$" + medianizerPrice);
-
 }
 
 async function loadAllHistory() {
     if (usingRemoteProvider) {
-        let msg = '抱歉，已使用远程ETH提供程序禁用了此功能。\n\n' +
-            '尝试安装MetaMask并选择Mainnet网络';
+        let msg = 'Sorry, this feature is disabled using the remote ETH provider.\n\n' +
+            'Try to install MetaMask and select Mainnet network';
         alert(msg);
         return;
     }
 
     hideFilterSearch();
+    hideEmptyMessage();
     events = [];
     auctions = {};
     eventsLoaded = false;
-    blocksBack = await web3.eth.getBlockNumber();
+    blocksBack = await web3.eth.getBlockNumber() - 1;
     fetchAuctions(0);
 }
+
 
 // ## Start Main function
 updateGlobals();
@@ -1064,6 +889,6 @@ fetchAuctions(0);
 
 // ## Subscribe to new blocks
 setTimeout(function () {
-    console.log('正在从链上获取新数据...');
+    console.log('Getting new data from chain...');
     web3.eth.subscribe('newBlockHeaders', newBlock);
 }, 5000);

@@ -16,6 +16,10 @@
         "destination": "/flap.html"
       },
       {
+        "source": "/flop",
+        "destination": "/flop.html"
+      },
+      {
         "source": "/flip/eth",
         "destination": "/flip_eth.html"
       },

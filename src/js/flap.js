@@ -690,12 +690,12 @@ var updateMedianizerPrice = function getOsmPrice(blockNumber) {
 };
 
 // Events types signatures to be processed
-var TEND = "0x4b43ed1200000000000000000000000000000000000000000000000000000000";
-var DEAL = "0xc959c42b00000000000000000000000000000000000000000000000000000000";
-var TICK = "0xfc7b6aee00000000000000000000000000000000000000000000000000000000";
-var FILE = "0x29ae811400000000000000000000000000000000000000000000000000000000";
-var DENY = "0x9c52a7f100000000000000000000000000000000000000000000000000000000";
-var RELY = "0x65fae35e00000000000000000000000000000000000000000000000000000000";
+const TEND = "0x4b43ed1200000000000000000000000000000000000000000000000000000000";
+const DEAL = "0xc959c42b00000000000000000000000000000000000000000000000000000000";
+const TICK = "0xfc7b6aee00000000000000000000000000000000000000000000000000000000";
+const FILE = "0x29ae811400000000000000000000000000000000000000000000000000000000";
+const DENY = "0x9c52a7f100000000000000000000000000000000000000000000000000000000";
+const RELY = "0x65fae35e00000000000000000000000000000000000000000000000000000000";
 
 // Variable to summarize by ID all auctions currently registered
 var auctions = {};
@@ -785,7 +785,7 @@ var showEvents = async function showEvents(someID) {
             let lot = parseInt(event.raw.topics[3], 16) / 10 ** 27 / 10 ** 18;
             values += "lot: " + lot.toFixed(2) + " dai | ";
 
-            let raw = event.raw.data.slice(289, -248);
+            let raw = event.raw.data.slice(288, -248);
             let bid = parseInt(raw, 16) / 10 ** 18;
             values += "bid: " + bid.toFixed(3) + " mkr | ";
 
@@ -973,6 +973,11 @@ function hideFilterSearch() {
     }
 }
 
+function hideEmptyMessage() {
+    let noResultsTag = document.getElementById("no-results");
+    noResultsTag.style.display = "none";
+}
+
 function showEmptyMessage() {
     let filterPanel = document.getElementById("filter-panel");
 
@@ -1046,6 +1051,7 @@ async function loadAllHistory() {
     }
 
     hideFilterSearch();
+    hideEmptyMessage();
     events = [];
     auctions = {};
     eventsLoaded = false;
