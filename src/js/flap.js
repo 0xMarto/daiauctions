@@ -848,6 +848,7 @@ var showEvents = async function showEvents(someID) {
             values += "ID: <b>" + flapId + "</b> | ";
             values += "Time extended! | ";
         } else if (event.raw.topics[0] === FILE) {
+            auctions[0] = {id: 0, type: "FILE"};
             eventType = "FILE";
             const BEG = "0x6265670000000000000000000000000000000000000000000000000000000000";
             const TAU = "0x7461750000000000000000000000000000000000000000000000000000000000";

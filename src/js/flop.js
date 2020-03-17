@@ -839,7 +839,7 @@ async function updateGlobals() {
 
     vowContract.methods.dump().call().then(function (value) {
         let dump = Math.round((value  / 10 ** 18) * 10) / 10;
-        globalsPanel.find('#dump').text(dump.toLocaleString('en'));
+        globalsPanel.find('#dump').text(dump.toFixed(2));
     });
 
     flopContract.methods.beg().call().then(function (value) {

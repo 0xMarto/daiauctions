@@ -20,10 +20,6 @@
         "destination": "/flop.html"
       },
       {
-        "source": "/flip/eth",
-        "destination": "/flip_eth.html"
-      },
-      {
         "source": "/zh/flip/bat",
         "destination": "/zh/flip_bat.html"
       },
@@ -47,6 +43,15 @@
           {
             "key": "Cache-Control",
             "value": "max-age=14400"
+          }
+        ]
+      },
+      {
+        "source": "**/*.@(min.js|min.css)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=28800"
           }
         ]
       }
