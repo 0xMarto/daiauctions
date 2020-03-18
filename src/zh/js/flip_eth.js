@@ -1268,7 +1268,7 @@ var showEvents = async function showEvents(someID) {
 var lastBlockfetch = 0;
 var fetchAuctions = async function fetchAuctions(someID) {
     lastBlockfetch = await web3.eth.getBlockNumber();
-    let fromBlock = lastBlockfetch - 2261; // -> 3.14 / 8 days blocks count
+    let fromBlock = lastBlockfetch - 18095; // -> 3.14 days blocks count
     await getFlipEvents(fromBlock);
     await showEvents(someID);
 };
