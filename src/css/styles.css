@@ -86,7 +86,7 @@ h1 {
 .row {
     margin: 5px;
     padding: 15px;
-    background-color: #cac9c83d;
+    background-color: #f2f2f2;
     border-left: 2px dashed black;
     border-right: 2px dashed black;
 }
@@ -114,11 +114,27 @@ h1 {
     background-color: #bae0dc;
 }
 
+.row .detail-btn {
+    margin: 2px;
+    cursor: pointer;
+}
+
 #auction-details {
-    width: 300px;
-    height: 400px;
+    position: fixed;
+    top: 460px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px 20px;
     border: 1px solid black;
-    background-color: #fcd375;
+    background-color: white;
+    font-size: 15px;
+    display: none;
+}
+
+#auction-details a{
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
 }
 
 .made-by {
