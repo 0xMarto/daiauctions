@@ -32,6 +32,10 @@
         "destination": "/zh/flip_eth.html"
       },
       {
+        "source": "/flip/eth/black-thursday",
+        "destination": "/special/flip_eth_12_03_2020.html"
+      },
+      {
         "source": "**",
         "destination": "/flip_eth.html"
       }
