@@ -795,9 +795,10 @@ var showEvents = async function showEvents(someID) {
 
             // Register TEND over Auction dictionary
             auctions[flapId]["tends"] += 1;
-            auctions[flapId]["bid"] = bid.toFixed(4);
+            auctions[flapId]["bid"] = bid;
+            auctions[flapId]["bidDate"] = blockDate.toUTCString().slice(5);
             auctions[flapId]["bidPrice"] = medianizerPrice.toString();
-            auctions[flapId]["lot"] = lot.toFixed(4);
+            auctions[flapId]["lot"] = lot;
             auctions[flapId]["paidPrice"] = (lot / bid).toFixed(2);
 
             if (medianizerPrice > 0) {
@@ -896,7 +897,7 @@ var showEvents = async function showEvents(someID) {
         await web3.eth.getTransaction(event.transactionHash).then(function (tx) {
             let from = tx.from.slice(0, 6) + "..." + tx.from.slice(-4);
             if (auctions[flapId]) {
-                if (eventType === "DENT") {
+                if (eventType === "TEND") {
                     auctions[flapId]["bidFrom"] = tx.from;
                 }
                 auctions[flapId]["txFrom"] = tx.from;
@@ -1030,19 +1031,19 @@ function showAuctionDetails(id){
     msg += `- LOT: ${auction.kickLot.toLocaleString('en')} dai - BID: ${auction.bid.toLocaleString('en')} mkr <br/>`;
     msg += `- MKR MEDIANIZER: $${auction.kickPrice} mkr/dai <br/><br/>`;
 
-    msg += `Bids received: ${auction.tends} <br/><br/>`;
+    msg += `Bids received: ${auction.tends + auction.dents} <br/><br/>`;
 
     msg += 'Last Bid:<br/>';
-    msg += `- DATE: ${auction.kickDate} <br/>`;
+    msg += `- DATE: ${auction.bidDate} <br/>`;
     msg += `- FROM: ${auction.bidFrom} <br/>`;
     msg += `- LOT: ${auction.lot.toLocaleString('en')} dai - BID: ${auction.bid.toLocaleString('en')} mkr <br/>`;
-    msg += `- PAID PRICE: $${auction.paidPrice} mkr/dai <br/>`;
+    msg += `- TOOK RATE: $${auction.paidPrice} mkr/dai <br/>`;
     msg += `- MKR MEDIANIZER: $${auction.bidPrice} mkr/dai <br/><br/>`;
 
     msg += 'Ended: <br/>';
     msg += `- DATE: ${auction.dealDate} <br/>`;
     msg += `- FROM: ${auction.txFrom} <br/>`;
-    msg += `- PAID PRICE: $${auction.paidPrice} mkr/dai <br/>`;
+    msg += `- TOOK RATE: $${auction.paidPrice} mkr/dai <br/>`;
     msg += `- MKR MEDIANIZER: $${auction.dealPrice} mkr/dai <br/><br/>`;
 
 

@@ -808,15 +808,16 @@ var showEvents = async function showEvents(someID) {
             auctions[flipId] = {
                 id: flipId,
                 kickDate: blockDate.toUTCString().slice(5),
-                kickDay: blockDate.getUTCDate(),
-                kickMonth: blockDate.getUTCMonth() + 1,
                 kickPrice: osmPrice.toString(),
-                kickLot: lot.toFixed(5),
+                kickLot: lot,
                 tends: 0,
                 dents: 0,
                 bid: null,
+                bidFrom: null,
+                bidDate: null,
+                bidPrice: null,
                 lot: null,
-                tab: tab.toFixed(5),
+                tab: tab,
                 guy: null,
                 dealPrice: null,
                 paidPrice: null,
@@ -851,9 +852,10 @@ var showEvents = async function showEvents(someID) {
 
             // Register TEND over Auction dictionary
             auctions[flipId]["tends"] += 1;
-            auctions[flipId]["bid"] = bid.toFixed(5);
+            auctions[flipId]["bid"] = bid;
+            auctions[flipId]["bidDate"] = blockDate.toUTCString().slice(5);
             auctions[flipId]["bidPrice"] = osmPrice.toString();
-            auctions[flipId]["lot"] = lot.toFixed(5);
+            auctions[flipId]["lot"] = lot;
             auctions[flipId]["paidPrice"] = (bid / lot).toFixed(4);
 
             if (osmPrice > 0) {
@@ -891,9 +893,10 @@ var showEvents = async function showEvents(someID) {
 
             // Register DENT over Auction dictionary
             auctions[flipId]["dents"] += 1;
-            auctions[flipId]["bid"] = bid.toFixed(5);
+            auctions[flipId]["bid"] = bid;
+            auctions[flipId]["bidDate"] = blockDate.toUTCString().slice(5);
             auctions[flipId]["bidPrice"] = osmPrice.toString();
-            auctions[flipId]["lot"] = lot.toFixed(5);
+            auctions[flipId]["lot"] = lot;
             auctions[flipId]["paidPrice"] = (bid / lot).toFixed(4);
 
             if (osmPrice > 0) {
@@ -933,9 +936,11 @@ var showEvents = async function showEvents(someID) {
                 values += "Paid Rate: $" + auctions[flipId]["paidPrice"] + " dai/bat ";
                 let diff = ((auctions[flipId]["paidPrice"] / auctions[flipId]["dealPrice"]) - 1) * 100;
                 if (diff > 0) {
-                    values += "(+" + diff.toFixed(2) + "%) ~ <b>Lost</b> | ";
+                    values += "(+" + diff.toFixed(2) + "%) ~ ";
+                    values += `<b class='detail-btn' onclick='showAuctionDetails(${flipId})'>Lost 📋</b> | `
                 } else {
-                    values += "(" + diff.toFixed(2) + "%) ~ <b>Won!</b> | ";
+                    values += "(" + diff.toFixed(2) + "%) ~ ";
+                    values += `<b class='detail-btn' onclick='showAuctionDetails(${flipId})'>Won! 📋</b> | `
                 }
                 values += "Price: $" + auctions[flipId]["dealPrice"] + " | ";
             }
@@ -986,15 +991,17 @@ var showEvents = async function showEvents(someID) {
         }
 
         // Get event tx info
-        // Get event tx info
         await web3.eth.getTransaction(event.transactionHash).then(function (tx) {
             let from = tx.from.slice(0, 6) + "..." + tx.from.slice(-4);
+            if (auctions[flipId]) {
+                if (eventType === "DENT" || eventType === "TEND") {
+                    auctions[flipId]["bidFrom"] = tx.from;
+                }
+                auctions[flipId]["txFrom"] = tx.from;
+            }
             let txHref = `https://etherscan.io/tx/${event.transactionHash}`;
             let txLink = `<a target="_blank" href="${txHref}">Tx:..${event.transactionHash.slice(-3)} Info</a>`;
             values += `from: ${from} | ${txLink} >>`;
-            if (auctions[flipId]) {
-                auctions[flipId]["guy"] = from;
-            }
         });
 
         // Get old page and Render new line in app
@@ -1089,6 +1096,64 @@ function filterAuctionById() {
         $(".flip-" + flipId).show()
     } else {
         allRows.show();
+    }
+}
+
+function showAuctionDetails(id){
+    let auction = auctions[id];
+    if (!auction){
+        alert('Error showing auction details');
+        return;
+    }
+
+    let detailPanel = $('#auction-details');
+    if (detailPanel) {
+        detailPanel.hide();
+    }
+
+    let msg = `> <b>AUCTION ID: ${id}</b>`;
+    msg += '<hr/>';
+
+    msg += 'Started: <br/>';
+    msg += `- DATE: ${auction.kickDate} <br/>`;
+    msg += `- LOT: ${auction.kickLot.toLocaleString('en')} bat - BID: ${auction.bid.toLocaleString('en')} dai <br/>`;
+    msg += `- BAT OSM: $${auction.kickPrice} bat/dai <br/><br/>`;
+
+    msg += `Bids received: ${auction.tends + auction.dents} <br/><br/>`;
+
+    msg += 'Last Bid:<br/>';
+    msg += `- DATE: ${auction.bidDate} <br/>`;
+    msg += `- FROM: ${auction.bidFrom} <br/>`;
+    msg += `- LOT: ${auction.lot.toLocaleString('en')} bat - BID: ${auction.bid.toLocaleString('en')} dai <br/>`;
+    msg += `- PAID PRICE: $${auction.paidPrice} bat/dai <br/>`;
+    msg += `- BAT OSM: $${auction.bidPrice} bat/dai <br/><br/>`;
+
+    msg += 'Ended: <br/>';
+    msg += `- DATE: ${auction.dealDate} <br/>`;
+    msg += `- FROM: ${auction.txFrom} <br/>`;
+    msg += `- PAID PRICE: $${auction.paidPrice} bat/dai <br/>`;
+    msg += `- BAT OSM: $${auction.dealPrice} bat/dai <br/><br/>`;
+
+
+    msg += 'Results: <br/>';
+    let priceDiff = ((auction["paidPrice"] / auction["dealPrice"]) - 1) * 100;
+    msg += `- PRICE DIFF: ${priceDiff.toFixed(2)}% <br/>`;
+    let daiProfit =  (auction.lot * auction.dealPrice) - auction.bid;
+    msg += `- PROFIT: <b>${daiProfit.toLocaleString('en')} dai</b>`;
+
+    msg += '<hr/>';
+    msg += '<a style="float: right;" onclick="hideAuctionDetails()">CLOSE<a/>';
+
+    if (detailPanel) {
+        detailPanel.html(msg);
+        detailPanel.fadeIn('normal');
+    }
+}
+
+function hideAuctionDetails() {
+    let detailPanel = $('#auction-details');
+    if (detailPanel) {
+        detailPanel.fadeOut('normal');
     }
 }
 

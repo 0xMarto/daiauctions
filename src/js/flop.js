@@ -600,11 +600,12 @@ var showEvents = async function showEvents(someID) {
             medianizerPrice = 0;
             await updateMedianizerPrice(event.blockNumber);
 
-            // Register TEND over Auction dictionary
+            // Register DENT over Auction dictionary
             auctions[flapId]["dents"] += 1;
-            auctions[flapId]["bid"] = bid.toFixed(4);
+            auctions[flapId]["bid"] = bid;
+            auctions[flapId]["bidDate"] = blockDate.toUTCString().slice(5);
             auctions[flapId]["bidPrice"] = medianizerPrice.toString();
-            auctions[flapId]["lot"] = lot.toFixed(4);
+            auctions[flapId]["lot"] = lot;
             auctions[flapId]["paidPrice"] = (bid / lot).toFixed(2);
 
             if (medianizerPrice > 0) {
@@ -830,6 +831,11 @@ function showAuctionDetails(id){
         return;
     }
 
+    let detailPanel = $('#auction-details');
+    if (detailPanel) {
+        detailPanel.hide();
+    }
+
     let msg = `> <b>AUCTION ID: ${id}</b>`;
     msg += '<hr/>';
 
@@ -841,9 +847,9 @@ function showAuctionDetails(id){
     msg += `Bids received: ${auction.dents} <br/><br/>`;
 
     msg += 'Last Bid:<br/>';
-    msg += `- DATE: ${auction.kickDate} <br/>`;
+    msg += `- DATE: ${auction.bidDate} <br/>`;
     msg += `- FROM: ${auction.bidFrom} <br/>`;
-    msg += `- LOT: ${auction.lot} mkr - BID: ${auction.bid} dai <br/>`;
+    msg += `- LOT: ${auction.lot.toLocaleString('en')} mkr - BID: ${auction.bid.toLocaleString('en')} dai <br/>`;
     msg += `- PAID PRICE: $${auction.paidPrice} mkr/dai <br/>`;
     msg += `- MKR MEDIANIZER: $${auction.bidPrice} mkr/dai <br/><br/>`;
 
@@ -863,7 +869,6 @@ function showAuctionDetails(id){
     msg += '<hr/>';
     msg += '<a style="float: right;" onclick="hideAuctionDetails()">CLOSE<a/>';
 
-    let detailPanel = $('#auction-details');
     if (detailPanel) {
         detailPanel.html(msg);
         detailPanel.fadeIn('normal');
