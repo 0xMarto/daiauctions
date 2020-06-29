@@ -675,10 +675,10 @@ const OSM_ABI = [{
 }];
 const CAT_ABI = [{"inputs":[{"internalType":"address","name":"vat_","type":"address"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"ilk","type":"bytes32"},{"indexed":true,"internalType":"address","name":"urn","type":"address"},{"indexed":false,"internalType":"uint256","name":"ink","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"art","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"tab","type":"uint256"},{"indexed":false,"internalType":"address","name":"flip","type":"address"},{"indexed":false,"internalType":"uint256","name":"id","type":"uint256"}],"name":"Bite","type":"event"},{"anonymous":true,"inputs":[{"indexed":true,"internalType":"bytes4","name":"sig","type":"bytes4"},{"indexed":true,"internalType":"address","name":"usr","type":"address"},{"indexed":true,"internalType":"bytes32","name":"arg1","type":"bytes32"},{"indexed":true,"internalType":"bytes32","name":"arg2","type":"bytes32"},{"indexed":false,"internalType":"bytes","name":"data","type":"bytes"}],"name":"LogNote","type":"event"},{"constant":false,"inputs":[{"internalType":"bytes32","name":"ilk","type":"bytes32"},{"internalType":"address","name":"urn","type":"address"}],"name":"bite","outputs":[{"internalType":"uint256","name":"id","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"cage","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"usr","type":"address"}],"name":"deny","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"bytes32","name":"ilk","type":"bytes32"},{"internalType":"bytes32","name":"what","type":"bytes32"},{"internalType":"uint256","name":"data","type":"uint256"}],"name":"file","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"bytes32","name":"what","type":"bytes32"},{"internalType":"address","name":"data","type":"address"}],"name":"file","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"bytes32","name":"ilk","type":"bytes32"},{"internalType":"bytes32","name":"what","type":"bytes32"},{"internalType":"address","name":"flip","type":"address"}],"name":"file","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"name":"ilks","outputs":[{"internalType":"address","name":"flip","type":"address"},{"internalType":"uint256","name":"chop","type":"uint256"},{"internalType":"uint256","name":"lump","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"live","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"usr","type":"address"}],"name":"rely","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"vat","outputs":[{"internalType":"contract VatLike","name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"vow","outputs":[{"internalType":"contract VowLike","name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"wards","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"}];
 
-const ETH_FLIP_ADDRESS = "0xd8a04f5412223f513dc55f839574430f5ec15531";
-const OSM_ADDRESS = "0x81FE72B5A8d1A857d176C3E7d5Bd2679A9B85763";
+const FLIP_ADDRESS = "0xAbBCB9Ae89cDD3C27E02D279480C7fF33083249b";
+const OSM_ADDRESS = "0xf36B79BD4C0904A5F350F1e4f776B81208c13069";
 const CAT_ADDRESS = "0x78F2c2AF65126834c51822F56Be0d7469D7A523E";
-const FLIP_ILK = "0x4554482d41000000000000000000000000000000000000000000000000000000";
+const FLIP_ILK = "0x4b4e432d41000000000000000000000000000000000000000000000000000000";
 
 var web3;
 var usingRemoteProvider = true;
@@ -695,14 +695,14 @@ if (typeof window.ethereum !== 'undefined' && window.ethereum.networkVersion &&
     }
 }
 if (usingRemoteProvider) {
-    var infura = "wss://mainnet.infura.io/ws/v3/cabe301d837048959747eaa4415846b7";
+    var infura = "wss://mainnet.infura.io/ws/v3/f77d1e38219b45d4b4965a1c247c1aff";
     var provider = new Web3.providers.WebsocketProvider(infura);
     web3 = new Web3(provider);
     console.log("Using remote web3 provider");
 }
 
 // Get instance of contracts
-const flipContract = new web3.eth.Contract(FLIPPER_ABI, ETH_FLIP_ADDRESS);
+const flipContract = new web3.eth.Contract(FLIPPER_ABI, FLIP_ADDRESS);
 const osmContract = new web3.eth.Contract(OSM_ABI, OSM_ADDRESS);
 const catContract = new web3.eth.Contract(CAT_ABI, CAT_ADDRESS);
 
@@ -739,7 +739,7 @@ var getOsmPrice = function getOsmPrice(blockNumber) {
                 }
                 var priceInWei = web3.utils.toBN(logEvent.returnValues[0]);
                 var price = web3.utils.fromWei(priceInWei);
-                osmPrice = parseFloat(price).toFixed(2);
+                osmPrice = parseFloat(price).toFixed(4);
                 return price;
             } else {
                 console.log(err);
@@ -796,7 +796,7 @@ var showEvents = async function showEvents(someID) {
             values += "ID: <b>" + flipId + "</b> | ";
 
             let lot = event.returnValues.lot / 10 ** 18;
-            values += "lot: " + lot.toFixed(3) + " eth | ";
+            values += "lot: " + lot.toFixed(3) + " zrx | ";
 
             let tab = event.returnValues.tab / 10 ** 27 / 10 ** 18;
             values += "tab: " + tab.toFixed(3) + " dai | ";
@@ -841,7 +841,7 @@ var showEvents = async function showEvents(someID) {
             values += "ID: <b>" + flipId + "</b> | ";
 
             let lot = parseInt(event.raw.topics[3], 16) / 10 ** 18;
-            values += "lot: " + lot.toFixed(3) + " eth | ";
+            values += "lot: " + lot.toFixed(3) + " zrx | ";
 
             let raw = event.raw.data.slice(288, -248);
             let bid = parseInt(raw, 16) / 10 ** 27 / 10 ** 18;
@@ -856,7 +856,7 @@ var showEvents = async function showEvents(someID) {
             auctions[flipId]["bidDate"] = blockDate.toUTCString().slice(5);
             auctions[flipId]["bidPrice"] = osmPrice.toString();
             auctions[flipId]["lot"] = lot;
-            auctions[flipId]["paidPrice"] = (bid / lot).toFixed(2);
+            auctions[flipId]["paidPrice"] = (bid / lot).toFixed(4);
 
             if (osmPrice > 0) {
                 // Calculate diff percentage
@@ -882,7 +882,7 @@ var showEvents = async function showEvents(someID) {
             values += "ID: <b>" + flipId + "</b> | ";
 
             let lot = parseInt(event.raw.topics[3], 16) / 10 ** 18;
-            values += "lot: " + lot.toFixed(3) + " eth | ";
+            values += "lot: " + lot.toFixed(3) + " zrx | ";
 
             let raw = event.raw.data.slice(288, -248);
             let bid = parseInt(raw, 16) / 10 ** 27 / 10 ** 18;
@@ -897,7 +897,7 @@ var showEvents = async function showEvents(someID) {
             auctions[flipId]["bidDate"] = blockDate.toUTCString().slice(5);
             auctions[flipId]["bidPrice"] = osmPrice.toString();
             auctions[flipId]["lot"] = lot;
-            auctions[flipId]["paidPrice"] = (bid / lot).toFixed(2);
+            auctions[flipId]["paidPrice"] = (bid / lot).toFixed(4);
 
             if (osmPrice > 0) {
                 // Calculate diff percentage
@@ -926,15 +926,14 @@ var showEvents = async function showEvents(someID) {
             await getOsmPrice(event.blockNumber);
 
             // Register DEAL over Auction dictionary
-            auctions[flipId]["dealDate"] = blockDate.toUTCString().slice(5);
             auctions[flipId]["dealPrice"] = osmPrice.toString();
             auctions[flipId]["state"] = "CLOSE";
 
             if (!osmPrice) {
-                values += "Paid Rate: $" + auctions[flipId]["paidPrice"] + " dai/eth (+-.--%) | ";
+                values += "Paid Rate: $" + auctions[flipId]["paidPrice"] + " dai/zrx (+-.--%) | ";
                 values += "--,-- % | Price: $---,-- | ";
             } else {
-                values += "Paid Rate: $" + auctions[flipId]["paidPrice"] + " dai/eth ";
+                values += "Paid Rate: $" + auctions[flipId]["paidPrice"] + " dai/zrx ";
                 let diff = ((auctions[flipId]["paidPrice"] / auctions[flipId]["dealPrice"]) - 1) * 100;
                 if (diff > 0) {
                     values += "(+" + diff.toFixed(2) + "%) ~ ";
@@ -950,7 +949,7 @@ var showEvents = async function showEvents(someID) {
             flipId = parseInt(event.raw.topics[2], 16);
             values += "ID: <b>" + flipId + "</b> | ";
             values += "Time extended! | ";
-        } else if (event.raw.topics[0] === FILE) {
+        }  else if (event.raw.topics[0] === FILE) {
             auctions[0] = {id: 0, type: "FILE"};
             eventType = "FILE";
             const BEG = "0x6265670000000000000000000000000000000000000000000000000000000000";
@@ -975,7 +974,7 @@ var showEvents = async function showEvents(someID) {
                 values += "WHAT: <b>UKNOWN</b> | ";
                 console.log(event.raw.topics);
             }
-            values += "New Flipper Update! | ";
+            values += "New Flapper Update! | ";
         } else if (event.raw.topics[0] === RELY) {
             eventType = "RELY";
             values += "WHAT: <b>Allow to call auth'ed methods --</b> | ";
@@ -1037,15 +1036,11 @@ var fetchAuctions = async function fetchAuctions(someID) {
 // New block event handler
 async function newBlock(error, result) {
     if (result) {
-        // Avoid running the some events are currently being processed
+        let newBlockNumber = result.number;
         if (!eventsLoaded) return;
-
-        // Update async globals
-        updateGlobals();
 
         // Clear events and fetch new ones
         eventsLoaded = false;
-        let newBlockNumber = result.number;
         await getFlipEvents(newBlockNumber);
         await showEvents(0);
     } else {
@@ -1121,23 +1116,23 @@ function showAuctionDetails(id){
 
     msg += 'Started: <br/>';
     msg += `- DATE: ${auction.kickDate} <br/>`;
-    msg += `- LOT: ${auction.kickLot.toLocaleString('en')} eth - BID: ${auction.bid.toLocaleString('en')} dai <br/>`;
-    msg += `- ETH OSM: $${auction.kickPrice} eth/dai <br/><br/>`;
+    msg += `- LOT: ${auction.kickLot.toLocaleString('en')} zrx - BID: ${auction.bid.toLocaleString('en')} dai <br/>`;
+    msg += `- ZRX OSM: $${auction.kickPrice} zrx/dai <br/><br/>`;
 
     msg += `Bids received: ${auction.tends + auction.dents} <br/><br/>`;
 
     msg += 'Last Bid:<br/>';
     msg += `- DATE: ${auction.bidDate} <br/>`;
     msg += `- FROM: ${auction.bidFrom} <br/>`;
-    msg += `- LOT: ${auction.lot.toLocaleString('en')} eth - BID: ${auction.bid.toLocaleString('en')} dai <br/>`;
-    msg += `- PAID PRICE: $${auction.paidPrice} eth/dai <br/>`;
-    msg += `- ETH OSM: $${auction.bidPrice} eth/dai <br/><br/>`;
+    msg += `- LOT: ${auction.lot.toLocaleString('en')} zrx - BID: ${auction.bid.toLocaleString('en')} dai <br/>`;
+    msg += `- PAID PRICE: $${auction.paidPrice} zrx/dai <br/>`;
+    msg += `- ZRX OSM: $${auction.bidPrice} zrx/dai <br/><br/>`;
 
     msg += 'Ended: <br/>';
     msg += `- DATE: ${auction.dealDate} <br/>`;
     msg += `- FROM: ${auction.txFrom} <br/>`;
-    msg += `- PAID PRICE: $${auction.paidPrice} eth/dai <br/>`;
-    msg += `- ETH OSM: $${auction.dealPrice} eth/dai <br/><br/>`;
+    msg += `- PAID PRICE: $${auction.paidPrice} zrx/dai <br/>`;
+    msg += `- ZRX OSM: $${auction.dealPrice} zrx/dai <br/><br/>`;
 
 
     msg += 'Results: <br/>';
@@ -1168,7 +1163,7 @@ async function updateGlobals() {
     catContract.methods.ilks(FLIP_ILK).call().then(function (value) {
         let lump = parseInt(value['lump']) / 10 ** 18;
         let chop = ((parseInt(value['chop']) / 10 ** 27) - 1) * 100;
-        globalsPanel.find('#lump').text(lump.toFixed(2));
+        globalsPanel.find('#lump').text(lump.toLocaleString('en'));
         globalsPanel.find('#chop').text(chop.toFixed(2));
     });
 

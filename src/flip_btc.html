@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="author" content="Marto"/>
     <meta name="version" content="1.6.1"/>
-    <title>Dai Auctions | Flap</title>
+    <title>Dai Auctions | Flip | BTC</title>
     <meta name="description" content="The place to see all MakerDao Auctions. Welcome to the open blockchains.">
     <meta name="keywords" content="makerdao dai eth bat btc knc zrx auction flip flap flop">
 
@@ -14,17 +14,17 @@
 
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@martinlsanchez">
-    <meta name="twitter:title" content="Dai Auctions | Flap">
+    <meta name="twitter:title" content="Dai Auctions | Flip - BTC">
     <meta name="twitter:description" content="The place to see all MakerDao Auctions. Welcome to the open blockchains.">
     <meta name="twitter:creator" content="@martinlsanchez">
     <meta name="twitter:image" content="https://daiauctions.com/img/dai-share.png">
 
-    <meta property="og:title" content="Dai Auctions | Flap"/>
+    <meta property="og:title" content="Dai Auctions | Flip - BTC"/>
     <meta property="og:type" content="website"/>
-    <meta property="og:url" content="https://daiauctions.com/flap"/>
+    <meta property="og:url" content="https://daiauctions.com/flip/btc"/>
     <meta property="og:image" content="https://daiauctions.com/img/dai-share.png"/>
     <meta property="og:description" content="The place to see all MakerDao Auctions. Welcome to the open blockchains."/>
-    <meta property="og:site_name" content="Dai Auctions | Flap"/>
+    <meta property="og:site_name" content="Dai Auctions | Flip - BTC"/>
 
     <link rel="icon" type="icon" href="/img/favicon.ico"/>
     <link rel="stylesheet" href="/css/styles_min.css" media="all"/>
@@ -32,23 +32,23 @@
 <body>
 <h1>
     <a href="/"><img alt="dai logo" width="50" src="/img/dai-logo.png"/></a>
-    MCD Surplus Auctions
+    MCD Collateral Auctions
 </h1>
-<div id="languages">
-    <a href="/zh/flap">中文</a>
-</div>
+<!--<div id="languages">-->
+<!--    <a href="/zh/flip/eth">中文</a>-->
+<!--</div>-->
 <div id="globals">
-    <div style="display: none;" class="box" title="Price of official Maker MKR feeds">
-        <b id="mkr">$---,--</b><br/>
-        <span>MKR Price [dai]</span>
+    <div class="box" title="Price of official Maker ETH OSM">
+        <b id="osm-btc">$---.--</b><br/>
+        <span>OSM BTC Price [dai]</span>
     </div>
-    <div class="box" title="Surplus Available to start a flap auction">
-        <b id="available">--,---.--</b><br/>
-        <span>Surplus Available [dai]</span>
+    <div class="box" title="Vaults liquidation Debt penalty">
+        <b id="chop">--.-</b><br/>
+        <span>CHOP [%]</span>
     </div>
-    <div class="box" title="Fixed LOT size">
-        <b id="bump">--,---</b><br/>
-        <span>BUMP [dai]</span>
+    <div class="box" title="Maximum LOT size">
+        <b id="lump">--.--</b><br/>
+        <span>LUMP [btc]</span>
     </div>
     <div class="box" title="Minimum bid increase">
         <b id="beg">-.--</b><br/>
@@ -64,7 +64,7 @@
     </div>
     <div class="box" title="Detailed Flap auction glossary link">
         <b id="glossary">
-            <a target="_blank" href="https://docs.makerdao.com/smart-contract-modules/system-stabilizer-module/flap-detailed-documentation#flapper-glossary">Flapper</a>
+            <a target="_blank" href="https://docs.makerdao.com/smart-contract-modules/collateral-module/flipper-detailed-documentation">Flipper</a>
         </b><br/>
         <span>[glossary]</span>
     </div>
@@ -78,14 +78,14 @@
     <span id="no-results">There were NO auctions found in the last days</span>
     <i id="last-update"></i>
     <div class="links-panel">
-        <span style="font-weight: normal;">FLIP [</span>
+        <b>FLIP [</b>
         <a href="/flip" title="ETH Auctions with DAI">ETH</a> /
-        <a href="/flip/btc" title="WBTC Auctions with DAI">WBTC</a> /
+        <a href="#" class="active" title="WBTC Auctions with DAI">WBTC</a> /
         <a href="/flip/bat" title="BAT Auctions with DAI">BAT</a> /
         <a href="/flip/knc" title="KNC Auctions with DAI">KNC</a> /
         <a href="/flip/zrx" title="ZRX Auctions with DAI">ZRX</a>
-        <span style="font-weight: normal;">]</span> |
-        <a href="#" class="active" title="DAI Auctions with MKR">FLAP [DAI]</a> |
+        <b>]</b> |
+        <a href="/flap" title="DAI Auctions with MKR">FLAP [DAI]</a> |
         <a href="/flop" title="MKR Auctions with DAI">FLOP [MKR]</a>
     </div>
 </div>
@@ -95,13 +95,11 @@
 </div>
 <div id="info">
     <p>
-        All data from last 3.14 days |
-        Maybe try to <a href="#" onclick="loadAllHistory()">load all history</a> if you are curious 😁
-    </p>
-    <p>
-        More about <a target="_blank" href="https://makerdao.com">MakerDao</a> Auctions in this amazing
-        <a href="https://docs.makerdao.com/smart-contract-modules/system-stabilizer-module/flap-detailed-documentation"
-           target="_blank">Flapper Docs</a>
+        All data from last (2 * 3.14) days |
+        More info about <a target="_blank" href="https://makerdao.com">MakerDao</a>
+        Auctions in this amazing
+        <a href="https://docs.makerdao.com/smart-contract-modules/collateral-module/flipper-detailed-documentation"
+           target="_blank">Flipper Docs</a>
     </p>
 </div>
 <p class="made-by">
@@ -132,6 +130,6 @@
 </p>
 <script src="/js/web3.min.js"></script>
 <script src="/js/jquery.min.js"></script>
-<script src="/js/flap_min.js"></script>
+<script src="/js/flip_btc_min.js"></script>
 </body>
 </html>

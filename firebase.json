@@ -8,8 +8,20 @@
     ],
     "rewrites": [
       {
+        "source": "/flip/zrx",
+        "destination": "/flip_zrx.html"
+      },
+      {
+        "source": "/flip/knc",
+        "destination": "/flip_knc.html"
+      },
+      {
         "source": "/flip/bat",
         "destination": "/flip_bat.html"
+      },
+      {
+        "source": "/flip/btc",
+        "destination": "/flip_btc.html"
       },
       {
         "source": "/flap",
