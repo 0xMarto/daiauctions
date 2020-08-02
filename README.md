@@ -32,9 +32,17 @@ Welcome to the open blockchains.
 
 ## ✨ Features
 
-- Realtime tracking of MCD Flip (ETH-A) auctions
-- Realtime tracking of MCD Flip (BAT-A) auctions
-- Realtime tracking of MCD Flap (MKR) auctions
+1. Realtime tracking of MCD Collateral Auctions (Flips)
+    - ETH-A,
+    - WBTC-A
+    - BAT-A
+    - KNC-A
+    - ZRX-A
+    - MANA
+
+2. Realtime tracking of MCD Surplus DAI Auctions (Flaps)
+
+3. Realtime tracking of MCD Debt MKR Auctions (Flops)
 
 <br/>
  
@@ -50,16 +58,21 @@ Welcome to the open blockchains.
 
 ## 🤝 Contributing [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
-As Simple as it can be, **:-)**
+With code:
 
-No libs or anything needed, it's all code in HTML, CSS and JS so... 
-1. Just `fork/clone` this repo
-2. Edit any file (e.g. `flap_min.js`)
-3. Test it, opening the related `html` (e.g `flap.html`) locally in any browser
-4. Make a `PR`
+    As Simple as it can be, :-)
+    No libs or anything needed, it's all code in HTML, CSS and JS so... 
+    1. Just `fork/clone` this repo
+    2. Edit any file (e.g. `flap_min.js`)
+    3. Test it, opening the related `html` (e.g `flap.html`) locally in any browser
+    4. Make a `PR`
 
-Recomendations: use this [Minifier](https://www.minifier.org/) for `css` and `js` files.
+With support:
+    
+    Toss a coin to your witcher ➡‍ daiauctions.eth (0x2392C9d44F8D70D3874C8a74D28CB4c82412aCF7)
+
 
 <br/>
+
 
 ###### Made with love by <a target="_blank" href="https://twitter.com/martinlsanchez" class="author">Marto</a> (marto.eth)

@@ -20,6 +20,10 @@
         "destination": "/flip_bat.html"
       },
       {
+        "source": "/flip/mana",
+        "destination": "/flip_mana.html"
+      },
+      {
         "source": "/flip/btc",
         "destination": "/flip_btc.html"
       },
