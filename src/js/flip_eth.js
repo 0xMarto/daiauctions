@@ -1,5 +1,6 @@
 "use strict";
 
+// Main scripts constants
 const FLIPPER_ABI = [{
     inputs: [{
         internalType: "address",
@@ -359,324 +360,356 @@ const FLIPPER_ABI = [{
     stateMutability: "nonpayable",
     type: "function"
 }];
-const OSM_ABI = [{
-    inputs: [{
-        internalType: "address",
-        name: "src_",
-        type: "address"
-    }],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "constructor"
-}, {
-    anonymous: true,
-    inputs: [{
-        indexed: true,
-        internalType: "bytes4",
-        name: "sig",
-        type: "bytes4"
+const MEDIANIZER_ABI = [{
+        "anonymous": false,
+        "inputs": [{"indexed": false, "internalType": "uint256", "name": "val", "type": "uint256"}, {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "age",
+            "type": "uint256"
+        }],
+        "name": "LogMedianPrice",
+        "type": "event"
     }, {
-        indexed: true,
-        internalType: "address",
-        name: "usr",
-        type: "address"
+        "anonymous": true,
+        "inputs": [{"indexed": true, "internalType": "bytes4", "name": "sig", "type": "bytes4"}, {
+            "indexed": true,
+            "internalType": "address",
+            "name": "usr",
+            "type": "address"
+        }, {"indexed": true, "internalType": "bytes32", "name": "arg1", "type": "bytes32"}, {
+            "indexed": true,
+            "internalType": "bytes32",
+            "name": "arg2",
+            "type": "bytes32"
+        }, {"indexed": false, "internalType": "bytes", "name": "data", "type": "bytes"}],
+        "name": "LogNote",
+        "type": "event"
     }, {
-        indexed: true,
-        internalType: "bytes32",
-        name: "arg1",
-        type: "bytes32"
+        "constant": true,
+        "inputs": [],
+        "name": "age",
+        "outputs": [{"internalType": "uint32", "name": "", "type": "uint32"}],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
     }, {
-        indexed: true,
-        internalType: "bytes32",
-        name: "arg2",
-        type: "bytes32"
+        "constant": true,
+        "inputs": [],
+        "name": "bar",
+        "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
     }, {
-        indexed: false,
-        internalType: "bytes",
-        name: "data",
-        type: "bytes"
-    }],
-    name: "LogNote",
-    type: "event"
-}, {
-    anonymous: false,
-    inputs: [{
-        indexed: false,
-        internalType: "bytes32",
-        name: "val",
-        type: "bytes32"
-    }],
-    name: "LogValue",
-    type: "event"
-}, {
-    constant: true,
-    inputs: [{
-        internalType: "address",
-        name: "",
-        type: "address"
-    }],
-    name: "bud",
-    outputs: [{
-        internalType: "uint256",
-        name: "",
-        type: "uint256"
-    }],
-    payable: false,
-    stateMutability: "view",
-    type: "function"
-}, {
-    constant: false,
-    inputs: [{
-        internalType: "address",
-        name: "src_",
-        type: "address"
-    }],
-    name: "change",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    constant: false,
-    inputs: [{
-        internalType: "address",
-        name: "usr",
-        type: "address"
-    }],
-    name: "deny",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    constant: false,
-    inputs: [{
-        internalType: "address[]",
-        name: "a",
-        type: "address[]"
-    }],
-    name: "diss",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    constant: false,
-    inputs: [{
-        internalType: "address",
-        name: "a",
-        type: "address"
-    }],
-    name: "diss",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    constant: true,
-    inputs: [],
-    name: "hop",
-    outputs: [{
-        internalType: "uint16",
-        name: "",
-        type: "uint16"
-    }],
-    payable: false,
-    stateMutability: "view",
-    type: "function"
-}, {
-    constant: false,
-    inputs: [{
-        internalType: "address[]",
-        name: "a",
-        type: "address[]"
-    }],
-    name: "kiss",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    constant: false,
-    inputs: [{
-        internalType: "address",
-        name: "a",
-        type: "address"
-    }],
-    name: "kiss",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    constant: true,
-    inputs: [],
-    name: "pass",
-    outputs: [{
-        internalType: "bool",
-        name: "ok",
-        type: "bool"
-    }],
-    payable: false,
-    stateMutability: "view",
-    type: "function"
-}, {
-    constant: true,
-    inputs: [],
-    name: "peek",
-    outputs: [{
-        internalType: "bytes32",
-        name: "",
-        type: "bytes32"
+        "constant": true,
+        "inputs": [{"internalType": "address", "name": "", "type": "address"}],
+        "name": "bud",
+        "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
     }, {
-        internalType: "bool",
-        name: "",
-        type: "bool"
-    }],
-    payable: false,
-    stateMutability: "view",
-    type: "function"
-}, {
-    constant: true,
-    inputs: [],
-    name: "peep",
-    outputs: [{
-        internalType: "bytes32",
-        name: "",
-        type: "bytes32"
+        "constant": false,
+        "inputs": [{"internalType": "address", "name": "usr", "type": "address"}],
+        "name": "deny",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
     }, {
-        internalType: "bool",
-        name: "",
-        type: "bool"
+        "constant": false,
+        "inputs": [{"internalType": "address[]", "name": "a", "type": "address[]"}],
+        "name": "diss",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }, {
+        "constant": false,
+        "inputs": [{"internalType": "address", "name": "a", "type": "address"}],
+        "name": "diss",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }, {
+        "constant": false,
+        "inputs": [{"internalType": "address[]", "name": "a", "type": "address[]"}],
+        "name": "drop",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }, {
+        "constant": false,
+        "inputs": [{"internalType": "address[]", "name": "a", "type": "address[]"}],
+        "name": "kiss",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }, {
+        "constant": false,
+        "inputs": [{"internalType": "address", "name": "a", "type": "address"}],
+        "name": "kiss",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }, {
+        "constant": false,
+        "inputs": [{"internalType": "address[]", "name": "a", "type": "address[]"}],
+        "name": "lift",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }, {
+        "constant": true,
+        "inputs": [{"internalType": "address", "name": "", "type": "address"}],
+        "name": "orcl",
+        "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }, {
+        "constant": true,
+        "inputs": [],
+        "name": "peek",
+        "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}, {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+        }],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }, {
+        "constant": false,
+        "inputs": [{"internalType": "uint256[]", "name": "val_", "type": "uint256[]"}, {
+            "internalType": "uint256[]",
+            "name": "age_",
+            "type": "uint256[]"
+        }, {"internalType": "uint8[]", "name": "v", "type": "uint8[]"}, {
+            "internalType": "bytes32[]",
+            "name": "r",
+            "type": "bytes32[]"
+        }, {"internalType": "bytes32[]", "name": "s", "type": "bytes32[]"}],
+        "name": "poke",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }, {
+        "constant": true,
+        "inputs": [],
+        "name": "read",
+        "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }, {
+        "constant": false,
+        "inputs": [{"internalType": "address", "name": "usr", "type": "address"}],
+        "name": "rely",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }, {
+        "constant": false,
+        "inputs": [{"internalType": "uint256", "name": "bar_", "type": "uint256"}],
+        "name": "setBar",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }, {
+        "constant": true,
+        "inputs": [{"internalType": "uint8", "name": "", "type": "uint8"}],
+        "name": "slot",
+        "outputs": [{"internalType": "address", "name": "", "type": "address"}],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }, {
+        "constant": true,
+        "inputs": [{"internalType": "address", "name": "", "type": "address"}],
+        "name": "wards",
+        "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }, {
+        "constant": true,
+        "inputs": [],
+        "name": "wat",
+        "outputs": [{"internalType": "bytes32", "name": "", "type": "bytes32"}],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }];
+const CAT_ABI = [{
+    "inputs": [{"internalType": "address", "name": "vat_", "type": "address"}],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+}, {
+    "anonymous": false,
+    "inputs": [{"indexed": true, "internalType": "bytes32", "name": "ilk", "type": "bytes32"}, {
+        "indexed": true,
+        "internalType": "address",
+        "name": "urn",
+        "type": "address"
+    }, {"indexed": false, "internalType": "uint256", "name": "ink", "type": "uint256"}, {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "art",
+        "type": "uint256"
+    }, {"indexed": false, "internalType": "uint256", "name": "tab", "type": "uint256"}, {
+        "indexed": false,
+        "internalType": "address",
+        "name": "flip",
+        "type": "address"
+    }, {"indexed": false, "internalType": "uint256", "name": "id", "type": "uint256"}],
+    "name": "Bite",
+    "type": "event"
+}, {
+    "anonymous": true,
+    "inputs": [{"indexed": true, "internalType": "bytes4", "name": "sig", "type": "bytes4"}, {
+        "indexed": true,
+        "internalType": "address",
+        "name": "usr",
+        "type": "address"
+    }, {"indexed": true, "internalType": "bytes32", "name": "arg1", "type": "bytes32"}, {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "arg2",
+        "type": "bytes32"
+    }, {"indexed": false, "internalType": "bytes", "name": "data", "type": "bytes"}],
+    "name": "LogNote",
+    "type": "event"
+}, {
+    "constant": false,
+    "inputs": [{"internalType": "bytes32", "name": "ilk", "type": "bytes32"}, {
+        "internalType": "address",
+        "name": "urn",
+        "type": "address"
     }],
-    payable: false,
-    stateMutability: "view",
-    type: "function"
+    "name": "bite",
+    "outputs": [{"internalType": "uint256", "name": "id", "type": "uint256"}],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
 }, {
-    constant: false,
-    inputs: [],
-    name: "poke",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function"
+    "constant": false,
+    "inputs": [],
+    "name": "cage",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
 }, {
-    constant: true,
-    inputs: [],
-    name: "read",
-    outputs: [{
-        internalType: "bytes32",
-        name: "",
-        type: "bytes32"
+    "constant": false,
+    "inputs": [{"internalType": "address", "name": "usr", "type": "address"}],
+    "name": "deny",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+}, {
+    "constant": false,
+    "inputs": [{"internalType": "bytes32", "name": "ilk", "type": "bytes32"}, {
+        "internalType": "bytes32",
+        "name": "what",
+        "type": "bytes32"
+    }, {"internalType": "uint256", "name": "data", "type": "uint256"}],
+    "name": "file",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+}, {
+    "constant": false,
+    "inputs": [{"internalType": "bytes32", "name": "what", "type": "bytes32"}, {
+        "internalType": "address",
+        "name": "data",
+        "type": "address"
     }],
-    payable: false,
-    stateMutability: "view",
-    type: "function"
+    "name": "file",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
 }, {
-    constant: false,
-    inputs: [{
-        internalType: "address",
-        name: "usr",
-        type: "address"
-    }],
-    name: "rely",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function"
+    "constant": false,
+    "inputs": [{"internalType": "bytes32", "name": "ilk", "type": "bytes32"}, {
+        "internalType": "bytes32",
+        "name": "what",
+        "type": "bytes32"
+    }, {"internalType": "address", "name": "flip", "type": "address"}],
+    "name": "file",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
 }, {
-    constant: true,
-    inputs: [],
-    name: "src",
-    outputs: [{
-        internalType: "address",
-        name: "",
-        type: "address"
-    }],
-    payable: false,
-    stateMutability: "view",
-    type: "function"
+    "constant": true,
+    "inputs": [{"internalType": "bytes32", "name": "", "type": "bytes32"}],
+    "name": "ilks",
+    "outputs": [{"internalType": "address", "name": "flip", "type": "address"}, {
+        "internalType": "uint256",
+        "name": "chop",
+        "type": "uint256"
+    }, {"internalType": "uint256", "name": "lump", "type": "uint256"}],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
 }, {
-    constant: false,
-    inputs: [],
-    name: "start",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function"
+    "constant": true,
+    "inputs": [],
+    "name": "live",
+    "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
 }, {
-    constant: false,
-    inputs: [{
-        internalType: "uint16",
-        name: "ts",
-        type: "uint16"
-    }],
-    name: "step",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function"
+    "constant": false,
+    "inputs": [{"internalType": "address", "name": "usr", "type": "address"}],
+    "name": "rely",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
 }, {
-    constant: false,
-    inputs: [],
-    name: "stop",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function"
+    "constant": true,
+    "inputs": [],
+    "name": "vat",
+    "outputs": [{"internalType": "contract VatLike", "name": "", "type": "address"}],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
 }, {
-    constant: true,
-    inputs: [],
-    name: "stopped",
-    outputs: [{
-        internalType: "uint256",
-        name: "",
-        type: "uint256"
-    }],
-    payable: false,
-    stateMutability: "view",
-    type: "function"
+    "constant": true,
+    "inputs": [],
+    "name": "vow",
+    "outputs": [{"internalType": "contract VowLike", "name": "", "type": "address"}],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
 }, {
-    constant: false,
-    inputs: [],
-    name: "void",
-    outputs: [],
-    payable: false,
-    stateMutability: "nonpayable",
-    type: "function"
-}, {
-    constant: true,
-    inputs: [{
-        internalType: "address",
-        name: "",
-        type: "address"
-    }],
-    name: "wards",
-    outputs: [{
-        internalType: "uint256",
-        name: "",
-        type: "uint256"
-    }],
-    payable: false,
-    stateMutability: "view",
-    type: "function"
-}, {
-    constant: true,
-    inputs: [],
-    name: "zzz",
-    outputs: [{
-        internalType: "uint64",
-        name: "",
-        type: "uint64"
-    }],
-    payable: false,
-    stateMutability: "view",
-    type: "function"
+    "constant": true,
+    "inputs": [{"internalType": "address", "name": "", "type": "address"}],
+    "name": "wards",
+    "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
 }];
-const CAT_ABI = [{"inputs":[{"internalType":"address","name":"vat_","type":"address"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"ilk","type":"bytes32"},{"indexed":true,"internalType":"address","name":"urn","type":"address"},{"indexed":false,"internalType":"uint256","name":"ink","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"art","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"tab","type":"uint256"},{"indexed":false,"internalType":"address","name":"flip","type":"address"},{"indexed":false,"internalType":"uint256","name":"id","type":"uint256"}],"name":"Bite","type":"event"},{"anonymous":true,"inputs":[{"indexed":true,"internalType":"bytes4","name":"sig","type":"bytes4"},{"indexed":true,"internalType":"address","name":"usr","type":"address"},{"indexed":true,"internalType":"bytes32","name":"arg1","type":"bytes32"},{"indexed":true,"internalType":"bytes32","name":"arg2","type":"bytes32"},{"indexed":false,"internalType":"bytes","name":"data","type":"bytes"}],"name":"LogNote","type":"event"},{"constant":false,"inputs":[{"internalType":"bytes32","name":"ilk","type":"bytes32"},{"internalType":"address","name":"urn","type":"address"}],"name":"bite","outputs":[{"internalType":"uint256","name":"id","type":"uint256"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"cage","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"usr","type":"address"}],"name":"deny","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"bytes32","name":"ilk","type":"bytes32"},{"internalType":"bytes32","name":"what","type":"bytes32"},{"internalType":"uint256","name":"data","type":"uint256"}],"name":"file","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"bytes32","name":"what","type":"bytes32"},{"internalType":"address","name":"data","type":"address"}],"name":"file","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"bytes32","name":"ilk","type":"bytes32"},{"internalType":"bytes32","name":"what","type":"bytes32"},{"internalType":"address","name":"flip","type":"address"}],"name":"file","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"name":"ilks","outputs":[{"internalType":"address","name":"flip","type":"address"},{"internalType":"uint256","name":"chop","type":"uint256"},{"internalType":"uint256","name":"lump","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"live","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"address","name":"usr","type":"address"}],"name":"rely","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"vat","outputs":[{"internalType":"contract VatLike","name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"vow","outputs":[{"internalType":"contract VowLike","name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"wards","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"}];
 
 const ETH_FLIP_ADDRESS = "0x0F398a2DaAa134621e4b687FCcfeE4CE47599Cc1";
-const OSM_ADDRESS = "0x81FE72B5A8d1A857d176C3E7d5Bd2679A9B85763";
+const MEDIANIZER_ADDRESS = "0x64DE91F5A373Cd4c28de3600cB34C7C6cE410C85";
 const CAT_ADDRESS = "0x78F2c2AF65126834c51822F56Be0d7469D7A523E";
 const FLIP_ILK = "0x4554482d41000000000000000000000000000000000000000000000000000000";
 
@@ -703,12 +736,12 @@ if (usingRemoteProvider) {
 
 // Get instance of contracts
 const flipContract = new web3.eth.Contract(FLIPPER_ABI, ETH_FLIP_ADDRESS);
-const osmContract = new web3.eth.Contract(OSM_ABI, OSM_ADDRESS);
+const medianizerContract = new web3.eth.Contract(MEDIANIZER_ABI, MEDIANIZER_ADDRESS);
 const catContract = new web3.eth.Contract(CAT_ABI, CAT_ADDRESS);
 
 // Get new events and populate last events global variable
 var events = [];
-var getFlipEvents = function getFlipEvents(fromBlockNumber) {
+async function getFlipEvents(fromBlockNumber) {
     console.log(`Get auction events from block: ${fromBlockNumber}`);
     return flipContract.getPastEvents("allEvents", {
             fromBlock: fromBlockNumber,
@@ -722,30 +755,55 @@ var getFlipEvents = function getFlipEvents(fromBlockNumber) {
                 console.log(err);
             }
         });
-};
+}
 
-// Get the price in the given block number and populate last price global variable
-var osmPrice = 0;
-var getOsmPrice = function getOsmPrice(blockNumber) {
-    return osmContract.getPastEvents("LogValue", {
-            fromBlock: blockNumber - 600,
+// Get the medianizer price at a given block number
+let cachePrice = {'block': 0, 'val': 0};
+async function getMedPrice(blockNumber) {
+    if (cachePrice.block === blockNumber) {
+        return cachePrice.val;
+    }
+    let lastPrice = 0;
+    await medianizerContract.getPastEvents("LogMedianPrice", {
+            fromBlock: blockNumber - 1000,
             toBlock: blockNumber
         },
         function (err, result) {
             if (!err) {
                 var logEvent = result[result.length - 1];
-                if (!logEvent) {
-                    return 0;
+                if (logEvent) {
+                    let priceInWei = web3.utils.toBN(logEvent.returnValues[0]);
+                    let price = web3.utils.fromWei(priceInWei);
+                    lastPrice = Number(parseFloat(price).toFixed(2));
                 }
-                var priceInWei = web3.utils.toBN(logEvent.returnValues[0]);
-                var price = web3.utils.fromWei(priceInWei);
-                osmPrice = parseFloat(price).toFixed(2);
-                return price;
             } else {
                 console.log(err);
             }
-        });
-};
+        }
+    );
+    cachePrice = {'block': blockNumber, 'val': lastPrice};
+    return lastPrice;
+}
+
+// Get the block date for a given block number
+let cacheDate = {'block': 0, 'val': new Date()};
+async function getBlockDate(blockNumber) {
+    if (cacheDate.block === blockNumber) {
+        return cacheDate.val;
+    }
+    let lastDate = new Date();
+    await web3.eth.getBlock(blockNumber).then(function (block) {
+            if (block) {
+                let blockTime = block.timestamp;
+                lastDate = new Date(blockTime * 1000);
+            } else {
+                console.log(`Block ${blockNumber}: error getting date`);
+            }
+        }
+    );
+    cacheDate = {'block': blockNumber, 'val': lastDate};
+    return lastDate;
+}
 
 // Events types signatures to be processed
 const TEND = "0x4b43ed1200000000000000000000000000000000000000000000000000000000";
@@ -761,7 +819,7 @@ var auctions = {};
 
 // Show last events received
 var eventsLoaded = false;
-var showEvents = async function showEvents(someID) {
+async function showEvents(someID) {
     // Clear loading msg in body
     if (Object.keys(auctions).length === 0) {
         document.getElementById("app").innerHTML = "";
@@ -776,16 +834,12 @@ var showEvents = async function showEvents(someID) {
     for (let i = 0; i < events.length; i++) {
         let event = events[i];
         let values = "";
-        let blockDate = new Date();
-        await web3.eth.getBlock(event.blockNumber).then(function (block) {
-            if (block) {
-                let blockTime = block.timestamp;
-                blockDate = new Date(blockTime * 1000);
-                values = blockDate.toLocaleString() + " | ";
-            } else {
-                values = new Date().toLocaleString() + " | ";
-            }
-        });
+
+        // Get and populate event date
+        let blockDate = await getBlockDate(event.blockNumber);
+        let dateFormat = {'day': 'numeric', 'month': 'short', 'year': 'numeric'};
+        values = blockDate.toLocaleString('en-GB', dateFormat) + " | ";
+
         let eventType = "Unknown";
         let flipId = 0;
 
@@ -799,16 +853,15 @@ var showEvents = async function showEvents(someID) {
             values += "lot: " + lot.toFixed(3) + " eth | ";
 
             let tab = event.returnValues.tab / 10 ** 27 / 10 ** 18;
-            values += "tab: " + tab.toFixed(3) + " dai | ";
+            values += "tab: " + tab.toFixed(2) + " dai | ";
 
-            osmPrice = 0;
-            await getOsmPrice(event.blockNumber);
+            let medPrice = await getMedPrice(event.blockNumber);
 
             // Register KICK over Auction dictionary
             auctions[flipId] = {
                 id: flipId,
                 kickDate: blockDate.toUTCString().slice(5),
-                kickPrice: osmPrice.toString(),
+                kickPrice: medPrice.toString(),
                 kickLot: lot,
                 tends: 0,
                 dents: 0,
@@ -824,10 +877,10 @@ var showEvents = async function showEvents(someID) {
                 state: "OPEN"
             };
 
-            if (osmPrice > 0) {
-                values += "Maker OSM Price: $" + auctions[flipId]["kickPrice"] + " | ";
+            if (medPrice > 0) {
+                values += "Maker MED Price: $" + auctions[flipId]["kickPrice"] + " | ";
             } else {
-                values += "Maker OSM Price: $---,-- | ";
+                values += "Maker MED Price: $---,-- | ";
             }
         } else if (event.raw.topics[0] === TEND) {
             eventType = "TEND";
@@ -845,20 +898,19 @@ var showEvents = async function showEvents(someID) {
 
             let raw = event.raw.data.slice(288, -248);
             let bid = parseInt(raw, 16) / 10 ** 27 / 10 ** 18;
-            values += "bid: " + bid.toFixed(3) + " dai | ";
+            values += "bid: " + bid.toFixed(2) + " dai | ";
 
-            osmPrice = 0;
-            await getOsmPrice(event.blockNumber);
+            let medPrice = await getMedPrice(event.blockNumber);
 
             // Register TEND over Auction dictionary
             auctions[flipId]["tends"] += 1;
             auctions[flipId]["bid"] = bid;
             auctions[flipId]["bidDate"] = blockDate.toUTCString().slice(5);
-            auctions[flipId]["bidPrice"] = osmPrice.toString();
+            auctions[flipId]["bidPrice"] = medPrice.toString();
             auctions[flipId]["lot"] = lot;
             auctions[flipId]["paidPrice"] = (bid / lot).toFixed(2);
 
-            if (osmPrice > 0) {
+            if (medPrice > 0) {
                 // Calculate diff percentage
                 let diff = ((auctions[flipId]["paidPrice"] / auctions[flipId]["bidPrice"]) - 1) * 100;
                 if (diff > 0) {
@@ -886,20 +938,19 @@ var showEvents = async function showEvents(someID) {
 
             let raw = event.raw.data.slice(288, -248);
             let bid = parseInt(raw, 16) / 10 ** 27 / 10 ** 18;
-            values += "bid: " + bid.toFixed(3) + " dai | ";
+            values += "bid: " + bid.toFixed(2) + " dai | ";
 
-            osmPrice = 0;
-            await getOsmPrice(event.blockNumber);
+            let medPrice = await getMedPrice(event.blockNumber);
 
             // Register DENT over Auction dictionary
             auctions[flipId]["dents"] += 1;
             auctions[flipId]["bid"] = bid;
             auctions[flipId]["bidDate"] = blockDate.toUTCString().slice(5);
-            auctions[flipId]["bidPrice"] = osmPrice.toString();
+            auctions[flipId]["bidPrice"] = medPrice.toString();
             auctions[flipId]["lot"] = lot;
             auctions[flipId]["paidPrice"] = (bid / lot).toFixed(2);
 
-            if (osmPrice > 0) {
+            if (medPrice > 0) {
                 // Calculate diff percentage
                 let diff = ((auctions[flipId]["paidPrice"] / auctions[flipId]["bidPrice"]) - 1) * 100;
                 if (diff > 0) {
@@ -922,15 +973,14 @@ var showEvents = async function showEvents(someID) {
 
             values += "ID: <b>" + flipId + "</b> | ";
 
-            osmPrice = 0;
-            await getOsmPrice(event.blockNumber);
+            let medPrice = await getMedPrice(event.blockNumber);
 
             // Register DEAL over Auction dictionary
             auctions[flipId]["dealDate"] = blockDate.toUTCString().slice(5);
-            auctions[flipId]["dealPrice"] = osmPrice.toString();
+            auctions[flipId]["dealPrice"] = medPrice.toString();
             auctions[flipId]["state"] = "CLOSE";
 
-            if (!osmPrice) {
+            if (!medPrice) {
                 values += "Paid Rate: $" + auctions[flipId]["paidPrice"] + " dai/eth (+-.--%) | ";
                 values += "--,-- % | Price: $---,-- | ";
             } else {
@@ -972,7 +1022,7 @@ var showEvents = async function showEvents(someID) {
                 file_value = file_value / 60;
                 values += "VALUE: <b>" + file_value.toFixed(1) + " minutes</b> | ";
             } else {
-                values += "WHAT: <b>UKNOWN</b> | ";
+                values += "WHAT: <b>UNKNOWN</b> | ";
                 console.log(event.raw.topics);
             }
             values += "New Flipper Update! | ";
@@ -987,7 +1037,7 @@ var showEvents = async function showEvents(someID) {
             let usr = event.raw.topics[2];
             values += "TO: <b>0x" + usr.slice(-40) + "</b> | ";
         } else {
-            console.log("Uknown event");
+            console.log("UNKNOWN event");
             console.log(event);
         }
 
@@ -1022,17 +1072,17 @@ var showEvents = async function showEvents(someID) {
         showEmptyMessage();
     }
     eventsLoaded = true;
-};
+}
 
 // Fetch old events to populate list at initial load
 var lastBlockfetch = 0;
 var blocksBack = 18095; // 18095 -> 3.14 days blocks count
-var fetchAuctions = async function fetchAuctions(someID) {
+async function fetchAuctions(someID) {
     lastBlockfetch = await web3.eth.getBlockNumber();
     let fromBlock = lastBlockfetch - blocksBack;
     await getFlipEvents(fromBlock);
     await showEvents(someID);
-};
+}
 
 // New block event handler
 async function newBlock(error, result) {
@@ -1050,115 +1100,6 @@ async function newBlock(error, result) {
         await showEvents(0);
     } else {
         console.log(error);
-    }
-}
-
-// Utility/helpers functions
-function showFilter() {
-    let filterPanel = document.getElementById("filter-panel");
-
-    if (filterPanel) {
-        filterPanel.style.display = "block";
-        let searchTag = document.getElementById("search");
-        searchTag.style.display = "inline";
-        let noResultsTag = document.getElementById("no-results");
-        noResultsTag.style.display = "none";
-        showLastUpdate();
-    }
-}
-
-function showLastUpdate() {
-    let lastUpdateTag = document.getElementById("last-update");
-    let now = new Date().toLocaleString();
-    lastUpdateTag.innerHTML = `- Updated to: ${now}`;
-}
-
-function hideFilterSearch() {
-    let filterPanelSearch = document.getElementById("search");
-    if (filterPanelSearch) {
-        filterPanelSearch.style.display = "none";
-    }
-}
-
-function showEmptyMessage() {
-    let filterPanel = document.getElementById("filter-panel");
-
-    if (filterPanel) {
-        filterPanel.style.display = "block";
-        let searchTag = document.getElementById("search");
-        searchTag.style.display = "none";
-        let noResultsTag = document.getElementById("no-results");
-        noResultsTag.style.display = "inline";
-        showLastUpdate();
-    }
-}
-
-function filterAuctionById() {
-    let flipId = $("#fliter-id").val();
-    let allRows = $(".row");
-    allRows.hide();
-    if (flipId) {
-        $(".flip-" + flipId).show()
-    } else {
-        allRows.show();
-    }
-}
-
-function showAuctionDetails(id){
-    let auction = auctions[id];
-    if (!auction){
-        alert('Error showing auction details');
-        return;
-    }
-
-    let detailPanel = $('#auction-details');
-    if (detailPanel) {
-        detailPanel.hide();
-    }
-
-    let msg = `> <b>AUCTION ID: ${id}</b>`;
-    msg += '<hr/>';
-
-    msg += 'Started: <br/>';
-    msg += `- DATE: ${auction.kickDate} <br/>`;
-    msg += `- LOT: ${auction.kickLot.toLocaleString('en')} eth - BID: ${auction.bid.toLocaleString('en')} dai <br/>`;
-    msg += `- ETH OSM: $${auction.kickPrice} eth/dai <br/><br/>`;
-
-    msg += `Bids received: ${auction.tends + auction.dents} <br/><br/>`;
-
-    msg += 'Last Bid:<br/>';
-    msg += `- DATE: ${auction.bidDate} <br/>`;
-    msg += `- FROM: ${auction.bidFrom} <br/>`;
-    msg += `- LOT: ${auction.lot.toLocaleString('en')} eth - BID: ${auction.bid.toLocaleString('en')} dai <br/>`;
-    msg += `- PAID PRICE: $${auction.paidPrice} eth/dai <br/>`;
-    msg += `- ETH OSM: $${auction.bidPrice} eth/dai <br/><br/>`;
-
-    msg += 'Ended: <br/>';
-    msg += `- DATE: ${auction.dealDate} <br/>`;
-    msg += `- FROM: ${auction.txFrom} <br/>`;
-    msg += `- PAID PRICE: $${auction.paidPrice} eth/dai <br/>`;
-    msg += `- ETH OSM: $${auction.dealPrice} eth/dai <br/><br/>`;
-
-
-    msg += 'Results: <br/>';
-    let priceDiff = ((auction["paidPrice"] / auction["dealPrice"]) - 1) * 100;
-    msg += `- PRICE DIFF: ${priceDiff.toFixed(2)}% <br/>`;
-    let daiProfit =  (auction.lot * auction.dealPrice) - auction.bid;
-    msg += `- PROFIT: <b>${daiProfit.toLocaleString('en')} dai</b>`;
-
-    msg += '<hr/>';
-    msg += '<a style="float: right;" onclick="hideAuctionDetails()">CLOSE<a/>';
-
-    if (detailPanel) {
-        detailPanel.html(msg);
-        detailPanel.fadeIn('normal');
-    }
-}
-
-function hideAuctionDetails() {
-    let detailPanel = $('#auction-details');
-    if (detailPanel) {
-        detailPanel.fadeOut('normal');
     }
 }
 
@@ -1188,12 +1129,126 @@ async function updateGlobals() {
     });
 
     let lastBlock = await web3.eth.getBlockNumber();
-    await getOsmPrice(lastBlock);
-    globalsPanel.find('#osm-eth').text("$" + osmPrice);
+    let medPrice = await getMedPrice(lastBlock);
+    let numFormat = {minimumFractionDigits: 2, maximumFractionDigits: 2};
+    globalsPanel.find('#price-eth').text("$" + medPrice.toLocaleString('en', numFormat));
 }
 
 
-// ## Start Main function
+// Utility/helpers functions
+function showFilter() {
+    let filterPanel = document.getElementById("filter-panel");
+
+    if (filterPanel) {
+        filterPanel.style.display = "block";
+        let searchTag = document.getElementById("search");
+        searchTag.style.display = "inline";
+        let noResultsTag = document.getElementById("no-results");
+        noResultsTag.style.display = "none";
+        showLastUpdate();
+    }
+}
+
+function showLastUpdate() {
+    let lastUpdateTag = document.getElementById("last-update");
+    let now = new Date().toLocaleString('en-GB');
+    lastUpdateTag.innerHTML = `- Updated to: ${now}`;
+}
+
+function hideFilterSearch() {
+    let filterPanelSearch = document.getElementById("search");
+    if (filterPanelSearch) {
+        filterPanelSearch.style.display = "none";
+    }
+}
+
+function showEmptyMessage() {
+    let filterPanel = document.getElementById("filter-panel");
+
+    if (filterPanel) {
+        filterPanel.style.display = "block";
+        let searchTag = document.getElementById("search");
+        searchTag.style.display = "none";
+        let noResultsTag = document.getElementById("no-results");
+        noResultsTag.style.display = "block";
+        showLastUpdate();
+    }
+}
+
+function filterAuctionById() {
+    let flipId = $("#fliter-id").val();
+    let allRows = $(".row");
+    allRows.hide();
+    if (flipId) {
+        $(".flip-" + flipId).show()
+    } else {
+        allRows.show();
+    }
+}
+
+function showAuctionDetails(id) {
+    let auction = auctions[id];
+    if (!auction) {
+        alert('Error showing auction details');
+        return;
+    }
+
+    let detailPanel = $('#auction-details');
+    if (detailPanel) {
+        detailPanel.hide();
+    }
+
+    let msg = `> <b>AUCTION ID: ${id}</b>`;
+    msg += '<hr/>';
+    let numFormat = {minimumFractionDigits: 2, maximumFractionDigits: 2};
+
+    msg += 'Started: <br/>';
+    msg += `- DATE: ${auction.kickDate} <br/>`;
+    msg += `- LOT: ${auction.kickLot.toLocaleString('en', numFormat)} eth `;
+    msg += `- BID: ${auction.bid.toLocaleString('en', numFormat)} dai <br/>`;
+    msg += `- ETH MED: $${auction.kickPrice} eth/dai <br/><br/>`;
+
+    msg += `Bids received: ${auction.tends + auction.dents} <br/><br/>`;
+
+    msg += 'Last Bid:<br/>';
+    msg += `- DATE: ${auction.bidDate} <br/>`;
+    msg += `- FROM: ${auction.bidFrom} <br/>`;
+    msg += `- LOT: ${auction.lot.toLocaleString('en', numFormat)} eth `;
+    msg += `- BID: ${auction.bid.toLocaleString('en', numFormat)} dai <br/>`;
+    msg += `- PAID PRICE: $${auction.paidPrice} eth/dai <br/>`;
+    msg += `- ETH MED: $${auction.bidPrice} eth/dai <br/><br/>`;
+
+    msg += 'Ended: <br/>';
+    msg += `- DATE: ${auction.dealDate} <br/>`;
+    msg += `- FROM: ${auction.txFrom} <br/>`;
+    msg += `- PAID PRICE: $${auction.paidPrice} eth/dai <br/>`;
+    msg += `- ETH MED: $${auction.dealPrice} eth/dai <br/><br/>`;
+
+
+    msg += 'Results: <br/>';
+    let priceDiff = ((auction["paidPrice"] / auction["dealPrice"]) - 1) * 100;
+    msg += `- PRICE DIFF: ${priceDiff.toFixed(2)}% <br/>`;
+    let daiProfit = (auction.lot * auction.dealPrice) - auction.bid;
+    msg += `- PROFIT: <b>${daiProfit.toLocaleString('en', numFormat)} dai</b>`;
+
+    msg += '<hr/>';
+    msg += '<a style="float: right;" onclick="hideAuctionDetails()">CLOSE<a/>';
+
+    if (detailPanel) {
+        detailPanel.html(msg);
+        detailPanel.fadeIn('normal');
+    }
+}
+
+function hideAuctionDetails() {
+    let detailPanel = $('#auction-details');
+    if (detailPanel) {
+        detailPanel.fadeOut('normal');
+    }
+}
+
+
+//  Start Main function
 updateGlobals();
 fetchAuctions(0);
 

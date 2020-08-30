@@ -18,7 +18,7 @@ h1 {
     font-weight: bold;
 }
 
-#globals, #app, #info, #languages, #auction-details {
+#globals, #app, #info, #languages, #auction-details, #no-results {
     font-family: monospace;
 }
 
@@ -78,7 +78,11 @@ h1 {
     color: white;
 }
 
-#filter-panel #no-results {
+#filter-panel #last-update {
+    line-height: 22px;
+}
+
+#no-results {
     font-size: 16px;
     display: none;
 }

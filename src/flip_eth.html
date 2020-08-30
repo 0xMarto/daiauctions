@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="author" content="Marto"/>
-    <meta name="version" content="1.7.2"/>
+    <meta name="version" content="1.8.2"/>
     <title>Dai Auctions</title>
     <meta name="description" content="The place to see all MakerDao Auctions. Welcome to the open blockchains.">
     <meta name="keywords" content="makerdao tokens erc20 dai eth bat btc knc zrx auction flip flap flop">
@@ -38,9 +38,9 @@
     <a href="/zh/flip/eth">中文</a>
 </div>
 <div id="globals">
-    <div class="box" title="Price of official Maker ETH OSM">
-        <b id="osm-eth">$---.--</b><br/>
-        <span>OSM ETH Price [dai]</span>
+    <div class="box" title="Price of official Maker ETH Medianizer">
+        <b id="price-eth">$---.--</b><br/>
+        <span>ETH Price [dai]</span>
     </div>
     <div class="box" title="Vaults liquidation Debt penalty">
         <b id="chop">--.-</b><br/>
@@ -81,7 +81,6 @@
         <input id="fliter-id" type="number" onchange="filterAuctionById();"/>
         <a href="#" onclick="filterAuctionById();">GO!</a>
     </span>
-    <span id="no-results">NO auctions found in the last days</span>
     <i id="last-update"></i>
     <div class="links-panel">
         <b>FLIP [</b>
@@ -97,6 +96,7 @@
     </div>
 </div>
 <div id="auction-details"></div>
+<div id="no-results" class="row"> >> NO auctions found in the last days</div>
 <div id="app">
     <div class="row"> >> Fetching data from mainnet...</div>
 </div>
@@ -134,8 +134,8 @@
         <a target="_blank" href="https://twitter.com/nanexcool">@nanexcool</a>
     </i>
 </p>
-<script src="js/web3.min.js"></script>
-<script src="js/jquery.min.js"></script>
-<script src="js/flip_eth_min.js"></script>
+<script type="text/javascript" src="js/web3.min.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/flip_eth.js"></script>
 </body>
 </html>

@@ -687,7 +687,7 @@ var showEvents = async function showEvents(someID) {
                 file_value = file_value / 10 ** 18;
                 values += "VALUE: <b>" + file_value.toFixed(4) + " mkr</b> | ";
             } else {
-                values += "WHAT: <b>UKNOWN</b> | ";
+                values += "WHAT: <b>UNKNOWN</b> | ";
                 console.log(event.raw.topics);
             }
             values += "New Flapper Update! | ";
@@ -702,7 +702,7 @@ var showEvents = async function showEvents(someID) {
             let usr = event.raw.topics[2];
             values += "TO: <b>0x" + usr.slice(-40) + "</b> | ";
         } else {
-            console.log("Uknown event");
+            console.log("UNKNOWN event");
             console.log(event);
         }
 
