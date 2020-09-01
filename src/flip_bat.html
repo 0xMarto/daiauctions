@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="author" content="Marto"/>
-    <meta name="version" content="1.8.2"/>
+    <meta name="version" content="1.9.1"/>
     <title>Dai Auctions | Flip | BAT</title>
     <meta name="description" content="The place to see all MakerDao Auctions. Welcome to the open blockchains.">
     <meta name="keywords" content="makerdao tokens erc20 dai eth bat btc knc zrx auction flip flap flop">
@@ -34,6 +34,12 @@
     <a href="/"><img alt="dai logo" width="50" src="/img/dai-logo.png"/></a>
     MCD Collateral Auctions
 </h1>
+<div class="total-litter" title="Current DAI amount of debt being Auctioned (in all collaterals)">
+    <span>Litter: </span><b id="litter">--,---,---.--</b><span> dai</span>
+</div>
+<div class="total-box" title="Max DAI amount of debt Auctionable (at the same time)">
+    <span>Box: </span><b id="box">--,---,---.--</b><span> dai</span>
+</div>
 <div id="languages">
     <a href="/zh/flip/bat">中文</a>
 </div>
@@ -46,9 +52,9 @@
         <b id="chop">--.-</b><br/>
         <span>CHOP [%]</span>
     </div>
-    <div class="box" title="Maximum LOT size">
-        <b id="lump">---,---</b><br/>
-        <span>LUMP [bat]</span>
+    <div class="box" title="Maximum LOT size (in DAI)">
+        <b id="dunk">--,---,---</b><br/>
+        <span>DUNK [dai]</span>
     </div>
     <div class="box" title="Minimum bid increase">
         <b id="beg">-.--</b><br/>
@@ -130,6 +136,6 @@
 </p>
 <script type="text/javascript" src="/js/web3.min.js"></script>
 <script type="text/javascript" src="/js/jquery.min.js"></script>
-<script type="text/javascript" src="/js/flip_bat_min.js"></script>
+<script async type="text/javascript" src="/js/flip_bat_min.js"></script>
 </body>
 </html>

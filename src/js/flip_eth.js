@@ -361,195 +361,195 @@ const FLIPPER_ABI = [{
     type: "function"
 }];
 const MEDIANIZER_ABI = [{
-        "anonymous": false,
-        "inputs": [{"indexed": false, "internalType": "uint256", "name": "val", "type": "uint256"}, {
-            "indexed": false,
-            "internalType": "uint256",
-            "name": "age",
-            "type": "uint256"
-        }],
-        "name": "LogMedianPrice",
-        "type": "event"
-    }, {
-        "anonymous": true,
-        "inputs": [{"indexed": true, "internalType": "bytes4", "name": "sig", "type": "bytes4"}, {
-            "indexed": true,
-            "internalType": "address",
-            "name": "usr",
-            "type": "address"
-        }, {"indexed": true, "internalType": "bytes32", "name": "arg1", "type": "bytes32"}, {
-            "indexed": true,
-            "internalType": "bytes32",
-            "name": "arg2",
-            "type": "bytes32"
-        }, {"indexed": false, "internalType": "bytes", "name": "data", "type": "bytes"}],
-        "name": "LogNote",
-        "type": "event"
-    }, {
-        "constant": true,
-        "inputs": [],
+    "anonymous": false,
+    "inputs": [{"indexed": false, "internalType": "uint256", "name": "val", "type": "uint256"}, {
+        "indexed": false,
+        "internalType": "uint256",
         "name": "age",
-        "outputs": [{"internalType": "uint32", "name": "", "type": "uint32"}],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    }, {
-        "constant": true,
-        "inputs": [],
-        "name": "bar",
-        "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    }, {
-        "constant": true,
-        "inputs": [{"internalType": "address", "name": "", "type": "address"}],
-        "name": "bud",
-        "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    }, {
-        "constant": false,
-        "inputs": [{"internalType": "address", "name": "usr", "type": "address"}],
-        "name": "deny",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    }, {
-        "constant": false,
-        "inputs": [{"internalType": "address[]", "name": "a", "type": "address[]"}],
-        "name": "diss",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    }, {
-        "constant": false,
-        "inputs": [{"internalType": "address", "name": "a", "type": "address"}],
-        "name": "diss",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    }, {
-        "constant": false,
-        "inputs": [{"internalType": "address[]", "name": "a", "type": "address[]"}],
-        "name": "drop",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    }, {
-        "constant": false,
-        "inputs": [{"internalType": "address[]", "name": "a", "type": "address[]"}],
-        "name": "kiss",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    }, {
-        "constant": false,
-        "inputs": [{"internalType": "address", "name": "a", "type": "address"}],
-        "name": "kiss",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    }, {
-        "constant": false,
-        "inputs": [{"internalType": "address[]", "name": "a", "type": "address[]"}],
-        "name": "lift",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    }, {
-        "constant": true,
-        "inputs": [{"internalType": "address", "name": "", "type": "address"}],
-        "name": "orcl",
-        "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    }, {
-        "constant": true,
-        "inputs": [],
-        "name": "peek",
-        "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}, {
-            "internalType": "bool",
-            "name": "",
-            "type": "bool"
-        }],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    }, {
-        "constant": false,
-        "inputs": [{"internalType": "uint256[]", "name": "val_", "type": "uint256[]"}, {
-            "internalType": "uint256[]",
-            "name": "age_",
-            "type": "uint256[]"
-        }, {"internalType": "uint8[]", "name": "v", "type": "uint8[]"}, {
-            "internalType": "bytes32[]",
-            "name": "r",
-            "type": "bytes32[]"
-        }, {"internalType": "bytes32[]", "name": "s", "type": "bytes32[]"}],
-        "name": "poke",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    }, {
-        "constant": true,
-        "inputs": [],
-        "name": "read",
-        "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    }, {
-        "constant": false,
-        "inputs": [{"internalType": "address", "name": "usr", "type": "address"}],
-        "name": "rely",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    }, {
-        "constant": false,
-        "inputs": [{"internalType": "uint256", "name": "bar_", "type": "uint256"}],
-        "name": "setBar",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    }, {
-        "constant": true,
-        "inputs": [{"internalType": "uint8", "name": "", "type": "uint8"}],
-        "name": "slot",
-        "outputs": [{"internalType": "address", "name": "", "type": "address"}],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    }, {
-        "constant": true,
-        "inputs": [{"internalType": "address", "name": "", "type": "address"}],
-        "name": "wards",
-        "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    }, {
-        "constant": true,
-        "inputs": [],
-        "name": "wat",
-        "outputs": [{"internalType": "bytes32", "name": "", "type": "bytes32"}],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    }];
+        "type": "uint256"
+    }],
+    "name": "LogMedianPrice",
+    "type": "event"
+}, {
+    "anonymous": true,
+    "inputs": [{"indexed": true, "internalType": "bytes4", "name": "sig", "type": "bytes4"}, {
+        "indexed": true,
+        "internalType": "address",
+        "name": "usr",
+        "type": "address"
+    }, {"indexed": true, "internalType": "bytes32", "name": "arg1", "type": "bytes32"}, {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "arg2",
+        "type": "bytes32"
+    }, {"indexed": false, "internalType": "bytes", "name": "data", "type": "bytes"}],
+    "name": "LogNote",
+    "type": "event"
+}, {
+    "constant": true,
+    "inputs": [],
+    "name": "age",
+    "outputs": [{"internalType": "uint32", "name": "", "type": "uint32"}],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+}, {
+    "constant": true,
+    "inputs": [],
+    "name": "bar",
+    "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+}, {
+    "constant": true,
+    "inputs": [{"internalType": "address", "name": "", "type": "address"}],
+    "name": "bud",
+    "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+}, {
+    "constant": false,
+    "inputs": [{"internalType": "address", "name": "usr", "type": "address"}],
+    "name": "deny",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+}, {
+    "constant": false,
+    "inputs": [{"internalType": "address[]", "name": "a", "type": "address[]"}],
+    "name": "diss",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+}, {
+    "constant": false,
+    "inputs": [{"internalType": "address", "name": "a", "type": "address"}],
+    "name": "diss",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+}, {
+    "constant": false,
+    "inputs": [{"internalType": "address[]", "name": "a", "type": "address[]"}],
+    "name": "drop",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+}, {
+    "constant": false,
+    "inputs": [{"internalType": "address[]", "name": "a", "type": "address[]"}],
+    "name": "kiss",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+}, {
+    "constant": false,
+    "inputs": [{"internalType": "address", "name": "a", "type": "address"}],
+    "name": "kiss",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+}, {
+    "constant": false,
+    "inputs": [{"internalType": "address[]", "name": "a", "type": "address[]"}],
+    "name": "lift",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+}, {
+    "constant": true,
+    "inputs": [{"internalType": "address", "name": "", "type": "address"}],
+    "name": "orcl",
+    "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+}, {
+    "constant": true,
+    "inputs": [],
+    "name": "peek",
+    "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}, {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+    }],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+}, {
+    "constant": false,
+    "inputs": [{"internalType": "uint256[]", "name": "val_", "type": "uint256[]"}, {
+        "internalType": "uint256[]",
+        "name": "age_",
+        "type": "uint256[]"
+    }, {"internalType": "uint8[]", "name": "v", "type": "uint8[]"}, {
+        "internalType": "bytes32[]",
+        "name": "r",
+        "type": "bytes32[]"
+    }, {"internalType": "bytes32[]", "name": "s", "type": "bytes32[]"}],
+    "name": "poke",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+}, {
+    "constant": true,
+    "inputs": [],
+    "name": "read",
+    "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+}, {
+    "constant": false,
+    "inputs": [{"internalType": "address", "name": "usr", "type": "address"}],
+    "name": "rely",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+}, {
+    "constant": false,
+    "inputs": [{"internalType": "uint256", "name": "bar_", "type": "uint256"}],
+    "name": "setBar",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+}, {
+    "constant": true,
+    "inputs": [{"internalType": "uint8", "name": "", "type": "uint8"}],
+    "name": "slot",
+    "outputs": [{"internalType": "address", "name": "", "type": "address"}],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+}, {
+    "constant": true,
+    "inputs": [{"internalType": "address", "name": "", "type": "address"}],
+    "name": "wards",
+    "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+}, {
+    "constant": true,
+    "inputs": [],
+    "name": "wat",
+    "outputs": [{"internalType": "bytes32", "name": "", "type": "bytes32"}],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+}];
 const CAT_ABI = [{
     "inputs": [{"internalType": "address", "name": "vat_", "type": "address"}],
     "payable": false,
@@ -603,9 +603,25 @@ const CAT_ABI = [{
     "stateMutability": "nonpayable",
     "type": "function"
 }, {
+    "constant": true,
+    "inputs": [],
+    "name": "box",
+    "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+}, {
     "constant": false,
     "inputs": [],
     "name": "cage",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+}, {
+    "constant": false,
+    "inputs": [{"internalType": "uint256", "name": "rad", "type": "uint256"}],
+    "name": "claw",
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
@@ -625,6 +641,18 @@ const CAT_ABI = [{
         "name": "what",
         "type": "bytes32"
     }, {"internalType": "uint256", "name": "data", "type": "uint256"}],
+    "name": "file",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+}, {
+    "constant": false,
+    "inputs": [{"internalType": "bytes32", "name": "what", "type": "bytes32"}, {
+        "internalType": "uint256",
+        "name": "data",
+        "type": "uint256"
+    }],
     "name": "file",
     "outputs": [],
     "payable": false,
@@ -662,7 +690,15 @@ const CAT_ABI = [{
         "internalType": "uint256",
         "name": "chop",
         "type": "uint256"
-    }, {"internalType": "uint256", "name": "lump", "type": "uint256"}],
+    }, {"internalType": "uint256", "name": "dunk", "type": "uint256"}],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+}, {
+    "constant": true,
+    "inputs": [],
+    "name": "litter",
+    "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
     "payable": false,
     "stateMutability": "view",
     "type": "function"
@@ -708,9 +744,9 @@ const CAT_ABI = [{
     "type": "function"
 }];
 
-const ETH_FLIP_ADDRESS = "0x0F398a2DaAa134621e4b687FCcfeE4CE47599Cc1";
+const ETH_FLIP_ADDRESS = "0xF32836B9E1f47a0515c6Ec431592D5EbC276407f";
 const MEDIANIZER_ADDRESS = "0x64DE91F5A373Cd4c28de3600cB34C7C6cE410C85";
-const CAT_ADDRESS = "0x78F2c2AF65126834c51822F56Be0d7469D7A523E";
+const CAT_ADDRESS = "0xa5679C04fc3d9d8b0AaB1F0ab83555b301cA70Ea";
 const FLIP_ILK = "0x4554482d41000000000000000000000000000000000000000000000000000000";
 
 var web3;
@@ -837,8 +873,8 @@ async function showEvents(someID) {
 
         // Get and populate event date
         let blockDate = await getBlockDate(event.blockNumber);
-        let dateFormat = {'day': 'numeric', 'month': 'short', 'year': 'numeric'};
-        values = blockDate.toLocaleString('en-GB', dateFormat) + " | ";
+        // let dateFormat = {'day': 'numeric', 'month': 'short', 'year': 'numeric'};
+        values = blockDate.toLocaleString('en') + " | ";
 
         let eventType = "Unknown";
         let flipId = 0;
@@ -1107,10 +1143,23 @@ async function updateGlobals() {
     let globalsPanel = $('#globals');
 
     catContract.methods.ilks(FLIP_ILK).call().then(function (value) {
-        let lump = parseInt(value['lump']) / 10 ** 18;
-        let chop = ((parseInt(value['chop']) / 10 ** 27) - 1) * 100;
-        globalsPanel.find('#lump').text(lump.toFixed(2));
+        let dunk = parseInt(value['dunk']) / 10 ** 45;
+        let chop = ((parseInt(value['chop']) / 10 ** 18) - 1) * 100;
+        let numFormat = {minimumFractionDigits: 2, maximumFractionDigits: 2};
+        globalsPanel.find('#dunk').text(dunk.toLocaleString('en', numFormat));
         globalsPanel.find('#chop').text(chop.toFixed(2));
+    });
+
+    catContract.methods.litter().call().then(function (value) {
+        let litter = parseInt(value) / 10 ** 45;
+        let numFormat = {minimumFractionDigits: 2, maximumFractionDigits: 2};
+        $('#litter').text(litter.toLocaleString('en', numFormat));
+    });
+
+    catContract.methods.box().call().then(function (value) {
+        let box = parseInt(value) / 10 ** 45;
+        let numFormat = {minimumFractionDigits: 2, maximumFractionDigits: 2};
+        $('#box').text(box.toLocaleString('en', numFormat));
     });
 
     flipContract.methods.beg().call().then(function (value) {
@@ -1151,7 +1200,7 @@ function showFilter() {
 
 function showLastUpdate() {
     let lastUpdateTag = document.getElementById("last-update");
-    let now = new Date().toLocaleString('en-GB');
+    let now = new Date().toLocaleString('en');
     lastUpdateTag.innerHTML = `- Updated to: ${now}`;
 }
 

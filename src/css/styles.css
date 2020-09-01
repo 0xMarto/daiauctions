@@ -41,6 +41,32 @@ h1 {
     color: white;
 }
 
+.total-litter {
+    font-family: monospace;
+    display: inline-block;
+    background-color: #f2f2f2;
+    padding: 5px;
+    margin: 0 5px;
+    position: relative;
+    left: 445px;
+    top: -43px;
+}
+
+.total-box {
+    font-family: monospace;
+    display: inline-block;
+    background-color: #f2f2f2;
+    padding: 5px;
+    margin: 0 5px;
+    position: relative;
+    left: 445px;
+    top: -43px;
+}
+
+#globals {
+    margin-top: -30px;
+}
+
 #globals .box {
     margin: 10px 5px 15px;
     padding: 15px;
