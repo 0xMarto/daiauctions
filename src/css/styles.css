@@ -202,6 +202,12 @@ h1 {
     font-size: 17px;
 }
 
+#filter-panel .links-panel .disabled {
+    color: #f2f2f2;
+    cursor: no-drop;
+    font-weight: normal;
+}
+
 #filter-panel .links-panel a {
     text-decoration: none;
     color: black;
