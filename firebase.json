@@ -8,6 +8,26 @@
     ],
     "rewrites": [
       {
+        "source": "/flip/link",
+        "destination": "/flip_link.html"
+      },
+      {
+        "source": "/flip/lrc",
+        "destination": "/flip_lrc.html"
+      },
+      {
+        "source": "/flip/comp",
+        "destination": "/flip_comp.html"
+      },
+      {
+        "source": "/flip/usdt",
+        "destination": "/flip_usdt.html"
+      },
+      {
+        "source": "/flip/mana",
+        "destination": "/flip_mana.html"
+      },
+      {
         "source": "/flip/zrx",
         "destination": "/flip_zrx.html"
       },
@@ -16,16 +36,12 @@
         "destination": "/flip_knc.html"
       },
       {
-        "source": "/flip/bat",
-        "destination": "/flip_bat.html"
-      },
-      {
-        "source": "/flip/mana",
-        "destination": "/flip_mana.html"
-      },
-      {
         "source": "/flip/btc",
         "destination": "/flip_btc.html"
+      },
+      {
+        "source": "/flip/bat",
+        "destination": "/flip_bat.html"
       },
       {
         "source": "/flap",
@@ -71,7 +87,7 @@
         "headers": [
           {
             "key": "Cache-Control",
-            "value": "max-age=2592000"
+            "value": "max-age=864000"
           }
         ]
       },
@@ -80,7 +96,7 @@
         "headers": [
           {
             "key": "Cache-Control",
-            "value": "max-age=14400"
+            "value": "max-age=86400"
           }
         ]
       }
