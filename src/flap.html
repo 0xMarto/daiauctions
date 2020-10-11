@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="author" content="Marto"/>
-    <meta name="version" content="1.10.2"/>
+    <meta name="version" content="1.10.3"/>
     <title>Dai Auctions | Flap</title>
     <meta name="description" content="The place to see all MakerDao Auctions. Welcome to the open blockchains.">
     <meta name="keywords" content="makerdao dai auctions eth usdc bat btc tusd knc zrx mana pax usdt comp lrc link">
@@ -75,7 +75,6 @@
         <input id="fliter-id" type="number" onchange="filterAuctionById();"/>
         <a href="#" onclick="filterAuctionById();">GO!</a>
     </span>
-    <span id="no-results">NO auctions found in the last days</span>
     <i id="last-update"></i>
     <div class="links-panel">
         <span style="font-weight: normal;">FLIP [</span>
@@ -98,12 +97,13 @@
     </div>
 </div>
 <div id="auction-details"></div>
+<div id="no-results" class="row"> >> NO auctions found in the last days</div>
 <div id="app">
     <div class="row"> >> Fetching data from mainnet...</div>
 </div>
 <div id="info">
     <p>
-        All data from last 3.14 days |
+        All data from last 24 hours |
         Maybe try to <a href="#" onclick="loadAllHistory()">load all history</a> if you are curious 😁
     </p>
     <p>

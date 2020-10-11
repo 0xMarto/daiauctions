@@ -1017,8 +1017,8 @@ async function getMkrPrice(blockNumber) {
         let price = jsonResponse['prices'].pop()[1];
         lastPrice = Number(parseFloat(price).toFixed(2));
     } catch (e) {
-        console.log('Error fetching MKR price - block: ' + blockNumber);
-        console.log(e);
+        console.log(`Error: fetching MKR price for block: ${blockNumber} (using: ${lastPrice} as default)`);
+        // console.log(e);
     }
 
     cachePrice = {'block': blockNumber, 'val': lastPrice};
@@ -1058,6 +1058,7 @@ var auctions = {};
 
 // Show last events received
 var eventsLoaded = false;
+var dateFormat = {day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit',second:'2-digit'};
 var showEvents = async function showEvents(someID) {
     // Clear loading msg in body
     if (Object.keys(auctions).length === 0) {
@@ -1074,11 +1075,9 @@ var showEvents = async function showEvents(someID) {
         let event = events[i];
         let values = "";
 
-
         // Get and populate event date
         let blockDate = await getBlockDate(event.blockNumber);
-        // let dateFormat = {'day': 'numeric', 'month': 'short', 'year': 'numeric'};
-        values = blockDate.toLocaleString('en') + " | ";
+        values = blockDate.toLocaleString('en-GB', dateFormat) + " | ";
 
         let eventType = "UNKNOWN";
         let flapId = 0;
@@ -1282,7 +1281,7 @@ var showEvents = async function showEvents(someID) {
 
 // Fetch old events to populate list at initial load
 var lastBlockfetch = 0;
-var blocksBack = 18095; // 18095 -> 3.14 days blocks count
+var blocksBack = 5760; // 5760 -> 24 hs blocks count (4*60*24)
 var fetchAuctions = async function fetchAuctions(someID) {
     lastBlockfetch = await web3.eth.getBlockNumber();
     let fromBlock = lastBlockfetch - blocksBack;
@@ -1384,7 +1383,7 @@ function showFilter() {
 
 function showLastUpdate() {
     let lastUpdateTag = document.getElementById("last-update");
-    let now = new Date().toLocaleString();
+    let now = new Date().toLocaleString("en-GB", dateFormat);
     lastUpdateTag.innerHTML = `- Updated to: ${now}`;
 }
 
@@ -1408,7 +1407,7 @@ function showEmptyMessage() {
         let searchTag = document.getElementById("search");
         searchTag.style.display = "none";
         let noResultsTag = document.getElementById("no-results");
-        noResultsTag.style.display = "inline";
+        noResultsTag.style.display = "block";
         showLastUpdate();
     }
 }
@@ -1464,7 +1463,8 @@ function showAuctionDetails(id) {
     let priceDiff = ((auction["paidPrice"] / auction["dealPrice"]) - 1) * 100;
     msg += `- TOOK RATE DIFF: ${priceDiff.toFixed(2)}% <br/>`;
     let daiProfit = auction.lot - (auction.bid * auction.dealPrice);
-    msg += `- PROFIT: <b>${daiProfit.toLocaleString('en')} dai</b>`;
+    let numFormat = {minimumFractionDigits: 2, maximumFractionDigits: 2};
+    msg += `- PROFIT: <b>${daiProfit.toLocaleString('en', numFormat)} dai</b>`;
 
     msg += '<hr/>';
     msg += '<a style="float: right;" onclick="hideAuctionDetails()">CLOSE<a/>';
