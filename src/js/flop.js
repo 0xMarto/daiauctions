@@ -808,7 +808,7 @@ function showEmptyMessage() {
         let searchTag = document.getElementById("search");
         searchTag.style.display = "none";
         let noResultsTag = document.getElementById("no-results");
-        noResultsTag.style.display = "inline";
+        noResultsTag.style.display = "block";
         showLastUpdate();
     }
 }

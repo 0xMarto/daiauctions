@@ -44,6 +44,10 @@
         "destination": "/flip_bat.html"
       },
       {
+        "source": "/flip/eth-b",
+        "destination": "/flip_eth_b.html"
+      },
+      {
         "source": "/flap",
         "destination": "/flap.html"
       },
