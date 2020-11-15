@@ -8,6 +8,14 @@
     ],
     "rewrites": [
       {
+        "source": "/flip/bal",
+        "destination": "/flip_bal.html"
+      },
+      {
+        "source": "/flip/yfi",
+        "destination": "/flip_yfi.html"
+      },
+      {
         "source": "/flip/link",
         "destination": "/flip_link.html"
       },
