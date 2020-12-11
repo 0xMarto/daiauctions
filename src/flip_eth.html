@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="author" content="Marto"/>
-    <meta name="version" content="1.11.1"/>
+    <meta name="version" content="1.12.1"/>
     <title>Dai Auctions</title>
     <meta name="description" content="The place to see all MakerDao Auctions. Welcome to the open blockchains.">
     <meta name="keywords" content="makerdao dai auctions eth usdc bat btc tusd knc zrx mana pax usdt comp lrc link
@@ -85,8 +85,8 @@
 </div>
 <div id="filter-panel">
     <span id="search">
-        <label for="fliter-id">Filter by ID:</label>
-        <input id="fliter-id" type="number" onchange="filterAuctionById();"/>
+        <label for="fliter-id">Filter:</label>
+        <input id="fliter-id" type="number" placeholder="  ID  " onchange="filterAuctionById();"/>
         <a href="#" onclick="filterAuctionById();">GO!</a>
     </span>
     <i id="last-update"></i>
@@ -94,13 +94,10 @@
         <b>FLIP [</b>
         <a href="#" class="active" title="ETH-A Auctions with DAI">ETH-A</a> /
         <a href="/flip/bat" title="BAT Auctions with DAI">BAT</a> /
-        <span class="disabled" title="USDC Auctions Currently disabled by MakerDao">USDC</span> /
         <a href="/flip/btc" title="WBTC Auctions with DAI">WBTC</a> /
-        <span class="disabled" title="TUSD Auctions Currently disabled by MakerDao">TUSD</span> /
         <a href="/flip/knc" title="KNC Auctions with DAI">KNC</a> /
         <a href="/flip/zrx" title="ZRX Auctions with DAI">ZRX</a> /
         <a href="/flip/mana" title="MANA Auctions with DAI">MANA</a> /
-        <span class="disabled" title="PAX Auctions Currently disabled by MakerDao">PAX</span> /
         <a href="/flip/usdt" title="USDT Auctions with DAI">USDT</a> /
         <a href="/flip/comp" title="COMP Auctions with DAI">COMP</a> /
         <a href="/flip/lrc" title="LRC Auctions with DAI">LRC</a> /
