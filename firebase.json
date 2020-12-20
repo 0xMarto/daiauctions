@@ -8,6 +8,14 @@
     ],
     "rewrites": [
       {
+        "source": "/flip/uni",
+        "destination": "/flip_uni.html"
+      },
+      {
+        "source": "/flip/renbtc",
+        "destination": "/flip_renbtc.html"
+      },
+      {
         "source": "/flip/bal",
         "destination": "/flip_bal.html"
       },
