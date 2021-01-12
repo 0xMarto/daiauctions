@@ -199,7 +199,8 @@ h1 {
 
 #filter-panel .links-panel {
     float: right;
-    font-size: 17px;
+    font-size: 15px;
+    line-height: 22px;
 }
 
 #filter-panel .links-panel .disabled {

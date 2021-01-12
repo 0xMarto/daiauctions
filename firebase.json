@@ -8,6 +8,14 @@
     ],
     "rewrites": [
       {
+        "source": "/flip/aave",
+        "destination": "/flip_aave.html"
+      },
+      {
+        "source": "/flip/eth-dai-lp",
+        "destination": "/flip_eth_dai_lp.html"
+      },
+      {
         "source": "/flip/uni",
         "destination": "/flip_uni.html"
       },
