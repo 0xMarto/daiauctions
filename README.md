@@ -14,12 +14,13 @@ Welcome to the open blockchains.
 > [Flip auctions detailed documentation](https://docs.makerdao.com/smart-contract-modules/collateral-module/flipper-detailed-documentation)
 >
 > [Flap auctions detailed documentation](https://docs.makerdao.com/smart-contract-modules/system-stabilizer-module/flap-detailed-documentation)
-
+>
+> [Flop auctions detailed documentation](https://docs.makerdao.com/smart-contract-modules/system-stabilizer-module/flop-detailed-documentation)
 
 
 ##### Simple, optimized and light weight
 
-> **100** Score of [Google PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/?hl=es&url=https%3A%2F%2Fdaiauctions.com%2F&tab=desktop)
+> **HIGH** Score of [Google PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/?hl=es&url=https%3A%2F%2Fdaiauctions.com%2F&tab=desktop)
 
 <br/>
 
@@ -33,12 +34,22 @@ Welcome to the open blockchains.
 ## ✨ Features
 
 1. Realtime tracking of MCD Collateral Auctions (Flips)
-    - ETH-A,
+    - ETH-A
     - WBTC-A
     - BAT-A
     - KNC-A
     - ZRX-A
-    - MANA
+    - MANA-A
+    - USDT-A
+    - COMP-A
+    - LRC-A
+    - ETH-B
+    - BAL-A
+    - YFI-A
+    - UNI-A
+    - RENBTC-A
+    - AAVE-A
+    - UNIV2DAIETH-A
 
 2. Realtime tracking of MCD Surplus DAI Auctions (Flaps)
 
