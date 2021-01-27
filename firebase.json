@@ -8,12 +8,20 @@
     ],
     "rewrites": [
       {
+        "source": "/flip/usdc-eth-lp",
+        "destination": "/flip_usdc_eth_lp.html"
+      },
+      {
+        "source": "/flip/wbtc-eth-lp",
+        "destination": "/flip_wbtc_eth_lp.html"
+      },
+      {
         "source": "/flip/aave",
         "destination": "/flip_aave.html"
       },
       {
-        "source": "/flip/eth-dai-lp",
-        "destination": "/flip_eth_dai_lp.html"
+        "source": "/flip/dai-eth-lp",
+        "destination": "/flip_dai_eth_lp.html"
       },
       {
         "source": "/flip/uni",

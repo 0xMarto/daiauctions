@@ -50,6 +50,8 @@ Welcome to the open blockchains.
     - RENBTC-A
     - AAVE-A
     - UNIV2DAIETH-A
+    - UNIV2USDCETH-A
+    - UNIV2WBTCETH-A
 
 2. Realtime tracking of MCD Surplus DAI Auctions (Flaps)
 

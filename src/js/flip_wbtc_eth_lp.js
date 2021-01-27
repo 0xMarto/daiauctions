@@ -785,10 +785,10 @@ const CAT_ABI = [{
     "type": "function"
 }];
 
-const ETH_DAI_LP_FLIP_ADDRESS = "0x57dfd99f45747DD55C1c432Db4aEa07FBd5d2B5c";
-const MEDIANIZER_ADDRESS = "0x87ecBd742cEB40928E6cDE77B2f0b5CFa3342A09";
+const WBTC_ETH_LP_FLIP_ADDRESS = "0xbc95e8904d879F371Ac6B749727a0EAfDCd2ACB6";
+const MEDIANIZER_ADDRESS = "0x771338D5B31754b25D2eb03Cea676877562Dec26";
 const CAT_ADDRESS = "0xa5679C04fc3d9d8b0AaB1F0ab83555b301cA70Ea";
-const FLIP_ILK = "0x554e4956324441494554482d4100000000000000000000000000000000000000";
+const FLIP_ILK = "0x554e495632574254434554482d41000000000000000000000000000000000000";
 
 var web3;
 var usingRemoteProvider = true;
@@ -812,7 +812,7 @@ if (usingRemoteProvider) {
 }
 
 // Get instance of contracts
-const flipContract = new web3.eth.Contract(FLIPPER_ABI, ETH_DAI_LP_FLIP_ADDRESS);
+const flipContract = new web3.eth.Contract(FLIPPER_ABI, WBTC_ETH_LP_FLIP_ADDRESS);
 const medianizerContract = new web3.eth.Contract(MEDIANIZER_ABI, MEDIANIZER_ADDRESS);
 const catContract = new web3.eth.Contract(CAT_ABI, CAT_ADDRESS);
 
@@ -931,7 +931,7 @@ async function showEvents(someID) {
             values += "ID: <b>" + flipId + "</b> | ";
 
             let lot = event.returnValues.lot / 10 ** 18;
-            values += "lot: " + lot.toFixed(3) + " eth-dai-lp | ";
+            values += "lot: " + lot.toFixed(3) + " wbtc-eth-lp | ";
 
             let tab = event.returnValues.tab / 10 ** 27 / 10 ** 18;
             values += "tab: " + tab.toFixed(2) + " dai | ";
@@ -975,7 +975,7 @@ async function showEvents(someID) {
             values += "ID: <b>" + flipId + "</b> | ";
 
             let lot = parseInt(event.raw.topics[3], 16) / 10 ** 18;
-            values += "lot: " + lot.toFixed(3) + " eth-dai-lp | ";
+            values += "lot: " + lot.toFixed(3) + " wbtc-eth-lp | ";
 
             let raw = event.raw.data.slice(288, -248);
             let bid = parseInt(raw, 16) / 10 ** 27 / 10 ** 18;
@@ -1015,7 +1015,7 @@ async function showEvents(someID) {
             values += "ID: <b>" + flipId + "</b> | ";
 
             let lot = parseInt(event.raw.topics[3], 16) / 10 ** 18;
-            values += "lot: " + lot.toFixed(3) + " eth-dai-lp | ";
+            values += "lot: " + lot.toFixed(3) + " wbtc-eth-lp | ";
 
             let raw = event.raw.data.slice(288, -248);
             let bid = parseInt(raw, 16) / 10 ** 27 / 10 ** 18;
@@ -1062,10 +1062,10 @@ async function showEvents(someID) {
             auctions[flipId]["state"] = "CLOSE";
 
             if (!medPrice) {
-                values += "Paid Rate: $" + auctions[flipId]["paidPrice"] + " dai/eth-dai-lp (+-.--%) | ";
+                values += "Paid Rate: $" + auctions[flipId]["paidPrice"] + " dai/wbtc-eth-lp (+-.--%) | ";
                 values += "--,-- % | Price: $---,-- | ";
             } else {
-                values += "Paid Rate: $" + auctions[flipId]["paidPrice"] + " dai/eth-dai-lp ";
+                values += "Paid Rate: $" + auctions[flipId]["paidPrice"] + " dai/wbtc-eth-lp ";
                 let diff = ((auctions[flipId]["paidPrice"] / auctions[flipId]["dealPrice"]) - 1) * 100;
                 if (diff > 0) {
                     values += "(+" + diff.toFixed(2) + "%) ~ ";
@@ -1298,25 +1298,25 @@ function showAuctionDetails(id) {
 
     msg += 'Started: <br/>';
     msg += `- DATE: ${auction.kickDate} <br/>`;
-    msg += `- LOT: ${auction.kickLot.toLocaleString('en', numFormat)} eth-dai-lp `;
+    msg += `- LOT: ${auction.kickLot.toLocaleString('en', numFormat)} wbtc-eth-lp `;
     msg += `- BID: ${auction.bid.toLocaleString('en', numFormat)} dai <br/>`;
-    msg += `- ETH-DAI LP MED: $${auction.kickPrice} eth-dai-lp/dai <br/><br/>`;
+    msg += `- WBTC-ETH LP MED: $${auction.kickPrice} wbtc-eth-lp/dai <br/><br/>`;
 
     msg += `Bids received: ${auction.tends + auction.dents} <br/><br/>`;
 
     msg += 'Last Bid:<br/>';
     msg += `- DATE: ${auction.bidDate} <br/>`;
     msg += `- FROM: ${auction.bidFrom} <br/>`;
-    msg += `- LOT: ${auction.lot.toLocaleString('en', numFormat)} eth-dai-lp `;
+    msg += `- LOT: ${auction.lot.toLocaleString('en', numFormat)} wbtc-eth-lp `;
     msg += `- BID: ${auction.bid.toLocaleString('en', numFormat)} dai <br/>`;
-    msg += `- PAID PRICE: $${auction.paidPrice} eth-dai-lp/dai <br/>`;
-    msg += `- ETH-DAI LP MED: $${auction.bidPrice} eth-dai-lp/dai <br/><br/>`;
+    msg += `- PAID PRICE: $${auction.paidPrice} wbtc-eth-lp/dai <br/>`;
+    msg += `- WBTC-ETH LP MED: $${auction.bidPrice} wbtc-eth-lp/dai <br/><br/>`;
 
     msg += 'Ended: <br/>';
     msg += `- DATE: ${auction.dealDate} <br/>`;
     msg += `- FROM: ${auction.txFrom} <br/>`;
-    msg += `- PAID PRICE: $${auction.paidPrice} eth-dai-lp/dai <br/>`;
-    msg += `- ETH-DAI LP MED: $${auction.dealPrice} eth-dai-lp/dai <br/><br/>`;
+    msg += `- PAID PRICE: $${auction.paidPrice} wbtc-eth-lp/dai <br/>`;
+    msg += `- WBTC-ETH LP MED: $${auction.dealPrice} wbtc-eth-lp/dai <br/><br/>`;
 
 
     msg += 'Results: <br/>';

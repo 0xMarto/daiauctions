@@ -1,5 +1,5 @@
 body {
-    min-width: 1900px;
+    min-width: 1890px;
 }
 
 h1 img {
@@ -199,8 +199,9 @@ h1 {
 
 #filter-panel .links-panel {
     float: right;
-    font-size: 15px;
+    font-size: 14px;
     line-height: 22px;
+    letter-spacing: -0.8px;
 }
 
 #filter-panel .links-panel .disabled {
