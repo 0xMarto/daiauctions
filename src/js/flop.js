@@ -785,7 +785,7 @@ function showFilter() {
 function showLastUpdate() {
     let lastUpdateTag = document.getElementById("last-update");
     let now = new Date().toLocaleString();
-    lastUpdateTag.innerHTML = `- Updated to: ${now}`;
+    lastUpdateTag.innerHTML = `Last Update: ${now}`;
 }
 
 function hideFilterSearch() {

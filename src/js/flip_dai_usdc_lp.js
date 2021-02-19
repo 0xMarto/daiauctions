@@ -361,195 +361,236 @@ const FLIPPER_ABI = [{
     type: "function"
 }];
 const MEDIANIZER_ABI = [{
-        "anonymous": false,
-        "inputs": [{"indexed": false, "internalType": "uint256", "name": "val", "type": "uint256"}, {
-            "indexed": false,
-            "internalType": "uint256",
-            "name": "age",
-            "type": "uint256"
-        }],
-        "name": "LogMedianPrice",
-        "type": "event"
-    }, {
-        "anonymous": true,
-        "inputs": [{"indexed": true, "internalType": "bytes4", "name": "sig", "type": "bytes4"}, {
-            "indexed": true,
-            "internalType": "address",
-            "name": "usr",
-            "type": "address"
-        }, {"indexed": true, "internalType": "bytes32", "name": "arg1", "type": "bytes32"}, {
-            "indexed": true,
-            "internalType": "bytes32",
-            "name": "arg2",
-            "type": "bytes32"
-        }, {"indexed": false, "internalType": "bytes", "name": "data", "type": "bytes"}],
-        "name": "LogNote",
-        "type": "event"
-    }, {
-        "constant": true,
-        "inputs": [],
-        "name": "age",
-        "outputs": [{"internalType": "uint32", "name": "", "type": "uint32"}],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    }, {
-        "constant": true,
-        "inputs": [],
-        "name": "bar",
-        "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    }, {
-        "constant": true,
-        "inputs": [{"internalType": "address", "name": "", "type": "address"}],
-        "name": "bud",
-        "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    }, {
-        "constant": false,
-        "inputs": [{"internalType": "address", "name": "usr", "type": "address"}],
-        "name": "deny",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    }, {
-        "constant": false,
-        "inputs": [{"internalType": "address[]", "name": "a", "type": "address[]"}],
-        "name": "diss",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    }, {
-        "constant": false,
-        "inputs": [{"internalType": "address", "name": "a", "type": "address"}],
-        "name": "diss",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    }, {
-        "constant": false,
-        "inputs": [{"internalType": "address[]", "name": "a", "type": "address[]"}],
-        "name": "drop",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    }, {
-        "constant": false,
-        "inputs": [{"internalType": "address[]", "name": "a", "type": "address[]"}],
-        "name": "kiss",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    }, {
-        "constant": false,
-        "inputs": [{"internalType": "address", "name": "a", "type": "address"}],
-        "name": "kiss",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    }, {
-        "constant": false,
-        "inputs": [{"internalType": "address[]", "name": "a", "type": "address[]"}],
-        "name": "lift",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    }, {
-        "constant": true,
-        "inputs": [{"internalType": "address", "name": "", "type": "address"}],
-        "name": "orcl",
-        "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    }, {
-        "constant": true,
-        "inputs": [],
-        "name": "peek",
-        "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}, {
-            "internalType": "bool",
-            "name": "",
-            "type": "bool"
-        }],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    }, {
-        "constant": false,
-        "inputs": [{"internalType": "uint256[]", "name": "val_", "type": "uint256[]"}, {
-            "internalType": "uint256[]",
-            "name": "age_",
-            "type": "uint256[]"
-        }, {"internalType": "uint8[]", "name": "v", "type": "uint8[]"}, {
-            "internalType": "bytes32[]",
-            "name": "r",
-            "type": "bytes32[]"
-        }, {"internalType": "bytes32[]", "name": "s", "type": "bytes32[]"}],
-        "name": "poke",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    }, {
-        "constant": true,
-        "inputs": [],
-        "name": "read",
-        "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    }, {
-        "constant": false,
-        "inputs": [{"internalType": "address", "name": "usr", "type": "address"}],
-        "name": "rely",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    }, {
-        "constant": false,
-        "inputs": [{"internalType": "uint256", "name": "bar_", "type": "uint256"}],
-        "name": "setBar",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    }, {
-        "constant": true,
-        "inputs": [{"internalType": "uint8", "name": "", "type": "uint8"}],
-        "name": "slot",
-        "outputs": [{"internalType": "address", "name": "", "type": "address"}],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    }, {
-        "constant": true,
-        "inputs": [{"internalType": "address", "name": "", "type": "address"}],
-        "name": "wards",
-        "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    }, {
-        "constant": true,
-        "inputs": [],
-        "name": "wat",
-        "outputs": [{"internalType": "bytes32", "name": "", "type": "bytes32"}],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    }];
+    "inputs": [{
+        "internalType": "address",
+        "name": "_src",
+        "type": "address"
+    }, {"internalType": "bytes32", "name": "_wat", "type": "bytes32"}, {
+        "internalType": "address",
+        "name": "_orb0",
+        "type": "address"
+    }, {"internalType": "address", "name": "_orb1", "type": "address"}],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+}, {
+    "anonymous": false,
+    "inputs": [{"indexed": true, "internalType": "address", "name": "src", "type": "address"}],
+    "name": "Change",
+    "type": "event"
+}, {
+    "anonymous": false,
+    "inputs": [{"indexed": true, "internalType": "address", "name": "usr", "type": "address"}],
+    "name": "Deny",
+    "type": "event"
+}, {
+    "anonymous": false,
+    "inputs": [{"indexed": false, "internalType": "uint256", "name": "id", "type": "uint256"}, {
+        "indexed": false,
+        "internalType": "address",
+        "name": "orb",
+        "type": "address"
+    }],
+    "name": "Link",
+    "type": "event"
+}, {
+    "anonymous": false,
+    "inputs": [{"indexed": true, "internalType": "address", "name": "usr", "type": "address"}],
+    "name": "Rely",
+    "type": "event"
+}, {"anonymous": false, "inputs": [], "name": "Start", "type": "event"}, {
+    "anonymous": false,
+    "inputs": [{"indexed": false, "internalType": "uint256", "name": "hop", "type": "uint256"}],
+    "name": "Step",
+    "type": "event"
+}, {"anonymous": false, "inputs": [], "name": "Stop", "type": "event"}, {
+    "anonymous": false,
+    "inputs": [{"indexed": false, "internalType": "uint128", "name": "curVal", "type": "uint128"}, {
+        "indexed": false,
+        "internalType": "uint128",
+        "name": "nxtVal",
+        "type": "uint128"
+    }],
+    "name": "Value",
+    "type": "event"
+}, {
+    "inputs": [{"internalType": "address", "name": "", "type": "address"}],
+    "name": "bud",
+    "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
+    "stateMutability": "view",
+    "type": "function"
+}, {
+    "inputs": [{"internalType": "address", "name": "_src", "type": "address"}],
+    "name": "change",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+}, {
+    "inputs": [],
+    "name": "cur",
+    "outputs": [{"internalType": "uint128", "name": "val", "type": "uint128"}, {
+        "internalType": "uint128",
+        "name": "has",
+        "type": "uint128"
+    }],
+    "stateMutability": "view",
+    "type": "function"
+}, {
+    "inputs": [],
+    "name": "dec0",
+    "outputs": [{"internalType": "uint8", "name": "", "type": "uint8"}],
+    "stateMutability": "view",
+    "type": "function"
+}, {
+    "inputs": [],
+    "name": "dec1",
+    "outputs": [{"internalType": "uint8", "name": "", "type": "uint8"}],
+    "stateMutability": "view",
+    "type": "function"
+}, {
+    "inputs": [{"internalType": "address", "name": "usr", "type": "address"}],
+    "name": "deny",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+}, {
+    "inputs": [{"internalType": "address[]", "name": "a", "type": "address[]"}],
+    "name": "diss",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+}, {
+    "inputs": [{"internalType": "address", "name": "a", "type": "address"}],
+    "name": "diss",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+}, {
+    "inputs": [],
+    "name": "hop",
+    "outputs": [{"internalType": "uint32", "name": "", "type": "uint32"}],
+    "stateMutability": "view",
+    "type": "function"
+}, {
+    "inputs": [{"internalType": "address[]", "name": "a", "type": "address[]"}],
+    "name": "kiss",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+}, {
+    "inputs": [{"internalType": "address", "name": "a", "type": "address"}],
+    "name": "kiss",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+}, {
+    "inputs": [{"internalType": "uint256", "name": "id", "type": "uint256"}, {
+        "internalType": "address",
+        "name": "orb",
+        "type": "address"
+    }], "name": "link", "outputs": [], "stateMutability": "nonpayable", "type": "function"
+}, {
+    "inputs": [],
+    "name": "nxt",
+    "outputs": [{"internalType": "uint128", "name": "val", "type": "uint128"}, {
+        "internalType": "uint128",
+        "name": "has",
+        "type": "uint128"
+    }],
+    "stateMutability": "view",
+    "type": "function"
+}, {
+    "inputs": [],
+    "name": "orb0",
+    "outputs": [{"internalType": "address", "name": "", "type": "address"}],
+    "stateMutability": "view",
+    "type": "function"
+}, {
+    "inputs": [],
+    "name": "orb1",
+    "outputs": [{"internalType": "address", "name": "", "type": "address"}],
+    "stateMutability": "view",
+    "type": "function"
+}, {
+    "inputs": [],
+    "name": "pass",
+    "outputs": [{"internalType": "bool", "name": "ok", "type": "bool"}],
+    "stateMutability": "view",
+    "type": "function"
+}, {
+    "inputs": [],
+    "name": "peek",
+    "outputs": [{"internalType": "bytes32", "name": "", "type": "bytes32"}, {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+    }],
+    "stateMutability": "view",
+    "type": "function"
+}, {
+    "inputs": [],
+    "name": "peep",
+    "outputs": [{"internalType": "bytes32", "name": "", "type": "bytes32"}, {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+    }],
+    "stateMutability": "view",
+    "type": "function"
+}, {"inputs": [], "name": "poke", "outputs": [], "stateMutability": "nonpayable", "type": "function"}, {
+    "inputs": [],
+    "name": "read",
+    "outputs": [{"internalType": "bytes32", "name": "", "type": "bytes32"}],
+    "stateMutability": "view",
+    "type": "function"
+}, {
+    "inputs": [{"internalType": "address", "name": "usr", "type": "address"}],
+    "name": "rely",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+}, {
+    "inputs": [],
+    "name": "src",
+    "outputs": [{"internalType": "address", "name": "", "type": "address"}],
+    "stateMutability": "view",
+    "type": "function"
+}, {
+    "inputs": [],
+    "name": "start",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+}, {
+    "inputs": [{"internalType": "uint256", "name": "_hop", "type": "uint256"}],
+    "name": "step",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+}, {"inputs": [], "name": "stop", "outputs": [], "stateMutability": "nonpayable", "type": "function"}, {
+    "inputs": [],
+    "name": "stopped",
+    "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
+    "stateMutability": "view",
+    "type": "function"
+}, {
+    "inputs": [{"internalType": "address", "name": "", "type": "address"}],
+    "name": "wards",
+    "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
+    "stateMutability": "view",
+    "type": "function"
+}, {
+    "inputs": [],
+    "name": "wat",
+    "outputs": [{"internalType": "bytes32", "name": "", "type": "bytes32"}],
+    "stateMutability": "view",
+    "type": "function"
+}, {
+    "inputs": [],
+    "name": "zzz",
+    "outputs": [{"internalType": "uint32", "name": "", "type": "uint32"}],
+    "stateMutability": "view",
+    "type": "function"
+}];
 const CAT_ABI = [{
     "inputs": [{"internalType": "address", "name": "vat_", "type": "address"}],
     "payable": false,
@@ -744,10 +785,10 @@ const CAT_ABI = [{
     "type": "function"
 }];
 
-const MANA_FLIP_ADDRESS = "0x0a1D75B4f49BA80724a214599574080CD6B68357";
-const MEDIANIZER_ADDRESS = "0x681c4F8f69cF68852BAd092086ffEaB31F5B812c";
+const USDC_ETH_LP_FLIP_ADDRESS = "0x4a613f79a250D522DdB53904D87b8f442EA94496";
+const MEDIANIZER_ADDRESS = "0x25CD858a00146961611b18441353603191f110A0";
 const CAT_ADDRESS = "0xa5679C04fc3d9d8b0AaB1F0ab83555b301cA70Ea";
-const FLIP_ILK = "0x4d414e412d410000000000000000000000000000000000000000000000000000";
+const FLIP_ILK = "0x554e495632444149555344432d41000000000000000000000000000000000000";
 
 var web3;
 var usingRemoteProvider = true;
@@ -764,19 +805,20 @@ if (typeof window.ethereum !== 'undefined' && window.ethereum.networkVersion &&
     }
 }
 if (usingRemoteProvider) {
-    var infura = "wss://mainnet.infura.io/ws/v3/f77d1e38219b45d4b4965a1c247c1aff";
+    var infura = "wss://mainnet.infura.io/ws/v3/cabe301d837048959747eaa4415846b7";
     var provider = new Web3.providers.WebsocketProvider(infura);
     web3 = new Web3(provider);
     console.log("Using remote web3 provider");
 }
 
 // Get instance of contracts
-const flipContract = new web3.eth.Contract(FLIPPER_ABI, MANA_FLIP_ADDRESS);
+const flipContract = new web3.eth.Contract(FLIPPER_ABI, USDC_ETH_LP_FLIP_ADDRESS);
 const medianizerContract = new web3.eth.Contract(MEDIANIZER_ABI, MEDIANIZER_ADDRESS);
 const catContract = new web3.eth.Contract(CAT_ABI, CAT_ADDRESS);
 
 // Get new events and populate last events global variable
 var events = [];
+
 async function getFlipEvents(fromBlockNumber) {
     console.log(`Get auction events from block: ${fromBlockNumber}`);
     return flipContract.getPastEvents("allEvents", {
@@ -795,12 +837,13 @@ async function getFlipEvents(fromBlockNumber) {
 
 // Get the medianizer price at a given block number
 let cachePrice = {'block': 0, 'val': 0};
+
 async function getMedPrice(blockNumber) {
     if (cachePrice.block === blockNumber) {
         return cachePrice.val;
     }
     let lastPrice = 0;
-    await medianizerContract.getPastEvents("LogMedianPrice", {
+    await medianizerContract.getPastEvents("Value", {
             fromBlock: blockNumber - 1000,
             toBlock: blockNumber
         },
@@ -810,7 +853,7 @@ async function getMedPrice(blockNumber) {
                 if (logEvent) {
                     let priceInWei = web3.utils.toBN(logEvent.returnValues[0]);
                     let price = web3.utils.fromWei(priceInWei);
-                    lastPrice = Number(parseFloat(price).toFixed(4));
+                    lastPrice = Number(parseFloat(price).toFixed(2));
                 }
             } else {
                 console.log(err);
@@ -823,6 +866,7 @@ async function getMedPrice(blockNumber) {
 
 // Get the block date for a given block number
 let cacheDate = {'block': 0, 'val': new Date()};
+
 async function getBlockDate(blockNumber) {
     if (cacheDate.block === blockNumber) {
         return cacheDate.val;
@@ -855,7 +899,8 @@ var auctions = {};
 
 // Show last events received
 var eventsLoaded = false;
-var showEvents = async function showEvents(someID) {
+
+async function showEvents(someID) {
     // Clear loading msg in body
     if (Object.keys(auctions).length === 0) {
         document.getElementById("app").innerHTML = "";
@@ -886,7 +931,7 @@ var showEvents = async function showEvents(someID) {
             values += "ID: <b>" + flipId + "</b> | ";
 
             let lot = event.returnValues.lot / 10 ** 18;
-            values += "lot: " + lot.toFixed(2) + " mana | ";
+            values += "lot: " + lot.toFixed(3) + " usdc-eth-lp | ";
 
             let tab = event.returnValues.tab / 10 ** 27 / 10 ** 18;
             values += "tab: " + tab.toFixed(2) + " dai | ";
@@ -930,7 +975,7 @@ var showEvents = async function showEvents(someID) {
             values += "ID: <b>" + flipId + "</b> | ";
 
             let lot = parseInt(event.raw.topics[3], 16) / 10 ** 18;
-            values += "lot: " + lot.toFixed(2) + " mana | ";
+            values += "lot: " + lot.toFixed(3) + " usdc-eth-lp | ";
 
             let raw = event.raw.data.slice(288, -248);
             let bid = parseInt(raw, 16) / 10 ** 27 / 10 ** 18;
@@ -944,7 +989,7 @@ var showEvents = async function showEvents(someID) {
             auctions[flipId]["bidDate"] = blockDate.toUTCString().slice(5);
             auctions[flipId]["bidPrice"] = medPrice.toString();
             auctions[flipId]["lot"] = lot;
-            auctions[flipId]["paidPrice"] = (bid / lot).toFixed(4);
+            auctions[flipId]["paidPrice"] = (bid / lot).toFixed(2);
 
             if (medPrice > 0) {
                 // Calculate diff percentage
@@ -970,7 +1015,7 @@ var showEvents = async function showEvents(someID) {
             values += "ID: <b>" + flipId + "</b> | ";
 
             let lot = parseInt(event.raw.topics[3], 16) / 10 ** 18;
-            values += "lot: " + lot.toFixed(2) + " mana | ";
+            values += "lot: " + lot.toFixed(3) + " usdc-eth-lp | ";
 
             let raw = event.raw.data.slice(288, -248);
             let bid = parseInt(raw, 16) / 10 ** 27 / 10 ** 18;
@@ -984,7 +1029,7 @@ var showEvents = async function showEvents(someID) {
             auctions[flipId]["bidDate"] = blockDate.toUTCString().slice(5);
             auctions[flipId]["bidPrice"] = medPrice.toString();
             auctions[flipId]["lot"] = lot;
-            auctions[flipId]["paidPrice"] = (bid / lot).toFixed(4);
+            auctions[flipId]["paidPrice"] = (bid / lot).toFixed(2);
 
             if (medPrice > 0) {
                 // Calculate diff percentage
@@ -1012,14 +1057,15 @@ var showEvents = async function showEvents(someID) {
             let medPrice = await getMedPrice(event.blockNumber);
 
             // Register DEAL over Auction dictionary
+            auctions[flipId]["dealDate"] = blockDate.toUTCString().slice(5);
             auctions[flipId]["dealPrice"] = medPrice.toString();
             auctions[flipId]["state"] = "CLOSE";
 
             if (!medPrice) {
-                values += "Paid Rate: $" + auctions[flipId]["paidPrice"] + " dai/mana (+-.--%) | ";
+                values += "Paid Rate: $" + auctions[flipId]["paidPrice"] + " dai/usdc-eth-lp (+-.--%) | ";
                 values += "--,-- % | Price: $---,-- | ";
             } else {
-                values += "Paid Rate: $" + auctions[flipId]["paidPrice"] + " dai/mana ";
+                values += "Paid Rate: $" + auctions[flipId]["paidPrice"] + " dai/usdc-eth-lp ";
                 let diff = ((auctions[flipId]["paidPrice"] / auctions[flipId]["dealPrice"]) - 1) * 100;
                 if (diff > 0) {
                     values += "(+" + diff.toFixed(2) + "%) ~ ";
@@ -1035,7 +1081,7 @@ var showEvents = async function showEvents(someID) {
             flipId = parseInt(event.raw.topics[2], 16);
             values += "ID: <b>" + flipId + "</b> | ";
             values += "Time extended! | ";
-        }  else if (event.raw.topics[0] === FILE) {
+        } else if (event.raw.topics[0] === FILE) {
             auctions[0] = {id: 0, type: "FILE"};
             eventType = "FILE";
             const BEG = "0x6265670000000000000000000000000000000000000000000000000000000000";
@@ -1060,7 +1106,7 @@ var showEvents = async function showEvents(someID) {
                 values += "WHAT: <b>UNKNOWN</b> | ";
                 console.log(event.raw.topics);
             }
-            values += "New Flapper Update! | ";
+            values += "New Flipper Update! | ";
         } else if (event.raw.topics[0] === RELY) {
             eventType = "RELY";
             values += "WHAT: <b>Allow to call auth'ed methods --</b> | ";
@@ -1107,26 +1153,30 @@ var showEvents = async function showEvents(someID) {
         showEmptyMessage();
     }
     eventsLoaded = true;
-};
+}
 
 // Fetch old events to populate list at initial load
 var lastBlockfetch = 0;
-var blocksBack = 18095; // 18095 -> 3.14 days blocks count
-var fetchAuctions = async function fetchAuctions(someID) {
+var blocksBack = 180950; // 18095 -> 3.14 days blocks count
+async function fetchAuctions(someID) {
     lastBlockfetch = await web3.eth.getBlockNumber();
     let fromBlock = lastBlockfetch - blocksBack;
     await getFlipEvents(fromBlock);
     await showEvents(someID);
-};
+}
 
 // New block event handler
 async function newBlock(error, result) {
     if (result) {
-        let newBlockNumber = result.number;
+        // Avoid running the some events are currently being processed
         if (!eventsLoaded) return;
+
+        // Update async globals
+        updateGlobals();
 
         // Clear events and fetch new ones
         eventsLoaded = false;
+        let newBlockNumber = result.number;
         await getFlipEvents(newBlockNumber);
         await showEvents(0);
     } else {
@@ -1174,7 +1224,7 @@ async function updateGlobals() {
 
     let lastBlock = await web3.eth.getBlockNumber();
     let medPrice = await getMedPrice(lastBlock);
-    let numFormat = {minimumFractionDigits: 4, maximumFractionDigits: 4};
+    let numFormat = {minimumFractionDigits: 2, maximumFractionDigits: 2};
     globalsPanel.find('#price-med').text("$" + medPrice.toLocaleString('en', numFormat));
 }
 
@@ -1230,9 +1280,9 @@ function filterAuctionById() {
     }
 }
 
-function showAuctionDetails(id){
+function showAuctionDetails(id) {
     let auction = auctions[id];
-    if (!auction){
+    if (!auction) {
         alert('Error showing auction details');
         return;
     }
@@ -1244,36 +1294,35 @@ function showAuctionDetails(id){
 
     let msg = `> <b>AUCTION ID: ${id}</b>`;
     msg += '<hr/>';
-    let numFormat = {minimumFractionDigits: 4, maximumFractionDigits: 4};
+    let numFormat = {minimumFractionDigits: 2, maximumFractionDigits: 2};
 
     msg += 'Started: <br/>';
     msg += `- DATE: ${auction.kickDate} <br/>`;
-    msg += `- LOT: ${auction.kickLot.toLocaleString('en', numFormat)} mana `;
+    msg += `- LOT: ${auction.kickLot.toLocaleString('en', numFormat)} usdc-eth-lp `;
     msg += `- BID: ${auction.bid.toLocaleString('en', numFormat)} dai <br/>`;
-    msg += `- MANA MED: $${auction.kickPrice} mana/dai <br/><br/>`;
+    msg += `- USDC-ETH LP MED: $${auction.kickPrice} usdc-eth-lp/dai <br/><br/>`;
+
     msg += `Bids received: ${auction.tends + auction.dents} <br/><br/>`;
 
     msg += 'Last Bid:<br/>';
     msg += `- DATE: ${auction.bidDate} <br/>`;
     msg += `- FROM: ${auction.bidFrom} <br/>`;
-    msg += `- LOT: ${auction.lot.toLocaleString('en', numFormat)} mana `;
+    msg += `- LOT: ${auction.lot.toLocaleString('en', numFormat)} usdc-eth-lp `;
     msg += `- BID: ${auction.bid.toLocaleString('en', numFormat)} dai <br/>`;
-    msg += `- PAID PRICE: $${auction.paidPrice} mana/dai <br/>`;
-    msg += `- MANA MED: $${auction.bidPrice} mana/dai <br/><br/>`;
+    msg += `- PAID PRICE: $${auction.paidPrice} usdc-eth-lp/dai <br/>`;
+    msg += `- USDC-ETH LP MED: $${auction.bidPrice} usdc-eth-lp/dai <br/><br/>`;
 
     msg += 'Ended: <br/>';
     msg += `- DATE: ${auction.dealDate} <br/>`;
     msg += `- FROM: ${auction.txFrom} <br/>`;
-    msg += `- PAID PRICE: $${auction.paidPrice} mana/dai <br/>`;
-    msg += `- MANA MED: $${auction.dealPrice} mana/dai <br/><br/>`;
+    msg += `- PAID PRICE: $${auction.paidPrice} usdc-eth-lp/dai <br/>`;
+    msg += `- USDC-ETH LP MED: $${auction.dealPrice} usdc-eth-lp/dai <br/><br/>`;
 
 
     msg += 'Results: <br/>';
     let priceDiff = ((auction["paidPrice"] / auction["dealPrice"]) - 1) * 100;
     msg += `- PRICE DIFF: ${priceDiff.toFixed(2)}% <br/>`;
-    let daiProfit =  (auction.lot * auction.dealPrice) - auction.bid;
-
-    numFormat = {minimumFractionDigits: 2, maximumFractionDigits: 2};
+    let daiProfit = (auction.lot * auction.dealPrice) - auction.bid;
     msg += `- PROFIT: <b>${daiProfit.toLocaleString('en', numFormat)} dai</b>`;
 
     msg += '<hr/>';

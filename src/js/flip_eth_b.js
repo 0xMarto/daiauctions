@@ -1200,8 +1200,8 @@ function showFilter() {
 
 function showLastUpdate() {
     let lastUpdateTag = document.getElementById("last-update");
-    let now = new Date().toLocaleString('en');
-    lastUpdateTag.innerHTML = `- Updated to: ${now}`;
+    let now = new Date().toLocaleString('en-GB');
+    lastUpdateTag.innerHTML = `Last Update: ${now}`;
 }
 
 function hideFilterSearch() {

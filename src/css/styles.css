@@ -106,6 +106,9 @@ h1 {
 
 #filter-panel #last-update {
     line-height: 22px;
+    position: absolute;
+    right: 20px;
+    top: 145px;
 }
 
 #no-results {
@@ -161,7 +164,7 @@ h1 {
     display: none;
 }
 
-#auction-details a{
+#auction-details a {
     text-decoration: none;
     color: black;
     cursor: pointer;

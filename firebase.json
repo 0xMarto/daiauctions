@@ -8,6 +8,10 @@
     ],
     "rewrites": [
       {
+        "source": "/flip/dai-usdc-lp",
+        "destination": "/flip_dai_usdc_lp.html"
+      },
+      {
         "source": "/flip/usdc-eth-lp",
         "destination": "/flip_usdc_eth_lp.html"
       },
