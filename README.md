@@ -52,6 +52,7 @@ Welcome to the open blockchains.
     - UNIV2DAIETH-A
     - UNIV2USDCETH-A
     - UNIV2WBTCETH-A
+    - UNIV2UNIETH-A
 
 2. Realtime tracking of MCD Surplus DAI Auctions (Flaps)
 
@@ -88,4 +89,4 @@ With support:
 <br/>
 
 
-###### Made with love by <a target="_blank" href="https://twitter.com/martinlsanchez" class="author">Marto</a> (marto.eth)
+###### Made with ❤ by <a target="_blank" href="https://twitter.com/martinlsanchez" class="author">Marto</a> (marto.eth)

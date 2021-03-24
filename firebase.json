@@ -8,6 +8,10 @@
     ],
     "rewrites": [
       {
+        "source": "/flip/uni-eth-lp",
+        "destination": "/flip_uni_eth_lp.html"
+      },
+      {
         "source": "/flip/dai-usdc-lp",
         "destination": "/flip_dai_usdc_lp.html"
       },
