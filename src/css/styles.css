@@ -41,7 +41,7 @@ h1 {
     color: white;
 }
 
-.total-litter {
+.total-litter, .total-dirt {
     font-family: monospace;
     display: inline-block;
     background-color: #f2f2f2;
@@ -52,7 +52,7 @@ h1 {
     top: -43px;
 }
 
-.total-box {
+.total-box, .total-hole {
     font-family: monospace;
     display: inline-block;
     background-color: #f2f2f2;
@@ -76,6 +76,10 @@ h1 {
     display: inline-block;
 }
 
+#globals .box:first-child {
+    min-width: 120px;
+}
+
 #globals .box b {
     font-size: 20px;
 }
@@ -83,6 +87,15 @@ h1 {
 #globals .box b a {
     text-decoration: none;
     color: black;
+}
+
+#globals .box svg {
+    fill: none;
+    float: left;
+    margin-right: 5px;
+    width: 36px;
+    height: 36px;
+
 }
 
 #info p {
@@ -226,5 +239,3 @@ h1 {
 #filter-panel .links-panel a.active {
     font-weight: bold;
 }
-
-
