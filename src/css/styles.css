@@ -119,9 +119,8 @@ h1 {
 
 #filter-panel #last-update {
     line-height: 22px;
-    position: absolute;
-    right: 20px;
-    top: 148px;
+    float: right;
+    margin-top: -27px;
 }
 
 #no-results {
@@ -237,5 +236,23 @@ h1 {
 }
 
 #filter-panel .links-panel a.active {
+    font-weight: bold;
+}
+
+#glossary-panel {
+    margin: -10px 5px 25px 5px;
+    padding: 10px;
+    background-color: #cac9c83d;
+}
+
+#glossary-panel i {
+    display: inline-block;
+    min-width: 400px;
+}
+
+#glossary-panel a {
+    float: right;
+    margin-top: -20px;
+    cursor: pointer;
     font-weight: bold;
 }

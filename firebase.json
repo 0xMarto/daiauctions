@@ -8,6 +8,10 @@
     ],
     "rewrites": [
       {
+        "source": "/clip/link",
+        "destination": "/clip_link.html"
+      },
+      {
         "source": "/flip/uni-eth-lp",
         "destination": "/flip_uni_eth_lp.html"
       },
@@ -122,7 +126,7 @@
         "headers": [
           {
             "key": "Cache-Control",
-            "value": "max-age=2592000"
+            "value": "max-age=31536000"
           }
         ]
       },
@@ -131,7 +135,7 @@
         "headers": [
           {
             "key": "Cache-Control",
-            "value": "max-age=864000"
+            "value": "max-age=1728000"
           }
         ]
       },
@@ -140,7 +144,7 @@
         "headers": [
           {
             "key": "Cache-Control",
-            "value": "max-age=86400"
+            "value": "max-age=31536000"
           }
         ]
       }

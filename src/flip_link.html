@@ -32,7 +32,7 @@
 </head>
 <body>
 <h1>
-    <a href="/"><img alt="dai logo" width="50" src="/img/dai-logo.png"/></a>
+    <a href="/"><img alt="dai logo" width="50" height="50" src="/img/dai-logo.png"/></a>
     MCD Collateral Auctions
 </h1>
 <div class="total-litter" title="Current DAI amount of debt being Auctioned (in all collaterals)">
@@ -84,6 +84,9 @@
     </span>
     <i id="last-update"></i>
     <div class="links-panel">
+        <span style="font-weight: normal;">CLIP [</span>
+        <a href="/clip/link" title="LINK Auctions with DAI">LINK</a>
+        <span style="font-weight: normal;">]</span> |
         <b>FLIP [</b>
         <a href="/flip" title="ETH-A Auctions with DAI">ETH-A</a> /
         <a href="/flip/bat" title="BAT Auctions with DAI">BAT</a> /
@@ -111,7 +114,10 @@
     </div>
 </div>
 <div id="auction-details"></div>
-<div id="no-results" class="row"> >> NO auctions found in the last days</div>
+<div id="no-results" class="row">
+    >> NO Liq 1.2 auctions found in the last days.
+    Maybe Try <a href="/clip/link">LINK Liquidations 2.0 Auctions</a>
+</div>
 <div id="app">
     <div class="row"> >> Fetching data from mainnet...</div>
 </div>
