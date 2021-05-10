@@ -4,8 +4,8 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="author" content="Marto"/>
-    <meta name="version" content="2.5.2"/>
-    <title>Dai Auctions | Flip | BTC</title>
+    <meta name="version" content="2.3.3"/>
+    <title>Dai Auctions | Clip | ETH-B</title>
     <meta name="description" content="The place to see all MakerDao Auctions. Welcome to the open blockchains.">
     <meta name="keywords" content="makerdao dai auctions eth usdc bat btc tusd knc zrx mana pax usdt comp lrc link
         bal yfi uni renbtc aave dai-eth-lp usdc-eth-lp wbtc-eth-lp uni-eth-lp">
@@ -15,17 +15,17 @@
 
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@martinlsanchez">
-    <meta name="twitter:title" content="Dai Auctions | Flip - BTC">
+    <meta name="twitter:title" content="Dai Auctions | Clip - ETH-B">
     <meta name="twitter:description" content="The place to see all MakerDao Auctions. Welcome to the open blockchains.">
     <meta name="twitter:creator" content="@martinlsanchez">
     <meta name="twitter:image" content="https://daiauctions.com/img/dai-share.png">
 
-    <meta property="og:title" content="Dai Auctions | Flip - BTC"/>
+    <meta property="og:title" content="Dai Auctions | Clip - ETH-B"/>
     <meta property="og:type" content="website"/>
-    <meta property="og:url" content="https://daiauctions.com/flip/btc"/>
+    <meta property="og:url" content="https://daiauctions.com/Clip/link"/>
     <meta property="og:image" content="https://daiauctions.com/img/dai-share.png"/>
     <meta property="og:description" content="The place to see all MakerDao Auctions. Welcome to the open blockchains."/>
-    <meta property="og:site_name" content="Dai Auctions | Flip - BTC"/>
+    <meta property="og:site_name" content="Dai Auctions | Clip - ETH-B"/>
 
     <link rel="icon" type="icon" href="/img/favicon.ico"/>
     <link rel="stylesheet" href="/css/styles_min.css" media="all"/>
@@ -34,46 +34,73 @@
 <h1>
     <a href="/"><img alt="dai logo" width="50" src="/img/dai-logo.png"/></a>
     MCD Collateral Auctions
+    <label style="float:right;font-family: monospace;margin-right:25px">[Liq 2.0]</label>
 </h1>
-<div class="total-litter" title="Current DAI amount of debt being Auctioned (in all collaterals)">
-    <span>Litter: </span><b id="litter">--,---,---.--</b><span> dai</span>
+<div class="total-dirt" title="Current DAI amount of debt being Auctioned (in all collaterals)">
+    <span>Dog Dirt: </span><b id="litter">--,---,---.--</b><span> dai</span>
 </div>
 <div class="total-box" title="Max DAI amount of debt Auctionable (at the same time)">
-    <span>Box: </span><b id="box">--,---,---.--</b><span> dai</span>
+    <span>Dog Hole: </span><b id="box">--,---,---.--</b><span> dai</span>
 </div>
 <!--<div id="languages">-->
-<!--    <a href="/zh/flip/eth">中文</a>-->
+<!--    <a href="/zh/Clip/link">中文</a>-->
 <!--</div>-->
 <div id="globals">
-    <div class="box" title="Price of official Maker WBTC Medianizer">
-        <b id="price-btc">$---.--</b><br/>
-        <span>BTC Price [dai]</span>
+    <div class="box" title="Price of official Maker ETH Medianizer">
+        <svg width="32px" viewBox="0 0 20 20" fill="none" style="width: 32px !important;">
+            <path d="M10 20C15.5228 20 20 15.5228 20 10C20 4.47715 15.5228 0 10 0C4.47715 0 0 4.47715 0 10C0 15.5228 4.47715 20 10 20Z" fill="#667FE3"></path><g transform="matrix(1, 0, 0, 1, 0.25, 0.718)"><path d="M 9.75 3.282 L 9.75 11.57 L 5.75 9.393 L 9.75 3.282 Z" fill="white"></path><path d="M 9.75 3.282 L 13.75 9.393 L 9.75 11.57 L 9.75 3.282 Z" fill="white"></path><path d="M 9.75 12.267 L 9.75 15.281 L 5.75 10.092 L 9.75 12.267 Z" fill="white"></path><path d="M 9.75 15.281 L 9.75 12.267 L 13.75 10.092 L 9.75 15.281 Z" fill="white"></path></g>
+        </svg>
+        <b id="price-med">$---.--</b><br/>
+        <span>ETH-B Price</span>
+    </div>
+    <div class="box" title="Total amount of auctions started in history">
+        <b id="kicks">---</b><br/>
+        <span>KICKS [#]</span>
     </div>
     <div class="box" title="Vaults liquidation Debt penalty">
-        <b id="chop">--.-</b><br/>
+        <b id="chop">--.--</b><br/>
         <span>CHOP [%]</span>
     </div>
-    <div class="box" title="Maximum LOT size (in DAI)">
-        <b id="dunk">--,---.--</b><br/>
-        <span>DUNK [dai]</span>
+    <div class="box" title="Current amount of debt being Auctioned of this collateral">
+        <b id="dirt">--,---.--</b><br/>
+        <span>DIRT [dai]</span>
     </div>
-    <div class="box" title="Minimum bid increase">
-        <b id="beg">-.--</b><br/>
-        <span>BEG [%]</span>
+    <div class="box" title="Max DAI amount of debt Auctionable of this collateral (at the same time)">
+        <b id="hole">--,---.-</b><br/>
+        <span>HOLE [dai]</span>
     </div>
-    <div class="box" title="Maximum bid duration">
-        <b id="ttl">--</b><br/>
-        <span>TTL [min]</span>
+    <div class="box" title="Auction start price multiplier">
+        <b id="buf">--.--</b><br/>
+        <span>BUF [%]</span>
     </div>
-    <div class="box" title="Maximum auction duration">
-        <b id="tau">--</b><br/>
-        <span>TAU [hour]</span>
+    <div class="box" title="Price degrease interval">
+        <b id="step">--.--</b><br/>
+        <span>STEP [sec]</span>
     </div>
-    <div class="box" title="Detailed Flap auction glossary link">
+    <div class="box" title="Percentage of each price decrease">
+        <b id="cut">--.--</b><br/>
+        <span>CUT [%]</span>
+    </div>
+    <div class="box" title="Detailed Clip auction glossary link">
         <b id="glossary">
-            <a target="_blank" href="https://docs.makerdao.com/smart-contract-modules/collateral-module/flipper-detailed-documentation">Flipper</a>
+            <a target="_blank" href="https://docs.makerdao.com/smart-contract-modules/dog-and-clipper-detailed-documentation#3-contract-details">Clipper</a>
         </b><br/>
-        <span>[glossary]</span>
+        <span>[details]</span>
+    </div>
+    <div id="glossary-panel">
+        <b>Liquidations 2.0 quick references</b><br/>
+        <a onclick="$('#glossary-panel').hide();">[ X ]</a>
+        <b>CHOP</b>: <i>Vault liquidation penalty.</i>
+        <b>BUF </b>: <i>Auction start price multiplier.</i>
+        <b>KICK</b>: <i>Auction start event</i>
+        <br/>
+        <b>DIRT</b>: <i>Current amount of debt being Auctioned.</i>
+        <b>STEP</b>: <i>Price degrease interval/rate.</i>
+        <b>TAKE</b>: <i>Debt settled event (partially or totally).</i>
+        <br/>
+        <b>HOLE</b>: <i>Max amount of debt Auctionable (at the same time).</i>
+        <b>CUT </b>: <i>Percentage of each price decrease.</i>
+        <b>REDO</b>: <i>Auction reset event (price re calculated).</i>
     </div>
 </div>
 <div id="filter-panel">
@@ -84,15 +111,15 @@
     </span>
     <i id="last-update"></i>
     <div class="links-panel">
-        <span style="font-weight: normal;">CLIP [</span>
+        <b>CLIP [</b>
         <a href="/" title="ETH-A Auctions with DAI">ETH-A</a> /
         <a href="/clip/wbtc" title="WBTC Auctions with DAI">WBTC</a> /
-        <a href="/clip/eth-b" title="ETH-B Auctions with DAI">ETH-B</a> /
+        <a href="#" class="active" title="ETH-B Auctions with DAI">ETH-B</a> /
         <a href="/clip/eth-c" title="ETH-C Auctions with DAI">ETH-C</a> /
         <a href="/clip/yfi" title="YFI Auctions with DAI">YFI</a> /
         <a href="/clip/link" title="LINK Auctions with DAI">LINK</a>
-        <span style="font-weight: normal;">]</span> |
-        <b>FLIP [</b>
+        <b>]</b> |
+        <span style="font-weight: normal;">FLIP [</span>
         <a href="/flip/bat" title="BAT Auctions with DAI">BAT</a> /
         <a href="/flip/knc" title="KNC Auctions with DAI">KNC</a> /
         <a href="/flip/zrx" title="ZRX Auctions with DAI">ZRX</a> /
@@ -108,23 +135,24 @@
         <a href="/flip/usdc-eth-lp" title="Uniswap USDC-ETH LP Auctions with DAI">USDC-ETH LP</a> /
         <a href="/flip/wbtc-eth-lp" title="Uniswap WBTC-ETH LP Auctions with DAI">WBTC-ETH LP</a> /
         <a href="/flip/uni-eth-lp" title="Uniswap UNI-ETH LP Auctions with DAI">UNI-ETH LP</a>
-        <b>]</b> |
+        <span style="font-weight: normal;">]</span> |
         <a href="/flap" title="DAI Auctions with MKR">FLAP [DAI]</a> |
         <a href="/flop" title="MKR Auctions with DAI">FLOP [MKR]</a>
     </div>
 </div>
 <div id="auction-details"></div>
-<div id="no-results" class="row"> >> NO auctions found in the last days</div>
+<div id="no-results" class="row">
+    >> NO auctions found in the last days.<br/>
+    <br/>
+    >> Click <a href="#" onclick="loadAllHistory()">HERE</a> to load all history (It may take a while 😅).
+</div>
 <div id="app">
     <div class="row"> >> Fetching data from mainnet...</div>
 </div>
 <div id="info">
     <p>
         All data from last 3.14 days -
-        More info about <a target="_blank" href="https://makerdao.com">MakerDao</a>
-        Auctions in this amazing
-        <a href="https://docs.makerdao.com/smart-contract-modules/collateral-module/flipper-detailed-documentation"
-           target="_blank">Flipper Docs</a>
+        Maybe try to <a href="#" onclick="loadAllHistory()">load all history</a> if you are curious 😁
     </p>
 </div>
 <p class="made-by">
@@ -134,9 +162,16 @@
     <br/><br/>
     <i>
         <span>Made and maintained only by free coding hours</span><br/>
-        <b>Toss a coin to your witcher ➡‍ daiauctions.eth</b>
+        <b>
+            <a style="cursor: pointer" onclick="playAudio()">🎵</a>
+            Toss a coin to your witcher ➡‍ daiauctions.eth
+        </b>
         <span>(0x2392C9d44F8D70D3874C8a74D28CB4c82412aCF7)</span>
     </i>
+    <br/>
+    <audio id="audio-special" style="display: none" controls>
+        <source src="/special/toss_a_coin_to_your_witcher.mp3" type="audio/mpeg">
+    </audio>
     <br/>
     <i>
         <b>
@@ -145,16 +180,9 @@
         </b>
     </i>
     <br/><br/>
-    <i>
-        With some debug/magic/advice/support of some friends:<br/>
-        <a target="_blank" href="https://twitter.com/andy8052">@andy8052</a>,
-        <a target="_blank" href="https://twitter.com/gonzalezramiro">ramoide</a>,
-        <a target="_blank" href="https://twitter.com/natanbaredes">natonamco</a> &
-        <a target="_blank" href="https://twitter.com/nanexcool">@nanexcool</a>
-    </i>
 </p>
-<script type="text/javascript" src="/js/web3.min.js"></script>
-<script type="text/javascript" src="/js/jquery.min.js"></script>
-<script async type="text/javascript" src="/js/flip_btc_min.js"></script>
+<script defer type="text/javascript" src="/js/web3.min.js"></script>
+<script defer type="text/javascript" src="/js/jquery.min.js"></script>
+<script defer type="text/javascript" src="/js/clip_eth_b_min.js"></script>
 </body>
 </html>

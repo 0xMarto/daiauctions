@@ -8,6 +8,26 @@
     ],
     "rewrites": [
       {
+        "source": "/clip/wbtc",
+        "destination": "/clip_wbtc.html"
+      },
+      {
+        "source": "/clip/eth-c",
+        "destination": "/clip_eth_c.html"
+      },
+      {
+        "source": "/clip/eth-b",
+        "destination": "/clip_eth_b.html"
+      },
+      {
+        "source": "/clip/eth-a",
+        "destination": "/clip_eth_a.html"
+      },
+      {
+        "source": "/clip/yfi",
+        "destination": "/clip_yfi.html"
+      },
+      {
         "source": "/clip/link",
         "destination": "/clip_link.html"
       },
@@ -116,8 +136,12 @@
         "destination": "/special/flip_eth_12_03_2020.html"
       },
       {
-        "source": "**",
+        "source": "/flip/eth-a",
         "destination": "/flip_eth.html"
+      },
+      {
+        "source": "**",
+        "destination": "/clip_eth_a.html"
       }
     ],
     "headers": [
