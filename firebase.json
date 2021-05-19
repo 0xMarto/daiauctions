@@ -8,6 +8,14 @@
     ],
     "rewrites": [
       {
+        "source": "/clip/renbtc",
+        "destination": "/clip_renbtc.html"
+      },
+      {
+        "source": "/clip/uni",
+        "destination": "/clip_uni.html"
+      },
+      {
         "source": "/clip/wbtc",
         "destination": "/clip_wbtc.html"
       },
