@@ -8,6 +8,38 @@
     ],
     "rewrites": [
       {
+        "source": "/clip/knc",
+        "destination": "/clip_knc.html"
+      },
+      {
+        "source": "/clip/mana",
+        "destination": "/clip_mana.html"
+      },
+      {
+        "source": "/clip/aave",
+        "destination": "/clip_aave.html"
+      },
+      {
+        "source": "/clip/comp",
+        "destination": "/clip_comp.html"
+      },
+      {
+        "source": "/clip/bal",
+        "destination": "/clip_bal.html"
+      },
+      {
+        "source": "/clip/bat",
+        "destination": "/clip_bat.html"
+      },
+      {
+        "source": "/clip/lrc",
+        "destination": "/clip_lrc.html"
+      },
+      {
+        "source": "/clip/zrx",
+        "destination": "/clip_zrx.html"
+      },
+      {
         "source": "/clip/renbtc",
         "destination": "/clip_renbtc.html"
       },

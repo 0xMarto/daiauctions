@@ -35,27 +35,27 @@ Welcome to the open blockchains.
 
 1. Realtime tracking of MCD Collateral Auctions (Flips/Clips)
     - ETH-A (CLIP)
-    - BAT-A 
+    - BAT-A (CLIP)
     - WBTC-A (CLIP)
-    - KNC-A
-    - ZRX-A
-    - MANA-A
+    - KNC-A (CLIP)
+    - ZRX-A (CLIP)
+    - MANA-A (CLIP)
     - USDT-A
-    - COMP-A
-    - LRC-A
+    - COMP-A (CLIP)
+    - LRC-A (CLIP)
     - LINK-A (CLIP)
     - ETH-B (CLIP)
     - ETH-C (CLIP)
-    - BAL-A
-    - YFI-A
-    - UNI-A
-    - RENBTC-A
-    - AAVE-A
+    - BAL-A (CLIP)
+    - YFI-A (CLIP)
+    - UNI-A (CLIP)
+    - RENBTC-A (CLIP)
+    - AAVE-A (CLIP)
     - UNIV2DAIETH-A
     - UNIV2USDCETH-A
     - UNIV2WBTCETH-A
     - UNIV2UNIETH-A
-    
+
 2. Realtime tracking of MCD Surplus DAI Auctions (Flaps)
 
 3. Realtime tracking of MCD Debt MKR Auctions (Flops)
