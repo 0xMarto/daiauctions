@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="author" content="Marto"/>
+    <meta name="version" content="2.7.4"/>
+    <title>Dai Auctions | Clip | WBTC-ETH LP</title>
+    <meta name="description" content="The place to see all MakerDao Auctions. Welcome to the open blockchains.">
+    <meta name="keywords" content="makerdao dai auctions eth usdc bat btc tusd knc zrx mana pax usdt comp lrc link
+        bal yfi uni renbtc aave dai-eth-lp usdc-eth-lp wbtc-eth-lp uni-eth-lp">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@martinlsanchez">
+    <meta name="twitter:title" content="Dai Auctions | Clip - WBTC-ETH LP">
+    <meta name="twitter:description" content="The place to see all MakerDao Auctions. Welcome to the open blockchains.">
+    <meta name="twitter:creator" content="@martinlsanchez">
+    <meta name="twitter:image" content="https://daiauctions.com/img/dai-share.png">
+
+    <meta property="og:title" content="Dai Auctions | Clip - WBTC-ETH LP"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://daiauctions.com/clip/wbtc-eth-lp"/>
+    <meta property="og:image" content="https://daiauctions.com/img/dai-share.png"/>
+    <meta property="og:description" content="The place to see all MakerDao Auctions. Welcome to the open blockchains."/>
+    <meta property="og:site_name" content="Dai Auctions | Clip - WBTC-ETH LP"/>
+
+    <link rel="icon" type="icon" href="/img/favicon.ico"/>
+    <link rel="stylesheet" href="/css/styles_min.css" media="all"/>
+</head>
+<body>
+<h1>
+    <a href="/"><img alt="dai logo" width="50" src="/img/dai-logo.png"/></a>
+    MCD Collateral Auctions
+    <label style="float:right;font-family: monospace;margin-right:25px">[Liq 2.0]</label>
+</h1>
+<div class="total-dirt" title="Current DAI amount of debt being Auctioned (in all collaterals)">
+    <span>Dog Dirt: </span><b id="litter">--,---,---.--</b><span> dai</span>
+</div>
+<div class="total-box" title="Max DAI amount of debt Auctionable (at the same time)">
+    <span>Dog Hole: </span><b id="box">--,---,---.--</b><span> dai</span>
+</div>
+<!--<div id="languages">-->
+<!--    <a href="/zh/Clip/wbtc-eth-lp">中文</a>-->
+<!--</div>-->
+<div id="globals">
+    <div class="box" title="Price of official Maker WBTC-ETH LP Medianizer" style="min-width: 175px;">
+        <svg width="32px" viewBox="0 0 500 500">
+            <mask id="mask0" maskUnits="userSpaceOnUse" x="2" y="2" width="20" height="20"><path d="M2 2H22V22H2V2Z" fill="white"></path></mask><path d="M 338.631 410.596 C 427.479 410.596 499.498 336.217 499.498 244.461 C 499.498 152.723 427.479 78.327 338.631 78.327 C 249.8 78.327 177.763 152.723 177.763 244.461 C 177.763 336.217 249.8 410.596 338.631 410.596 Z" fill="#667FE3"></path><circle cx="425.202" cy="99.724" r="106.026" transform="matrix(0.826944, 0, 0, 0.890337, 64.997482, 18.545513)" style="fill: rgb(255, 255, 255);"></circle><g transform="matrix(16.086779, 0, 0, 16.613462, 181.792465, 90.264069)"><path d="M 9.75 3.282 L 9.75 11.57 L 5.75 9.393 L 9.75 3.282 Z" fill="white"></path><path d="M 9.75 3.282 L 13.75 9.393 L 9.75 11.57 L 9.75 3.282 Z" fill="white"></path><path d="M 9.75 12.267 L 9.75 15.281 L 5.75 10.092 L 9.75 12.267 Z" fill="white"></path><path d="M 9.75 15.281 L 9.75 12.267 L 13.75 10.092 L 9.75 15.281 Z" fill="white"></path></g><path class="st0" d="M 387.038 39.2 C 384.938 38.9 384.838 38.8 385.838 38.7 C 387.738 38.4 392.138 38.8 395.238 39.5 C 402.438 41.2 408.938 45.6 415.838 53.3 L 417.638 55.4 L 420.238 55 C 431.338 53.2 442.738 54.6 452.238 59 C 454.838 60.2 458.938 62.6 459.438 63.2 C 459.638 63.4 459.938 64.7 460.138 66 C 460.838 70.7 460.538 74.2 459.038 76.9 C 458.238 78.4 458.238 78.8 458.738 80.1 C 459.138 81.1 460.338 81.8 461.438 81.8 C 463.838 81.8 466.338 78 467.538 72.7 L 468.038 70.6 L 468.938 71.6 C 474.038 77.3 478.038 85.2 478.638 90.8 L 478.838 92.3 L 477.938 91 C 476.438 88.7 475.038 87.2 473.138 85.9 C 469.738 83.6 466.138 82.9 456.638 82.4 C 448.038 81.9 443.138 81.2 438.338 79.6 C 430.138 76.9 425.938 73.4 416.238 60.5 C 411.938 54.8 409.238 51.7 406.538 49.1 C 400.638 43.4 394.738 40.4 387.038 39.2 Z" style="fill: rgb(255, 0, 122);"></path><path class="st0" d="M 461.538 51.9 C 461.738 48.1 462.238 45.6 463.338 43.3 C 463.738 42.4 464.138 41.6 464.238 41.6 C 464.338 41.6 464.138 42.3 463.838 43.1 C 463.038 45.3 462.938 48.4 463.438 51.9 C 464.138 56.4 464.438 57 469.238 61.9 C 471.438 64.2 474.038 67.1 475.038 68.3 L 476.738 70.5 L 475.038 68.9 C 472.938 66.9 468.138 63.1 467.038 62.6 C 466.338 62.2 466.238 62.2 465.738 62.7 C 465.338 63.1 465.238 63.7 465.238 66.6 C 465.138 71.1 464.538 73.9 463.038 76.8 C 462.238 78.3 462.138 78 462.838 76.3 C 463.338 75 463.438 74.4 463.438 70.1 C 463.438 61.4 462.438 59.3 456.338 55.8 C 454.838 54.9 452.238 53.6 450.738 52.9 C 449.138 52.2 447.938 51.6 448.038 51.6 C 448.238 51.4 454.138 53.1 456.438 54.1 C 459.938 55.5 460.538 55.6 460.938 55.5 C 461.238 55.2 461.438 54.4 461.538 51.9 Z" style="fill: rgb(255, 0, 122);"></path><path class="st0" d="M 391.138 66.8 C 386.938 61 384.238 52 384.838 45.3 L 385.038 43.2 L 386.038 43.4 C 387.838 43.7 390.938 44.9 392.438 45.8 C 396.438 48.2 398.238 51.5 399.938 59.7 C 400.438 62.1 401.138 64.9 401.438 65.8 C 401.938 67.3 403.838 70.8 405.438 73 C 406.538 74.6 405.838 75.4 403.338 75.2 C 399.538 74.8 394.438 71.3 391.138 66.8 Z" style="fill: rgb(255, 0, 122);"></path><path class="st0" d="M 456.438 110.3 C 436.638 102.3 429.638 95.4 429.638 83.7 C 429.638 82 429.738 80.6 429.738 80.6 C 429.838 80.6 430.538 81.2 431.438 81.9 C 435.438 85.1 439.938 86.5 452.438 88.3 C 459.738 89.4 463.938 90.2 467.738 91.5 C 479.838 95.5 487.338 103.7 489.138 114.8 C 489.638 118 489.338 124.1 488.538 127.3 C 487.838 129.8 485.838 134.4 485.338 134.5 C 485.238 134.5 485.038 134 485.038 133.2 C 484.838 129 482.738 125 479.238 121.9 C 475.038 118.3 469.638 115.6 456.438 110.3 Z" style="fill: rgb(255, 0, 122);"></path><path class="st0" d="M 442.438 113.6 C 442.238 112.1 441.738 110.2 441.438 109.4 L 440.938 107.9 L 441.838 109 C 443.138 110.5 444.138 112.3 445.038 114.8 C 445.738 116.7 445.738 117.3 445.738 120.4 C 445.738 123.4 445.638 124.1 445.038 125.8 C 444.038 128.5 442.838 130.4 440.838 132.5 C 437.238 136.2 432.538 138.2 425.838 139.1 C 424.638 139.2 421.238 139.5 418.238 139.7 C 410.738 140.1 405.738 140.9 401.238 142.5 C 400.638 142.7 400.038 142.9 399.938 142.8 C 399.738 142.6 402.838 140.8 405.338 139.6 C 408.838 137.9 412.438 137 420.338 135.6 C 424.238 135 428.238 134.2 429.238 133.8 C 439.138 130.7 444.038 123 442.438 113.6 Z" style="fill: rgb(255, 0, 122);"></path><path class="st0" d="M 451.538 129.7 C 448.938 124 448.338 118.6 449.738 113.5 C 449.938 113 450.138 112.5 450.338 112.5 C 450.538 112.5 451.138 112.8 451.738 113.2 C 452.938 114 455.438 115.4 461.838 118.9 C 469.938 123.3 474.538 126.7 477.738 130.6 C 480.538 134 482.238 137.9 483.038 142.7 C 483.538 145.4 483.238 151.9 482.538 154.6 C 480.338 163.1 475.338 169.9 468.038 173.8 C 466.938 174.4 466.038 174.8 465.938 174.8 C 465.838 174.8 466.238 173.8 466.838 172.6 C 469.238 167.5 469.538 162.6 467.738 157.1 C 466.638 153.7 464.338 149.6 459.738 142.7 C 454.238 134.7 452.938 132.6 451.538 129.7 Z" style="fill: rgb(255, 0, 122);"></path><path class="st0" d="M 377.038 160.3 C 384.438 154.1 393.538 149.7 401.938 148.3 C 405.538 147.7 411.538 147.9 414.838 148.8 C 420.138 150.2 424.938 153.2 427.438 156.9 C 429.838 160.5 430.938 163.6 432.038 170.5 C 432.438 173.2 432.938 176 433.038 176.6 C 433.838 180.2 435.438 183 437.438 184.5 C 440.538 186.8 445.938 186.9 451.238 184.9 C 452.138 184.6 452.938 184.3 452.938 184.4 C 453.138 184.6 450.438 186.4 448.638 187.3 C 446.138 188.6 444.138 189 441.438 189 C 436.638 189 432.538 186.5 429.238 181.5 C 428.538 180.5 427.138 177.6 425.938 174.9 C 422.438 166.8 420.638 164.4 416.538 161.7 C 412.938 159.4 408.338 158.9 404.838 160.6 C 400.238 162.8 399.038 168.7 402.238 172.3 C 403.538 173.8 405.938 175 407.938 175.3 C 411.638 175.8 414.838 172.9 414.838 169.2 C 414.838 166.8 413.938 165.4 411.538 164.3 C 408.338 162.9 404.838 164.5 404.938 167.6 C 404.938 168.9 405.538 169.7 406.838 170.3 C 407.638 170.7 407.638 170.7 407.038 170.6 C 404.138 170 403.438 166.4 405.738 164.1 C 408.538 161.3 414.438 162.5 416.438 166.4 C 417.238 168 417.338 171.2 416.638 173.2 C 414.938 177.6 410.138 179.9 405.238 178.6 C 401.938 177.7 400.538 176.8 396.538 172.7 C 389.538 165.5 386.838 164.1 376.838 162.6 L 374.938 162.3 L 377.038 160.3 Z" style="fill: rgb(255, 0, 122);"></path><path class="st1" d="M 324.438 -0.6 C 347.738 27.7 383.638 71.7 385.438 74.1 C 386.938 76.1 386.338 78 383.838 79.4 C 382.438 80.2 379.538 81 378.138 81 C 376.538 81 374.638 80.2 373.338 78.9 C 372.438 78 368.538 72.3 359.738 58.6 C 353.038 48.1 347.338 39.4 347.238 39.3 C 346.838 39.1 346.838 39.1 359.038 60.9 C 366.738 74.6 369.238 79.5 369.238 80.1 C 369.238 81.4 368.838 82.1 367.238 83.9 C 364.538 86.9 363.338 90.3 362.438 97.4 C 361.438 105.3 358.738 110.9 351.038 120.4 C 346.538 126 345.838 127 344.738 129.3 C 343.338 132.1 342.938 133.7 342.738 137.3 C 342.538 141.1 342.938 143.5 344.038 147.1 C 345.038 150.3 346.138 152.4 348.838 156.5 C 351.138 160.1 352.538 162.8 352.538 163.8 C 352.538 164.6 352.738 164.6 356.338 163.8 C 364.938 161.8 372.038 158.4 375.938 154.2 C 378.338 151.6 378.938 150.2 378.938 146.6 C 378.938 144.3 378.838 143.8 378.238 142.4 C 377.238 140.2 375.338 138.4 371.238 135.6 C 365.838 131.9 363.538 128.9 362.938 124.9 C 362.438 121.5 363.038 119.2 366.038 112.9 C 369.138 106.4 369.938 103.7 370.438 97.1 C 370.738 92.9 371.238 91.2 372.438 89.9 C 373.738 88.5 374.838 88 377.938 87.6 C 383.038 86.9 386.338 85.6 388.938 83.1 C 391.238 81 392.238 78.9 392.338 75.8 L 392.438 73.5 L 391.138 72.1 C 386.438 66.7 321.338 -4.9 321.038 -4.9 C 320.938 -4.9 322.538 -3 324.438 -0.6 Z M 355.138 141.6 C 356.238 139.7 355.638 137.3 353.838 136.1 C 352.138 135 349.538 135.5 349.538 137 C 349.538 137.4 349.738 137.8 350.338 138 C 351.238 138.5 351.338 139 350.638 140.1 C 349.938 141.2 349.938 142.2 350.838 142.9 C 352.238 144 354.138 143.4 355.138 141.6 Z" style="clip-rule: evenodd; fill: rgb(255, 0, 122); fill-rule: evenodd;"></path><path class="st1" d="M 395.638 89 C 393.238 89.7 390.938 92.3 390.238 94.9 C 389.838 96.5 390.038 99.4 390.738 100.3 C 391.838 101.7 392.838 102.1 395.638 102.1 C 401.138 102.1 405.838 99.7 406.338 96.8 C 406.838 94.4 404.738 91.1 401.838 89.6 C 400.338 88.8 397.238 88.5 395.638 89 Z M 402.038 94 C 402.838 92.8 402.538 91.5 401.038 90.6 C 398.338 88.9 394.238 90.3 394.238 92.9 C 394.238 94.2 396.338 95.6 398.338 95.6 C 399.638 95.6 401.438 94.8 402.038 94 Z" style="clip-rule: evenodd; fill: rgb(255, 0, 122); fill-rule: evenodd;"></path><circle cx="12" cy="12" r="9.31034" fill="white" transform="matrix(16.911068, 0, 0, 16.966125, -32.231739, 40.958015)"></circle><path fill-rule="evenodd" clip-rule="evenodd" d="M 259.484 146.913 C 209.257 100.832 132.276 100.832 82.047 146.913 L 72.543 137.596 C 127.966 86.313 213.349 86.313 268.772 137.596 L 259.484 146.913 Z M 268.09 155.421 L 277.378 146.104 L 277.378 145.887 C 328.495 201.49 328.495 287.153 277.378 342.753 L 268.09 333.437 C 314.019 283.044 314.019 205.813 268.09 155.421 Z M 73.38 333.53 C 27.507 283.151 27.507 205.988 73.38 155.608 L 64.093 146.291 C 12.976 201.894 12.976 287.554 64.093 343.158 L 73.38 333.53 Z M 81.953 342.13 C 132.181 388.212 209.162 388.212 259.391 342.13 L 268.893 351.448 C 213.471 402.732 128.089 402.732 72.666 351.448 L 81.953 342.13 Z" fill="#6A6672"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M 198.839 220.822 C 198.839 239.456 169.803 237.19 160.578 237.19 L 160.578 204.363 C 169.803 204.363 198.839 201.444 198.839 220.822 Z M 206.424 271.787 C 206.424 292.16 171.629 289.83 160.548 289.83 L 160.548 253.681 C 171.629 253.711 206.424 250.513 206.424 271.787 Z M 229.332 213.463 C 227.475 194.021 210.758 187.499 189.616 185.512 L 189.616 158.71 L 173.27 158.71 L 173.27 184.984 C 168.968 184.984 164.572 184.984 160.208 185.139 L 160.208 158.71 L 143.956 158.71 L 143.956 185.667 L 133.555 185.667 L 110.833 185.667 L 110.833 203.214 C 110.833 203.214 122.906 202.996 122.72 203.214 C 127.246 202.714 131.35 205.9 132.007 210.419 L 132.007 284.24 C 131.809 287.442 129.063 289.873 125.871 289.678 C 125.853 289.678 125.834 289.678 125.816 289.674 C 126.032 289.861 113.929 289.674 113.929 289.674 L 110.678 309.272 L 131.976 309.272 L 143.677 309.272 L 143.677 336.664 L 160.022 336.664 L 160.022 309.676 L 173.085 309.676 L 173.085 336.54 L 189.46 336.54 L 189.46 309.459 C 217.073 307.781 236.328 300.948 238.743 275.016 C 240.693 254.146 230.909 244.829 215.277 241.071 C 224.781 236.226 230.756 227.687 229.332 213.463 Z" fill="#ED924D"></path><g mask="url(#mask0)" transform="matrix(16.911068, 0, 0, 16.966125, -32.231739, 40.958015)"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.9982 2.77979C6.90903 2.7829 2.78583 6.91086 2.78894 12C2.79206 17.0891 6.92001 21.2123 12.0092 21.2092C17.0948 21.2063 21.2164 17.0837 21.2184 11.9982C21.2124 6.90976 17.0866 2.7873 11.9982 2.78528V2.77979ZM11.9982 22C6.47538 21.9991 1.9989 17.5211 2 11.9982C2.0011 6.4752 6.47905 1.9989 12.0018 2C17.5234 2.0011 21.9991 6.47666 22 11.9982C21.994 17.5195 17.5195 21.994 11.9982 22Z" fill="#3D374B"></path></g>
+        </svg>
+        <b id="price-med">$---.--</b><br/>
+        <span>WBTC-ETH LP Price</span>
+    </div>
+    <div class="box" title="Total amount of auctions started in history">
+        <b id="kicks">---</b><br/>
+        <span>KICKS [#]</span>
+    </div>
+    <div class="box" title="Vaults liquidation Debt penalty">
+        <b id="chop">--.--</b><br/>
+        <span>CHOP [%]</span>
+    </div>
+    <div class="box" title="Current amount of debt being Auctioned of this collateral">
+        <b id="dirt">--,---.--</b><br/>
+        <span>DIRT [dai]</span>
+    </div>
+    <div class="box" title="Max DAI amount of debt Auctionable of this collateral (at the same time)">
+        <b id="hole">--,---.-</b><br/>
+        <span>HOLE [dai]</span>
+    </div>
+    <div class="box" title="Auction start price multiplier">
+        <b id="buf">--.--</b><br/>
+        <span>BUF [%]</span>
+    </div>
+    <div class="box" title="Price degrease interval">
+        <b id="step">--.--</b><br/>
+        <span>STEP [sec]</span>
+    </div>
+    <div class="box" title="Percentage of each price decrease">
+        <b id="cut">--.--</b><br/>
+        <span>CUT [%]</span>
+    </div>
+    <div class="box" title="Detailed Clip auction glossary dai-eth LP">
+        <b id="glossary">
+            <a target="_blank" href="https://docs.makerdao.com/smart-contract-modules/dog-and-clipper-detailed-documentation#3-contract-details">Clipper</a>
+        </b><br/>
+        <span>[details]</span>
+    </div>
+    <div id="glossary-panel">
+        <b>Liquidations 2.0 quick references</b><br/>
+        <a onclick="$('#glossary-panel').hide();">[ X ]</a>
+        <b>CHOP</b>: <i>Vault liquidation penalty.</i>
+        <b>BUF </b>: <i>Auction start price multiplier.</i>
+        <b>KICK</b>: <i>Auction start event</i>
+        <br/>
+        <b>DIRT</b>: <i>Current amount of debt being Auctioned.</i>
+        <b>STEP</b>: <i>Price degrease interval/rate.</i>
+        <b>TAKE</b>: <i>Debt settled event (partially or totally).</i>
+        <br/>
+        <b>HOLE</b>: <i>Max amount of debt Auctionable (at the same time).</i>
+        <b>CUT </b>: <i>Percentage of each price decrease.</i>
+        <b>REDO</b>: <i>Auction reset event (price re calculated).</i>
+    </div>
+</div>
+<div id="filter-panel">
+    <span id="search">
+        <label for="fliter-id">Filter:</label>
+        <input id="fliter-id" type="number" placeholder="  ID  " onchange="filterAuctionById();"/>
+        <a href="#" onclick="filterAuctionById();">GO!</a>
+    </span>
+    <i id="last-update"></i>
+    <div class="links-panel">
+        <b>CLIP [</b>
+        <a href="/" title="ETH-A Auctions with DAI">ETH-A</a> /
+        <a href="/clip/wbtc" title="WBTC Auctions with DAI">WBTC</a> /
+        <a href="/clip/eth-b" title="ETH-B Auctions with DAI">ETH-B</a> /
+        <a href="/clip/eth-c" title="ETH-C Auctions with DAI">ETH-C</a> /
+        <a href="/clip/yfi" title="YFI Auctions with DAI">YFI</a> /
+        <a href="/clip/link" title="LINK Auctions with DAI">LINK</a> /
+        <a href="/clip/uni" title="UNI Auctions with DAI">UNI</a> /
+        <a href="/clip/renbtc" title="RENBTC Auctions with DAI">RENBTC</a> /
+        <a href="/clip/zrx" title="ZRX Auctions with DAI">ZRX</a> /
+        <a href="/clip/lrc" title="LRC Auctions with DAI">LRC</a> /
+        <a href="/clip/bat" title="BAT Auctions with DAI">BAT</a> /
+        <a href="/clip/comp" title="COMP Auctions with DAI">COMP</a> /
+        <a href="/clip/bal" title="BAL Auctions with DAI">BAL</a> /
+        <a href="/clip/aave" title="AAVE Auctions with DAI">AAVE</a> /
+        <a href="/clip/mana" title="MANA Auctions with DAI">MANA</a> /
+        <a href="/clip/knc" title="KNC Auctions with DAI">KNC</a> /
+        <a href="/clip/dai-eth-lp" title="DAI-ETH LP Auctions with DAI">DAI-ETH LP</a> /
+        <a href="#" class="active" title="WBTC-ETH LP Auctions with DAI">WBTC-ETH LP</a> /
+        <a href="/clip/uni-eth-lp" title="UNI-ETH LP Auctions with DAI">UNI-ETH LP</a> /
+        <a href="/clip/dai-usdc-lp" title="DAI-USDC LP Auctions with DAI">DAI-USDC LP</a> /
+        <a href="/clip/usdc-eth-lp" title="USDC-ETH LP Auctions with DAI">USDC-ETH LP</a>
+        <b>]</b> |
+        <a href="/flap" title="DAI Auctions with MKR">FLAP [DAI]</a> |
+        <a href="/flop" title="MKR Auctions with DAI">FLOP [MKR]</a>
+    </div>
+</div>
+<div id="auction-details"></div>
+<div id="no-results" class="row">
+    >> NO auctions found in the last days.<br/>
+    <br/>
+    >> Click <a href="#" onclick="loadAllHistory()">HERE</a> to load all history (It may take a while 😅).
+</div>
+<div id="app">
+    <div class="row"> >> Fetching data from mainnet...</div>
+</div>
+<div id="info">
+    <p>
+        All data from last 3.14 days -
+        Maybe try to <a href="#" onclick="loadAllHistory()">load all history</a> if you are curious 😁
+    </p>
+</div>
+<p class="made-by">
+    Made with ❤ by <a target="_blank" href="https://twitter.com/martinlsanchez" class="author">Marto</a>
+    <br/><br/>
+    2021
+    <br/><br/>
+    <i>
+        <span>Made and maintained only by free coding hours</span><br/>
+        <b>
+            <a style="cursor: pointer" onclick="playAudio()">🎵</a>
+            Toss a coin to your witcher ➡‍ daiauctions.eth
+        </b>
+        <span>(0x2392C9d44F8D70D3874C8a74D28CB4c82412aCF7)</span>
+    </i>
+    <br/>
+    <audio id="audio-special" style="display: none" controls>
+        <source src="/special/toss_a_coin_to_your_witcher.mp3" type="audio/mpeg">
+    </audio>
+    <br/>
+    <i>
+        <b>
+            Take a look at the
+            <a target="_blank" href="https://github.com/martinlsanchez/daiauctions">Open Source code</a>
+        </b>
+    </i>
+    <br/><br/>
+</p>
+<script type="text/javascript" src="/js/web3.min.js"></script>
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script async type="text/javascript" src="/js/clip_wbtc_eth_lp_min.js"></script>
+</body>
+</html>

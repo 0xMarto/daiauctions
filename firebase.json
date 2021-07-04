@@ -8,6 +8,26 @@
     ],
     "rewrites": [
       {
+        "source": "/clip/usdc-eth-lp",
+        "destination": "/clip_uv2_usdc_eth_lp.html"
+      },
+      {
+        "source": "/clip/dai-usdc-lp",
+        "destination": "/clip_uv2_dai_usdc_lp.html"
+      },
+      {
+        "source": "/clip/uni-eth-lp",
+        "destination": "/clip_uv2_uni_eth_lp.html"
+      },
+      {
+        "source": "/clip/wbtc-eth-lp",
+        "destination": "/clip_uv2_wbtc_eth_lp.html"
+      },
+      {
+        "source": "/clip/dai-eth-lp",
+        "destination": "/clip_uv2_dai_eth_lp.html"
+      },
+      {
         "source": "/clip/knc",
         "destination": "/clip_knc.html"
       },
