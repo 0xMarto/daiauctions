@@ -40,7 +40,6 @@ Welcome to the open blockchains.
     - KNC-A (CLIP)
     - ZRX-A (CLIP)
     - MANA-A (CLIP)
-    - USDT-A
     - COMP-A (CLIP)
     - LRC-A (CLIP)
     - LINK-A (CLIP)
@@ -51,10 +50,11 @@ Welcome to the open blockchains.
     - UNI-A (CLIP)
     - RENBTC-A (CLIP)
     - AAVE-A (CLIP)
-    - UNIV2DAIETH-A
-    - UNIV2USDCETH-A
-    - UNIV2WBTCETH-A
-    - UNIV2UNIETH-A
+    - UNIV2DAIETH-A (CLIP)
+    - UNIV2USDCETH-A (CLIP)
+    - UNIV2WBTCETH-A (CLIP)
+    - UNIV2UNIETH-A (CLIP)
+    - UNIV2DAIUSDC-A (CLIP)
 
 2. Realtime tracking of MCD Surplus DAI Auctions (Flaps)
 
