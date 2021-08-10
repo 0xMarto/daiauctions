@@ -33,23 +33,23 @@ Welcome to the open blockchains.
 
 ## ✨ Features
 
-1. Realtime tracking of MCD Collateral Auctions (Flips/Clips)
-    - ETH-A (CLIP)
-    - BAT-A (CLIP)
-    - WBTC-A (CLIP)
-    - KNC-A (CLIP)
-    - ZRX-A (CLIP)
-    - MANA-A (CLIP)
-    - COMP-A (CLIP)
-    - LRC-A (CLIP)
-    - LINK-A (CLIP)
-    - ETH-B (CLIP)
-    - ETH-C (CLIP)
-    - BAL-A (CLIP)
-    - YFI-A (CLIP)
-    - UNI-A (CLIP)
-    - RENBTC-A (CLIP)
-    - AAVE-A (CLIP)
+1. Realtime tracking of MCD Collateral Auctions (Clips)
+    - ETH-A
+    - BAT-A
+    - WBTC-A
+    - KNC-A
+    - ZRX-A
+    - MANA-A
+    - COMP-A
+    - LRC-A
+    - LINK-A
+    - ETH-B
+    - ETH-C
+    - BAL-A
+    - YFI-A
+    - UNI-A
+    - RENBTC-A
+    - AAVE-A
     - UNIV2DAIETH-A (CLIP)
     - UNIV2USDCETH-A (CLIP)
     - UNIV2WBTCETH-A (CLIP)
