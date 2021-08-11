@@ -11,7 +11,7 @@ Welcome to the open blockchains.
 
 ##### Related MakerDao Auction docs  
 
-> [Flip auctions detailed documentation](https://docs.makerdao.com/smart-contract-modules/collateral-module/flipper-detailed-documentation)
+> [Clip auctions detailed documentation](https://docs.makerdao.com/smart-contract-modules/dog-and-clipper-detailed-documentation#3-contract-details)
 >
 > [Flap auctions detailed documentation](https://docs.makerdao.com/smart-contract-modules/system-stabilizer-module/flap-detailed-documentation)
 >
@@ -50,11 +50,11 @@ Welcome to the open blockchains.
     - UNI-A
     - RENBTC-A
     - AAVE-A
-    - UNIV2DAIETH-A (CLIP)
-    - UNIV2USDCETH-A (CLIP)
-    - UNIV2WBTCETH-A (CLIP)
-    - UNIV2UNIETH-A (CLIP)
-    - UNIV2DAIUSDC-A (CLIP)
+    - UNIV2DAIETH-A
+    - UNIV2USDCETH-A
+    - UNIV2WBTCETH-A
+    - UNIV2UNIETH-A
+    - UNIV2DAIUSDC-A
 
 2. Realtime tracking of MCD Surplus DAI Auctions (Flaps)
 
