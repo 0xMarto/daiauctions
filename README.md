@@ -33,7 +33,9 @@ Welcome to the open blockchains.
 
 ## ✨ Features
 
-1. Realtime tracking of MCD Collateral Auctions (Clips)
+1. Viewer of current status of all Auctions (`Dog Dirt` & `Dog Hole`)
+
+2. Realtime tracking of MCD Collateral Auctions (Clips)
     - ETH-A
     - BAT-A
     - WBTC-A
@@ -56,9 +58,9 @@ Welcome to the open blockchains.
     - UNIV2UNIETH-A
     - UNIV2DAIUSDC-A
 
-2. Realtime tracking of MCD Surplus DAI Auctions (Flaps)
+3. Realtime tracking of MCD Surplus DAI Auctions (Flaps)
 
-3. Realtime tracking of MCD Debt MKR Auctions (Flops)
+4. Realtime tracking of MCD Debt MKR Auctions (Flops)
 
 <br/>
  
