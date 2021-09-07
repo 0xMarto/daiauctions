@@ -35,7 +35,7 @@ Welcome to the open blockchains.
 
 1. Viewer of current status of all Auctions (`Dog Dirt` & `Dog Hole`)
 
-2. Realtime tracking of MCD Collateral Auctions (Clips)
+2. Realtime tracking of MCD Collateral Auctions 2.0 (Clips)
     - ETH-A
     - BAT-A
     - WBTC-A
