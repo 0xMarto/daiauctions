@@ -37,10 +37,10 @@ Welcome to the open blockchains.
 
 2. Realtime tracking of MCD Collateral Auctions 2.0 (Clips)
     - ETH-A
-    - BAT-A
+    - BAT-A (to be removed)
     - WBTC-A
     - KNC-A
-    - ZRX-A
+    - ZRX-A (to be removed)
     - MANA-A
     - COMP-A
     - LRC-A
