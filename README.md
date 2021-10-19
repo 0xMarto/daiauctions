@@ -43,7 +43,7 @@ Welcome to the open blockchains.
     - ZRX-A (to be removed)
     - MANA-A
     - COMP-A
-    - LRC-A
+    - LRC-A (to be removed)
     - LINK-A
     - ETH-B
     - ETH-C
