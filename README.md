@@ -39,8 +39,8 @@ Welcome to the open blockchains.
     - ETH-A
     - BAT-A (to be removed) 
     - WBTC-A
-    - KNC-A
-    - ZRX-A (to be removed) 
+    - KNC-A (to be removed)
+    - ZRX-A (to be removed)
     - MANA-A
     - COMP-A
     - LRC-A (to be removed) 
@@ -57,6 +57,8 @@ Welcome to the open blockchains.
     - UNIV2WBTCETH-A
     - UNIV2UNIETH-A
     - UNIV2DAIUSDC-A
+    - MATIC (coming soon)
+    - WSTETH (coming soon)
 
 3. Realtime tracking of MCD Surplus DAI Auctions (Flaps)
 
