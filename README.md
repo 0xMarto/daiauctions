@@ -57,8 +57,8 @@ Welcome to the open blockchains.
     - UNIV2WBTCETH-A
     - UNIV2UNIETH-A
     - UNIV2DAIUSDC-A
-    - MATIC (coming soon)
-    - WSTETH (coming soon)
+    - MATIC (coming soon) (needeing some icons)
+    - WSTETH (coming soon) (needeing some icons)
 
 3. Realtime tracking of MCD Surplus DAI Auctions (Flaps)
 
