@@ -39,26 +39,29 @@ Welcome to the open blockchains.
     - ETH-A
     - BAT-A (to be removed) 
     - WBTC-A
+    - WBTC-B (coming soon)
+    - WBTC-C (coming soon)
     - KNC-A (to be removed)
     - ZRX-A (to be removed)
     - MANA-A
-    - COMP-A
+    - COMP-A (to be removed)
     - LRC-A (to be removed) 
     - LINK-A
     - ETH-B
     - ETH-C
-    - BAL-A
+    - BAL-A (to be removed)
     - YFI-A
     - UNI-A
     - RENBTC-A
-    - AAVE-A
+    - AAVE-A (to be removed)
     - UNIV2DAIETH-A
     - UNIV2USDCETH-A
     - UNIV2WBTCETH-A
     - UNIV2UNIETH-A
     - UNIV2DAIUSDC-A
-    - MATIC (coming soon) (needeing some icons)
-    - WSTETH (coming soon) (needeing some icons)
+    - GUNIV3DAIUSDC-A (coming soon)
+    - MATIC (coming soon)
+    - WSTETH (coming soon)
 
 3. Realtime tracking of MCD Surplus DAI Auctions (Flaps)
 
