@@ -39,8 +39,8 @@ Welcome to the open blockchains.
     - ETH-A
     - BAT-A (to be removed) 
     - WBTC-A
-    - WBTC-B (coming soon)
-    - WBTC-C (coming soon)
+    - WBTC-B
+    - WBTC-C
     - KNC-A (to be removed)
     - ZRX-A (to be removed)
     - MANA-A

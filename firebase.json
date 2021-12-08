@@ -68,8 +68,16 @@
         "destination": "/clip_uni.html"
       },
       {
-        "source": "/clip/wbtc",
-        "destination": "/clip_wbtc.html"
+        "source": "/clip/wbtc-a",
+        "destination": "/clip_wbtc_a.html"
+      },
+      {
+        "source": "/clip/wbtc-b",
+        "destination": "/clip_wbtc_b.html"
+      },
+      {
+        "source": "/clip/wbtc-c",
+        "destination": "/clip_wbtc_c.html"
       },
       {
         "source": "/clip/eth-c",
