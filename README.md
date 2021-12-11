@@ -37,32 +37,30 @@ Welcome to the open blockchains.
 
 2. Realtime tracking of MCD Collateral Auctions 2.0 (Clips)
     - ETH-A
-    - BAT-A (to be removed) 
+    - BAT-A (to be removed soon) 
     - WBTC-A
     - WBTC-B
     - WBTC-C
-    - KNC-A (to be removed)
-    - ZRX-A (to be removed)
+    - MATIC-A
+    - WSTETH-A
     - MANA-A
-    - COMP-A (to be removed)
-    - LRC-A (to be removed) 
+    - COMP-A (to be removed soon)
+    - LRC-A (to be removed soon) 
     - LINK-A
     - ETH-B
     - ETH-C
-    - BAL-A (to be removed)
+    - BAL-A (to be removed soon)
     - YFI-A
     - UNI-A
     - RENBTC-A
-    - AAVE-A (to be removed)
+    - AAVE-A (to be removed soon)
     - UNIV2DAIETH-A
     - UNIV2USDCETH-A
     - UNIV2WBTCETH-A
     - UNIV2UNIETH-A
     - UNIV2DAIUSDC-A
     - GUNIV3DAIUSDC-A (coming soon)
-    - MATIC (coming soon)
-    - WSTETH (coming soon)
-
+    
 3. Realtime tracking of MCD Surplus DAI Auctions (Flaps)
 
 4. Realtime tracking of MCD Debt MKR Auctions (Flops)

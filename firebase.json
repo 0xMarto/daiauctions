@@ -92,6 +92,14 @@
         "destination": "/clip_eth_a.html"
       },
       {
+        "source": "/clip/steth",
+        "destination": "/clip_steth.html"
+      },
+      {
+        "source": "/clip/matic",
+        "destination": "/clip_matic.html"
+      },
+      {
         "source": "/clip/yfi",
         "destination": "/clip_yfi.html"
       },
