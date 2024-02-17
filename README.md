@@ -20,7 +20,7 @@ Welcome to the open blockchains.
 
 ##### Simple, optimized and light weight
 
-> **HIGH** Score of [Google PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/?hl=es&url=https%3A%2F%2Fdaiauctions.com%2F&tab=desktop)
+> **HIGH** Score of [Google PageSpeed Insights](https://pagespeed.web.dev/analysis/https-daiauctions-com/xsrbqfgauh?form_factor=desktop)
 
 <br/>
 
