@@ -1470,12 +1470,12 @@ const CALC_ABI = [
     }
 ];
 
-const CLIP_ADDRESS = "0x832Dd5f17B30078a5E46Fdb8130A68cBc4a74dC0";
-const CALC_ADDRESS = "0x7B1696677107E48B152e9Bf400293e98B7D86Eb1";
-const MEDIANIZER_ADDRESS = "0xbAd4212d73561B240f10C56F27e6D9608963f17b";
+const CLIP_ADDRESS = "0x29342F530ed6120BDB219D602DaFD584676293d1";
+const CALC_ADDRESS = "0xdF8C347B06a31c6ED11f8213C2366348BFea68dB";
+const MEDIANIZER_ADDRESS = "0xfe1e93840D286C83cF7401cB021B94b5bc1763d2";
 const DOG_ADDRESS = "0x135954d155898D42C90D2a57824C690e0c7BEf1B";
-const ILK = "0x4c494e4b2d410000000000000000000000000000000000000000000000000000";
-const SYMBOL = "link";
+const ILK = "0x4d415449432d4100000000000000000000000000000000000000000000000000";
+const SYMBOL = "matic";
 const SYMBOL_UP = SYMBOL.toUpperCase();
 const SYMBOL_CAP = SYMBOL.charAt(0).toUpperCase() + SYMBOL.slice(1);
 
@@ -1498,7 +1498,7 @@ let web3Connected = !usingRemoteProvider;
 if (usingRemoteProvider) {
     try {
         web3 = new Web3();
-        var infura = "wss://mainnet.infura.io/ws/v3/f77d1e38219b45d4b4965a1c247c1aff";
+        var infura = "wss://mainnet.infura.io/ws/v3/cabe301d837048959747eaa4415846b7";
         var provider = new Web3.providers.WebsocketProvider(infura);
         provider.on('error', e => {web3Connected = false;});
         provider.on('end', e => {web3Connected = false;});
